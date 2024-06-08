@@ -1,0 +1,19 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('media/background-home.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #555;
+    font-family: "Ysabeau SC", sans-serif !important;
+}
+
+
+h1 {
+    font-family: "Caveat", cursive !important;
+}
+
+.content-container {
+    margin-top: 150px;
+}
