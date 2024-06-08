@@ -48,121 +48,67 @@
 
 <body>
   <header class="container-fluid fixed-top bg-white p-0">
-    <div class="row py-2">
-      <div class="col-12 text-center">
-        <a href="{% url 'home' %}" class="nav-link-logo">
-          <h2 class="my-0">Knit & co</h2>
-        </a>
+    <div class="text-center">
+      <a href="{% url 'home' %}" class="nav-link-logo">
+        <h1 class="m-0">Knit & co</h1>
+      </a>
+    </div>
+    <!-- Banner -->
+    <div id="banner" class="p-0 bg-dark align-middle">
+      <div class="text-center text-white message">
+        <p class="m-0">Free shipping on first order. Orders placed before 1 pm CET will be shipped the same day.</p>
       </div>
     </div>
     <!-- Navbar -->
-    <div class="py-0 bg-dark">
-      <nav class="navbar navbar-expand-lg" role="navigation">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Dropdown Yarn -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Yarn</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Wool</a></li>
-                <li><a class="dropdown-item" href="#">Merino wool</a></li>
-                <li><a class="dropdown-item" href="#">Alpaca</a></li>
-                <li><a class="dropdown-item" href="#">Cotton</a></li>
-                <li><a class="dropdown-item" href="#">Silk</a></li>
-                <li><a class="dropdown-item" href="#">Linen</a></li>
-                <li><a class="dropdown-item" href="#">Blends</a></li>
-                <li><a class="dropdown-item" href="#">Specialty Yarns</a></li>
-                <li><a class="dropdown-item" href="#">Weight Categories</a></li>
-                <li><a class="dropdown-item" href="#">Colorways</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- Dropdown Needles -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Needles</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Cable Needles</a></li>
-                <li><a class="dropdown-item" href="#">Interchangeable Cable Needles</a></li>
-                <li><a class="dropdown-item" href="#">Double-Pointed Needles (DPNs)</a></li>
-                <li><a class="dropdown-item" href="#">Materials</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- Dropdown Accessories -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Accessories</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Stitch Markers & Stitch Holders</a></li>
-                <li><a class="dropdown-item" href="#">Yarn Bowls & Holders</a></li>
-                <li><a class="dropdown-item" href="#">Blocking Tools</a></li>
-                <li><a class="dropdown-item" href="#">Needle Stoppers & Needle Cases</a></li>
-                <li><a class="dropdown-item" href="#">Knitting Journals</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- Dropdown Patterns -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Patterns</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Clothing</a></li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
-                <li><a class="dropdown-item" href="#">Baby & Kids</a></li>
-                <li><a class="dropdown-item" href="#">Home Decor</a></li>
-                <li><a class="dropdown-item" href="#">Lacework</a></li>
-                <li><a class="dropdown-item" href="#">Colorwork</a></li>
-                <li><a class="dropdown-item" href="#">Textured Patterns</a></li>
-                <li><a class="dropdown-item" href="#">Beginner Patterns</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- Search box -->
-          <div class="container justify-content-end">
-            <form method="GET" action="">
-              <div class="input-group w-100">
-                <input class="form-control border border-black rounded-0 message" type="text" name="q"
-                  placeholder="Search">
-                <div class="input-group-append">
-                  <button class="form-control btn btn-black border border-black rounded-0 text-white" type="submit"> <i
-                      class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+    <div id="topnav" class="row m-0 d-none d-lg-flex">
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+        <form method="GET" action="">
+          <div class="input-group w-100">
+            <input class="form-control border border-black rounded-0 message" type="text" name="q"
+              placeholder="Search">
+            <div class="input-group-append">
+              <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
+            </div>
           </div>
-          <!-- Login links -->
-          <div>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="#">My account</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-              </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
+        </form>
+      </div>
+      <!-- Login -->
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+        <ul class="navbar-nav list-inline list-unstyled my-0">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item list-inline-item">
+            <a class="nav-link" href="#">My account</a>
+          </li>
+          <li class="nav-item list-inline-item">
+            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item list-inline-item">
+            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+          </li>
+          <li class="nav-item list-inline-item">
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
-    </nav>
+    <!-- Includes -->
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light w-100 py-0 px-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="text-dark"><i class="fa-solid fa-bars"></i></span>
+        </button>
+        {% include 'includes/mobile-top-header.html' %}
+        {% include 'includes/main-nav.html' %}
+      </nav>
+    </div>
+
   </header>
 
   {% if messages %}
