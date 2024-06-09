@@ -39,7 +39,7 @@ html {
 body {
     background: url('/media/background-home.webp') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 2000px);
     color: #555;
     font-family: "Ysabeau SC", sans-serif !important;
 }
@@ -49,5 +49,5 @@ h1 {
 }
 
 .content-container {
-    margin-top: 150px;
+    margin-top: 200px;
 }

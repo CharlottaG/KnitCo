@@ -48,6 +48,7 @@
 
 <body>
   <header class="container-fluid fixed-top bg-white p-0">
+    <!-- First row: Logo and Account/Register -->
     <div class="row my-3">
         <!-- Space left -->
         <div class="col"></div>
@@ -57,7 +58,7 @@
             <h1 class="m-0">Knit & co</h1>
           </a>
         </div>
-        <!-- Login Links Spaced Right-->
+        <!-- Account/Register Links Spaced Right -->
         <div class="col mx-3 py-0 px-0 ms-2">
           <ul class="navbar-nav d-flex flex-row justify-content-end list-inline list-unstyled">
             {% if request.user.is_authenticated %}
@@ -77,44 +78,28 @@
             {% endif %}
           </ul>
         </div>
-      </div>
     </div>
-    <!-- Banner -->
+    <!-- Second row: Banner with delivery info -->
     <div id="banner" class="p-0 bg-dark align-middle">
       <div class="text-center text-white message">
         <p class="m-0">Free shipping on first order. Orders placed before 1 pm CET will be shipped the same day.</p>
       </div>
     </div>
-    <!-- Navbar -->
-    <div id="topnav" class="row m-0 d-none d-lg-flex">
-      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-        <form method="GET" action="">
-          <div class="input-group w-100">
-            <input class="form-control border border-black rounded-0 message" type="text" name="q" placeholder="Search">
-            <div class="input-group-append">
-              <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
+    <!-- Third row: Main Navigation and Search Box -->
+    <div class="row">
+      <!-- Main Navigation -->
+      <div class="col-lg-8">
+          <nav class="navbar navbar-expand-lg navbar-light w-100 py-0 px-2">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                  aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="text-dark"><i class="fa-solid fa-bars"></i></span>
               </button>
-            </div>
-          </div>
-        </form>
+              {% include 'includes/mobile-top-header.html' %}
+              {% include 'includes/main-nav.html' %}
+          </nav>
       </div>
     </div>
-    <!-- Includes -->
-    <div class="row">
-      <nav class="navbar navbar-expand-lg navbar-light w-100 py-0 px-2">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
-          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="text-dark"><i class="fa-solid fa-bars"></i></span>
-        </button>
-        {% include 'includes/mobile-top-header.html' %}
-        {% include 'includes/main-nav.html' %}
-      </nav>
-    </div>
-
-  </header>
+</header>
 
   {% if messages %}
   <div class="message-container message"></div>
