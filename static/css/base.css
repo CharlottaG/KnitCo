@@ -17,7 +17,8 @@ html {
     font-style: normal;
 }
 
-.nav-link {
+.nav-link, 
+.dropdown-item {
     color: #555;
     white-space: nowrap;
 }
@@ -25,14 +26,14 @@ html {
 .nav-link:hover,
 .nav-link:active,
 .nav-link:focus {
-    background: #222;
+    background: rgb(246, 221, 32);
     color: white;
 }
 
 
 .nav-link-logo:hover,
-.nav-link-logo:visited {
-    color: #555;
+.nav-link-logo:active {
+    color:rgb(246, 221, 32);
     text-decoration: none;
 }
 
