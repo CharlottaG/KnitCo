@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-rx$d2yzyt7odx)d8wwbac$qrax(=1hly05jg&7)36&d5zyx$!*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-charlottag-knitco-4bzat7pytqm.ws-eu114.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-charlottag-knitco-4bzat7pytqm.ws-eu114.gitpod.io', 'https://knitco-7d640c861cc6.herokuapp.com']
 
 
 # Application definition
