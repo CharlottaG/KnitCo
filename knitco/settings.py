@@ -138,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-charlottag-knitco-4bzat7pytqm.ws-eu114.gitpod.io',
+    'https://8000-charlottag-knitco-4bzat7pytqm.ws-eu114.gitpod.io',"https://*.gitpod.io",  "https://*.herokuapp.com"
 ]
 
 # Internationalization
