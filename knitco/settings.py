@@ -15,6 +15,27 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+# Set your Cloudinary credentials
+# ==============================
+from dotenv import load_dotenv
+load_dotenv()
+
+# Import the Cloudinary libraries
+# ==============================
+import cloudinary
+from cloudinary import CloudinaryImage
+import cloudinary.uploader
+import cloudinary.api
+
+# Import to format the JSON responses
+# ==============================
+import json
+
+# Set configuration parameter: return "https" URLs by setting secure=True  
+# ==============================
+config = cloudinary.config(secure=True)
+
+
 # Define BASE_DIR as a Path object
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -168,7 +189,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
