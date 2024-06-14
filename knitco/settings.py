@@ -49,7 +49,7 @@ SECRET_KEY = 'django-insecure-rx$d2yzyt7odx)d8wwbac$qrax(=1hly05jg&7)36&d5zyx$!*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-charlottag-knitco-4bzat7pytqm.ws-eu114.gitpod.io', 'https://knitco-7d640c861cc6.herokuapp.com']
+ALLOWED_HOSTS = ['8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net', 'https://knitco-7d640c861cc6.herokuapp.com']
 
 
 # Application definition
@@ -159,7 +159,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-charlottag-knitco-4bzat7pytqm.ws-eu114.gitpod.io',"https://*.gitpod.io",  "https://*.herokuapp.com"
+    'https://8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net',"https://*.gitpod.io",  "https://*.herokuapp.com"
 ]
 
 # Internationalization

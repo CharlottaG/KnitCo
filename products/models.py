@@ -25,6 +25,8 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.SET_NULL)
     subcategory = models.ForeignKey('SubCategory', blank=True, null=True, on_delete=models.SET_NULL)
+    brand = models.CharField(max_length=254, blank=True, null=True)
+    color = models.CharField(max_length=254, blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     ratings = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image = CloudinaryField('image', null=True, blank=True)

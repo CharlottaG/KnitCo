@@ -3,7 +3,7 @@ from .models import Product, Category, SubCategory
 
 # Define admin classes
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'subcategory')
+    list_display = ('name', 'brand', 'category', 'subcategory')
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
