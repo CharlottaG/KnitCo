@@ -10,10 +10,12 @@
 </div>
 {% endblock %}
 
+
+
 {% block content %}
-<div class="overlay">
+
     <div class="container content-container">
-        <div class="row px-2">
+        <div class="row m-0 overlay">
             <h1> All products </h1>
         </div>
         <div class="row">
@@ -24,10 +26,11 @@
                     <p class="px-1 text-black">
                         <i class="fa-solid fa-heart"></i> {{ product.ratings }}
                     </p>
+                </div>
                     {% else %}
                     <p>No rating</p>
                     {% endif %}
-                </div>
+                
                 <div class="image">
                     {% if product.image %}
                     <a href="">
