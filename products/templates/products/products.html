@@ -19,10 +19,10 @@
         <div class="row">
             {% for product in products %}
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                {% if product.ratings %}
+                {% if product.average_rating %}
                 <div class="d-flex z-3 position-absolute p-3">
                     <p class="px-1 text-black">
-                        <i class="fa-solid fa-heart"></i> {{ product.average_ratings }}
+                        <i class="fa-solid fa-heart"></i> {{ product.average_rating|floatformat:2 }}
                     </p>
                 </div>
                     {% else %}

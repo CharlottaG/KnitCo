@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import Product, Category, SubCategory, Brand, Rating
+from .models import Product, Category, SubCategory, Brand, Rating, Color
 
 # Define admin classes
 class RatingInline(admin.TabularInline):
     model = Rating
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'brand', 'category', 'subcategory')
-    search_fileds = ('name', 'brand', 'category', 'subcategory')
-    filter_list = ('name', 'brand', 'category', 'subcategory')
+    list_display = ('name', 'brand', 'category', 'subcategory', 'color')
+    search_fields = ('name', 'brand', 'category', 'subcategory')
+    list_filter = ('name', 'brand', 'category', 'subcategory')
     inlines = [RatingInline]
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -20,8 +20,11 @@ class SubCategoryAdmin(admin.ModelAdmin):
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
+
 # Register models with their respective admin classes
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(Brand, BrandAdmin)
+admin.site.register(Color)
+
