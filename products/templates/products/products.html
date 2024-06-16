@@ -10,8 +10,6 @@
 </div>
 {% endblock %}
 
-
-
 {% block content %}
 
     <div class="container content-container">
@@ -24,7 +22,7 @@
                 {% if product.ratings %}
                 <div class="d-flex z-3 position-absolute p-3">
                     <p class="px-1 text-black">
-                        <i class="fa-solid fa-heart"></i> {{ product.ratings }}
+                        <i class="fa-solid fa-heart"></i> {{ product.average_ratings }}
                     </p>
                 </div>
                     {% else %}
