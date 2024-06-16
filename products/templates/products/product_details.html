@@ -11,46 +11,50 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="container content-container">
         <div class="row m-0 overlay">
         </div>
-        <div class="d-flex flex-column">
-            <div>
+        <div class="container">
+            <!-- Product name & brand -->
+            <div class="d-flex justify-content-between">
                 <h2 class="text-black"> {{ product.name }} | {{ product.brand }} </h2>
+                <!-- Show product price -->
+                <div>
+                    <h3>{{ product.price }} €</h3>
+                </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <!-- Product details -->
+            <div class="col">
+
+                <!-- Show product rating -->
                 {% if product.average_rating %}
-                <div class="d-flex z-3 position-absolute p-3">
+                <div class="d-flex p-3">
                     <p class="px-1 text-black">
                         <i class="fa-solid fa-heart"></i> {{ product.average_rating|floatformat:2 }}
                     </p>
                 </div>
-                    {% else %}
-                    <p>No rating</p>
-                    {% endif %}
-                
-                <div class="image">
-                    {% if product.image %}
-                    <a href="">
-                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    </a>
-                    {% else %}
-                    <a href="">
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                    </a>
-                    {% endif %}
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p class="fs-1">{{ product.price }} €</p>
-                    <p class="fs-1">{{ product.color.name }} list all colors</p>
-                    <p class="fs-1">{{ product.description }}</p>
+                {% else %}
+                <p>No rating</p>
+                {% endif %}
 
+                <!-- Show product description -->
+                <div class="description">
+                    <p>{{ product.description }}</p>
                 </div>
+
+                <!-- Show all available colors for the product -->
+                <div class="row">
+                    {% for product_color in product.product_colors.all %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                        <div class="color">
+                            <img class="card-img-top img-fluid" src="{{ product_color.image.url }}" alt="{{ product_color.colors }}">
+                            <p class="fs-1">{{ product_color.colors }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
             </div>
-
         </div>
     </div>
-</div>
-</div>
 {% endblock %}

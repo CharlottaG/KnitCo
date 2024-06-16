@@ -56,11 +56,11 @@ class Product(models.Model):
 
 class ProductColors(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_colors')
-    color_name = models.CharField(max_length=50)
+    colors = models.CharField(max_length=50)
     image = CloudinaryField('image', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.product.name} - {self.color.name}'
+        return f'{self.product.name} - {self.colors}'
 
 class Rating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ratings')

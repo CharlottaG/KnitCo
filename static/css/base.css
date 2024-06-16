@@ -31,7 +31,6 @@ html {
     color: white;
 }
 
-
 .nav-link-logo:hover,
 .nav-link-logo:active {
     color:rgb(246, 221, 32);
@@ -62,4 +61,11 @@ h1 {
 	position: fixed;
 	background: white;
 	z-index: -1;
+}
+
+.description {
+    font-family: "Teachers", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-style: normal;
 }
