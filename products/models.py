@@ -27,6 +27,7 @@ class SubCategory(models.Model):
         return self.name
 
 class Brand(models.Model):
+
     name = models.CharField(max_length=254, unique=True)
     website =  models.URLField(null=True, blank=True)
     location = models.CharField(max_length=254, unique=True)
@@ -36,6 +37,7 @@ class Brand(models.Model):
         return self.name
 
 class Product(models.Model):
+
     name = models.CharField(max_length=254, unique=True)
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.SET_NULL)
@@ -55,12 +57,16 @@ class Product(models.Model):
         return None
 
 class ProductColors(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Product Colors'
+
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_colors')
-    colors = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
     image = CloudinaryField('image', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.product.name} - {self.colors}'
+        return f'{self.product.name} - {self.color}'
 
 class Rating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ratings')

@@ -11,50 +11,69 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container content-container">
-        <div class="row m-0 overlay">
+<div class="container content-container">
+    <div class="row m-0 overlay">
+    </div>
+    <div class="container">
+        <!-- Product name & brand -->
+        <div class="d-flex justify-content-between">
+            <h2 class="text-black"> {{ product.name }} | {{ product.brand }} </h2>
+            <!-- Show product price -->
+            <div>
+                <h3>{{ product.price }} €</h3>
+            </div>
         </div>
-        <div class="container">
-            <!-- Product name & brand -->
-            <div class="d-flex justify-content-between">
-                <h2 class="text-black"> {{ product.name }} | {{ product.brand }} </h2>
-                <!-- Show product price -->
-                <div>
-                    <h3>{{ product.price }} €</h3>
-                </div>
+        <!-- Product details -->
+        <div class="col">
+
+            <!-- Show product rating -->
+            {% if product.average_rating %}
+            <div class="d-flex p-3">
+                <p class="px-1 text-black">
+                    <i class="fa-solid fa-heart"></i> {{ product.average_rating|floatformat:2 }}
+                </p>
             </div>
-            <!-- Product details -->
-            <div class="col">
+            {% else %}
+            <p>No rating</p>
+            {% endif %}
 
-                <!-- Show product rating -->
-                {% if product.average_rating %}
-                <div class="d-flex p-3">
-                    <p class="px-1 text-black">
-                        <i class="fa-solid fa-heart"></i> {{ product.average_rating|floatformat:2 }}
-                    </p>
-                </div>
-                {% else %}
-                <p>No rating</p>
-                {% endif %}
+            <!-- Show product description -->
+            <div class="description">
+                <p>{{ product.description }}</p>
+            </div>
 
-                <!-- Show product description -->
-                <div class="description">
-                    <p>{{ product.description }}</p>
-                </div>
-
-                <!-- Show all available colors for the product -->
-                <div class="row">
-                    {% for product_color in product.product_colors.all %}
-                    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-                        <div class="color">
-                            <img class="card-img-top img-fluid" src="{{ product_color.image.url }}" alt="{{ product_color.colors }}">
-                            <p class="fs-1">{{ product_color.colors }}</p>
-                        </div>
+            <!-- Show reviews -->
+            {% if product.ratings.exists %}
+            <div class="mb-3 reviews">
+                {% for rating in product.ratings.all %}
+                <div class="rating mb-2 p-3 border border-bottom">
+                    <div class="d-flex align-items-center">
+                        <p class="m-0 px-2 semibold">{{ rating.user.username }}</p>
+                        <span>|</span>
+                        <p class="m-0 px-2">{{ rating.comment }}</p>
                     </div>
-                    {% endfor %}
+                    <div><p class="m-0 px-2 lighter">{{ rating.created_at }}</p></div>
                 </div>
-
+                {% endfor %}
             </div>
+            {% else %}
+                <p>No reviews yet</p>
+            {% endif %}
+
+            <!-- Show all available colors for the product -->
+            <div class="row">
+                {% for product_color in product.product_colors.all %}
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <div class="color">
+                        <img class="card-img-top img-fluid" src="{{ product_color.image.url }}"
+                            alt="{{ product_color.color }}">
+                        <p class="fs-1">{{ product_color.color }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
         </div>
     </div>
+</div>
 {% endblock %}
