@@ -65,7 +65,7 @@ h1 {
 
 .description {
     font-family: "Teachers", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 100;
     font-style: normal;
 }
@@ -81,7 +81,10 @@ h1 {
     font-weight: 500;
 }
 
+.smaller {
+    font-size: 0.9rem;
+}
+
 .lighter {
-    font-size: 0.8rem;
     color:#a6a6a6;
 }
