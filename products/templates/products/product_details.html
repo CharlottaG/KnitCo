@@ -15,7 +15,7 @@
     <div class="row m-0 overlay">
     </div>
     <div class="container">
-        <!-- Product name, brand, and rating -->
+        <!-- Product name, price, and rating -->
         <div class="row">
             <div class="col-md-8">
                 <h2 class="text-black">{{ product.name }} | {{ product.brand }} <small>{{ product.price }}€</small></h2>
@@ -35,13 +35,12 @@
             <div class="col-md-8">
                 <div class="description mb-5">
                     <p>{{ product.description }}</p>
-                    <div class="bg-light p-2 smaller">
-                        <p>Yardage:</p>
-                        <p>Knitting needles:</p>
-                        <p>Knitting tension:</p>
-                    </div>
                 </div>
-                
+
+                <!-- Add to shopping bag-->
+                 <div class="bg-warning">
+                 <p>Add to shopping bag</p>
+                </div>
                 <!-- Show reviews -->
                 {% if product.ratings.exists %}
                 <div class="reviews mb-3">

@@ -22,10 +22,10 @@
                 Needles
             </a>
             <div class="dropdown-menu" aria-labelledby="needlesDropdown">
-                <a class="dropdown-item" href="#">Cable Needles</a>
-                <a class="dropdown-item" href="#">Interchangeable Cable Needles</a>
-                <a class="dropdown-item" href="#">Double-Pointed Needles (DPNs)</a>
-                <a class="dropdown-item" href="#">Materials</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Cable-Needles">Cable Needles</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Interchangeable-Cable-Needles">Interchangeable Cable Needles</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Double-Pointed-Needles">Double-Pointed Needles (DPNs)</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Materials">Materials</a>
             </div>
         </li>
         <!-- Dropdown Accessories -->
@@ -35,10 +35,10 @@
                 Accessories
             </a>
             <div class="dropdown-menu" aria-labelledby="accessoriesDropdown">
-                <a class="dropdown-item" href="#">Stitch Markers</a>
-                <a class="dropdown-item" href="#">Stitch Holders</a>
-                <a class="dropdown-item" href="#">Blocking Tools</a>
-                <a class="dropdown-item" href="#">Tapestry Needles</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Markers">Stitch Markers</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Holders">Stitch Holders</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Blocking-Tools">Blocking Tools</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Tapestry-Needles">Tapestry Needles</a>
             </div>
         </li>
     <!-- Search Box -->
