@@ -18,8 +18,57 @@
         </div>
         <div class="row">
             {% if bag_items %}
-            <div class="col-6">{{ bag_items }}</div>
-                
+            <div class="col-6"></div>
+            <div class="table-responsive rounded message">
+                <!-- Table structure -->
+                <table class="table table-sm table-borderless">
+                    <thead class="text-black">
+                        <tr>
+                            <th scope="col">Product Info</th>
+                            <th scope="col"></th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price/Item</th>
+                        </tr>
+                    </thead>
+                    <!-- Iterate through all products -->
+                    {% for item in bag_items %}
+                    <tr>
+                        <td class="p-3 w-25">
+                            <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">${{ item.product.price }}</p>
+                        </td>
+                        <td class="py-3 w-25">
+                            <p class="my-0">{{ item.quantity }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">${{ item.product.price }}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- Calculate total price -->
+                    <tr>
+                        <td colspan="5" class="pt-5 text-right">
+                            <h4><span class="text-uppercase">Total: {{ total|floatformat:2 }} €</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                                <span class="text-uppercase bg-blue p-2">Continue Shopping</span>
+                            </a>
+                            <a href="" class="btn btn-black rounded-0 btn-lg">
+                                <span class="text-uppercase bg-blue p-2">Secure Checkout</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                </div> 
             {% else %}
             <div class="message lead">
                 <p>Whoops! Your bag is feeling light as a feather!</p>
