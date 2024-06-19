@@ -5,4 +5,4 @@ from django.shortcuts import render
 def view_bag(request):
     """ Show shopping bag content """
 
-    return render(request, 'bag.html')
+    return render(request, 'bag/bag.html')

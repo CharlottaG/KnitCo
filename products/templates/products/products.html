@@ -12,10 +12,11 @@
 
 {% block content %}
 <div class="container content-container">
-    <div class="row m-0 overlay">
-        <h1>All products</h1>
-    </div>
-    <div class="row">
+    <div class="row m-0 overlay"></div>
+        <div class="row">
+            <h1>All products</h1>
+        </div>
+        <div class="row">
         {% for product in products %}
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
             {% if product.average_rating %}
