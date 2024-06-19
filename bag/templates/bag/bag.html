@@ -18,11 +18,12 @@
         </div>
         <div class="row">
             {% if bag_items %}
-            <div></div>
+            <div class="col-6">{{ bag_items }}</div>
+                
             {% else %}
             <div class="message lead">
                 <p>Whoops! Your bag is feeling light as a feather!</p>
-                <a href="{% url 'products' %}"> Look for some goodies to fill your bag with!</a>
+                <a href="{% url 'products' %}" class="btn bg-blue">Look for some goodies to fill your bag with!</a>
             </div>
             {% endif %}
         </div>
