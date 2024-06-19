@@ -8,11 +8,11 @@
                 Yarn
             </a>
             <div class="dropdown-menu" aria-labelledby="yarnDropdown">
-                <a class="dropdown-item" href="{% url 'products' %}?category=wool">Wool</a>
-                <a class="dropdown-item" href="#">Merino wool</a>
-                <a class="dropdown-item" href="#">Alpaca</a>
-                <a class="dropdown-item" href="#">Cotton</a>
-                <a class="dropdown-item" href="#">Linen</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=wool">Wool</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=merino">Merino wool</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=alpaca">Alpaca</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=cotton">Cotton</a>
+                <a class="dropdown-item" href="{% url 'products' %}?subcategory=linnen">Linen</a>
             </div>
         </li>
         <!-- Dropdown Needles -->
