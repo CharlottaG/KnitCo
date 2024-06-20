@@ -18,6 +18,19 @@ html {
     font-style: normal;
 }
 
+.message-small{
+    font-size: 0.8rem;
+
+}
+
+.txt-blue{
+    color: #000066 !important;
+}
+
+.txt-red{
+    color: #f12626 !important;
+}
+
 .nav-link, 
 .dropdown-item {
     color: #555;
@@ -35,6 +48,11 @@ html {
 .nav-link-logo:active {
     color:rgb(246, 221, 32);
     text-decoration: none;
+}
+
+.update-link,
+.remove-item {
+    cursor: pointer;
 }
 
 body {
@@ -87,10 +105,6 @@ h1 {
 
 .lighter {
     color:#a6a6a6;
-}
-
-.bag {
-    color: #000066;
 }
 
 .bg-blue {
