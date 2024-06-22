@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category, SubCategory
+from .models import Product, Category, SubCategory, Rating
+from .forms import RatingForm
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -43,8 +45,6 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
-    
-
 def product_detail(request, product_id):
     """ A view to show product details """
 
@@ -55,3 +55,21 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_details.html', context)
+
+def add_rating(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    rating = None
+
+    if request.method == 'POST':
+        rating_form = RatingForm(request.POST)
+        if rating_form.is_valid():
+            rating = rating_form.save(commit=False)
+            rating.product = product
+            rating.user = request.user
+            rating.save()
+            messages.success(request, 'Thanks for rating!')
+            return redirect('product_detail', product_id=product_id)
+    else:
+        rating_form = RatingForm()
+
+    return render(request, 'products/product_details.html', {'product': product, 'rating_form': rating_form, 'rating': rating})
