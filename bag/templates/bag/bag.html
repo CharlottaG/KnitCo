@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -28,7 +29,7 @@
                             <th scope="col"></th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Price/Item</th>
+                            <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
                     <!-- Iterate through all products -->
@@ -44,45 +45,40 @@
                             <p class="my-0">{{ item.product.price }}€</p>
                         </td>
                         <td class="py-3 w-25">
-                            <form class="form-update-form " action="{% url 'update_bag' item.item_id}" method="post">
+                            <form class="update-form" action="{% url 'update_bag' item.item_id %}" method="post">
                                 {% csrf_token %}
-
-                                <div class="form-group">
-                                    <div class="input-group">
-                                         <!-- Button to decrease number of products to buy -->
-                                        <div class="input-group-preprend">
-                                            <button class="decrement-qty btn btn-sm bg-blue rounded-0 border-0" 
-                                                data-item_id="{{ item.item_id }}" 
-                                                id="decrement-qty_{{ item.item_id }}">
-                                                <span>
-                                                    <i class="fas fa-minus fa-sm"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <!-- Form control -->
-                                            <input class="form-control form-control-sm qty_input" type="number" 
-                                                name="quantity" value="{{ item.quantity }}" min="1" max="99" 
-                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                        <!-- Button to increase number of products to buy -->
-                                        <div class="input-group-append">
-                                            <button class="increment-qty btn btn-sm bg-blue rounded-0 border-0" type="number"
-                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                <span>
-                                                    <i class="fas fa-plus fa-sm"></i>
-                                                </span>
-                                            </button>
-                                        </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-sm bg-blue rounded-0 border-0"
+                                            type="button" data-item_id="{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-minus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-sm bg-blue rounded-0 border-0"
+                                            type="button" data-item_id="{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-plus fa-sm"></i>
+                                            </span>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
-                            <a class="update-link message-small txt-blue">Update</a>
-                            <a class="remove-item message-small txt-red float-right" id="remove_{{ item.item_id }}">Remove</a>
+                            <a href="#" class="update-link message-small txt-blue">Update</a>
+                            <a href="#" class="remove-item message-small txt-red float-right"
+                                id="remove_{{ item.item_id }}">Delete item</a>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">{{ item.product.price }}€</p>
+                            <p class="my-0">{{ item.product.price | calc_subtotal:item.quantity }}€</p>
                         </td>
                     </tr>
                     {% endfor %}
+
                     <!-- Calculate total price -->
                     <tr>
                         <td colspan="5" class="pt-5 text-right">

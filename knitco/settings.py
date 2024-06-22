@@ -10,22 +10,31 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+from dotenv import load_dotenv
+
 from pathlib import Path
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-# Set your Cloudinary credentials
-# ==============================
-from dotenv import load_dotenv
-load_dotenv()
-
-# Import the Cloudinary libraries
-# ==============================
 import cloudinary
 from cloudinary import CloudinaryImage
 import cloudinary.uploader
 import cloudinary.api
+
+
+# Load environment variables from .env file
+load_dotenv()
+
+
+# Cloudinary configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Import to format the JSON responses
 # ==============================
@@ -64,6 +73,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary',
+    'cloudinary_storage',
     'home',
     'products',
     'bag',
