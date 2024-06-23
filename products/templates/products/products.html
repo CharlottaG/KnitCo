@@ -18,6 +18,23 @@
         <div class="row">
             <h1>All products</h1>
         </div>
+        
+        <!-- Sorting -->
+        <div class="row sorting p-3">
+            <p>Sort by:</p>
+            <a class="sorting-item px-1" href="{% url 'products' %}?sort=brand&order={% if current_sort == 'brand' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                Brand {% if current_sort == 'brand' %}({{ current_order|title }}){% endif %}
+            </a>
+            <span> | </span>
+            <a class="sorting-item px-1" href="{% url 'products' %}?sort=name&order={% if current_sort == 'name' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                Name {% if current_sort == 'name' %}({{ current_order|title }}){% endif %}
+            </a>
+            <span> | </span>
+            <a class="sorting-item px-1" href="{% url 'products' %}?sort=category&order={% if current_sort == 'category' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                Category {% if current_sort == 'category' %}({{ current_order|title }}){% endif %}
+            </a>
+        </div>
+
         <div class="row">
         {% for product in products %}
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -39,7 +56,7 @@
                     </a>
                 {% endif %}
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between reviews">
                 <p class="fs-1">{{ product.brand }}</p>
                 <p class="fs-1">{{ product.name }}</p>
                 <p class="fs-1">{{ product.price }} €</p>

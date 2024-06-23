@@ -16,6 +16,8 @@ def all_products(request):
     query = None
     categories = None
     subcategories = None
+    sort = request.GET.get('sort', 'brand')  
+    order = request.GET.get('order', 'asc')  
 
     if request.GET:
         if 'category' in request.GET:
@@ -37,11 +39,25 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+     # Add sorting
+    if sort == 'brand':
+        ordering = 'brand' if order == 'asc' else '-brand'
+    elif sort == 'name':
+        ordering = 'name' if order == 'asc' else '-name'
+    elif sort == 'category':
+        ordering = 'category' if order == 'asc' else '-category'
+    else:
+        ordering = 'brand'
+
+    products = products.order_by(ordering)       
+
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
         'current_subcategories': subcategories,
+        'current_sort': sort,
+        'current_order': order,
     }
 
     return render(request, 'products/products.html', context)
