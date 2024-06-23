@@ -51,6 +51,7 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     user_has_rated = False
+    all_colors = product.all_colors()
 
     if request.user.is_authenticated:
         user_has_rated = Rating.objects.filter(product=product, user=request.user).exists()
@@ -58,6 +59,7 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
+        'all_colors': all_colors,
         'rating_form': rating_form,
         'user_has_rated': user_has_rated,
     }

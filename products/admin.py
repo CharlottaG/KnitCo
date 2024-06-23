@@ -1,19 +1,15 @@
 from django.contrib import admin
-from .models import Product, Category, SubCategory, Brand, Rating, ProductColors
+from .models import Product, Category, SubCategory, Brand, Rating
 
 # Define admin classes
 class RatingInline(admin.TabularInline):
     model = Rating
 
-class ProductColorsInline(admin.TabularInline):
-    model = ProductColors
-    extra = 1
-
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'brand', 'category', 'subcategory')
     search_fields = ('name', 'brand', 'category', 'subcategory')
     list_filter = ('name', 'brand', 'category', 'subcategory')
-    inlines = [RatingInline, ProductColorsInline]
+    inlines = [RatingInline]
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)

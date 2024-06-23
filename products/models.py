@@ -45,6 +45,7 @@ class Product(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='products', default=1)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = CloudinaryField('image', null=True, blank=True)
+    color = models.CharField(max_length=50, default=1)
 
     def __str__(self):
         return self.name
@@ -55,18 +56,14 @@ class Product(models.Model):
         if ratings.exists():
             return ratings.aggregate(models.Avg('score'))['score__avg']
         return None
+    
+    # Get all colors for the same product
+    def all_colors(self):
+        return Product.objects.filter(
+            brand=self.brand,
+            subcategory=self.subcategory
+    ).exclude(id=self.id)
 
-class ProductColors(models.Model):
-
-    class Meta:
-        verbose_name_plural = 'Product Colors'
-
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_colors')
-    color = models.CharField(max_length=50)
-    image = CloudinaryField('image', null=True, blank=True)
-
-    def __str__(self):
-        return f'{self.product.name} - {self.color}'
 
 class Rating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ratings')
@@ -77,9 +74,3 @@ class Rating(models.Model):
 
     def __str__(self):
         return f'{self.product.name} - {self.score} by {self.user.username}'
-
-
-
-
-
-

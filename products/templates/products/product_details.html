@@ -15,18 +15,19 @@
     <div class="row m-0 overlay">
     </div>
     <div class="container">
+        <!-- Breadcrumbs -->
         <div class="breadcrumb-top">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white reviews">
-                  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="#">{{ product.category }}</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ product.category }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
                 </ol>
             </nav>
         </div>
-        <!-- Product name, price, and rating -->
+        <!-- Product image and rating -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-4">
                 {% if product.average_rating %}
                 <div class="d-flex z-3 position-absolute p-3">
                     <p class="px-1 text-black">
@@ -34,16 +35,15 @@
                     </p>
                 </div>
                 {% endif %}
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img class="card-img-top img-fluid product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    </a>
-                <h2 class="text-black">{{ product.name }} | {{ product.brand }} <small>{{ product.price }}€</small></h2>
+                <a href="{% url 'product_detail' product.id %}">
+                    <img class="card-img-top img-fluid product-img" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
+                </a>
             </div>
-        </div>
 
-        <!-- Product details and reviews -->
-        <div class="row">
-            <div class="col-md-8">
+            <!-- Product details -->
+            <div class="col-8">
+                <h2 class="text-black">{{ product.name }} | {{ product.brand }} <small>{{ product.price }}€</small></h2>
                 <div class="description mb-2">
                     <p>{{ product.description }}</p>
                 </div>
@@ -95,6 +95,19 @@
                     </form>
                 </div>
 
+                <!-- Show all available colors for the product -->
+                <p>Available Colors</p>
+                <div>
+                    {% for product_color in all_colors %}
+                    <div class="all-colors">
+                        <a href="{% url 'product_detail' product_color.id %}">
+                            <img class="available-colors" src="{{ product_color.image.url }}" alt="{{ product_color.name }}">
+                            <p>{{ product_color.color }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+                </div>
+
                 <!-- Show reviews -->
                 {% if product.ratings.exists %}
                 <div class="reviews my-3">
@@ -105,14 +118,16 @@
                             <span>|</span>
                             <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
                             {% if rating.user == request.user %}
-                                <button class="btn btn-sm btn-warning ms-3 btn-edit" data-rating-id="{{ rating.id }}">Edit</button>
+                            <button class="btn btn-sm btn-warning ms-3 btn-edit"
+                                data-rating-id="{{ rating.id }}">Edit</button>
                             {% endif %}
                         </div>
                         <div>
                             <p class="m-0 px-2 smaller lighter">{{ rating.created_at }}</p>
                         </div>
                         <!-- Edit form (hidden by default) -->
-                        <form action="{% url 'edit_rating' rating.id %}" method="POST" class="edit-rating-form" id="edit-rating-form-{{ rating.id }}" style="display: none;">
+                        <form action="{% url 'edit_rating' rating.id %}" method="POST" class="edit-rating-form"
+                            id="edit-rating-form-{{ rating.id }}" style="display: none;">
                             {% csrf_token %}
                             <textarea class="form-control" name="comment" rows="3">{{ rating.comment }}</textarea>
                             <button type="submit" class="btn btn-primary mt-2">Update</button>
@@ -135,23 +150,7 @@
                 {% endif %}
             </div>
 
-            <!-- Show all available colors for the product -->
-            {% if product.product_colors.exists %}
-            <div class="col-md-4">
-                <h4>Available colors</h4>
-                <div class="row">
-                    {% for product_color in product.product_colors.all %}
-                    <div class="col-lg-6 mb-3">
-                        <div class="color">
-                            <img class="card-img-top img-fluid" src="{{ product_color.image.url }}"
-                                alt="{{ product_color.color }}">
-                            <p class="fs-1">{{ product_color.color }}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
+
         </div>
     </div>
 </div>
@@ -163,17 +162,17 @@
 {% include 'products/includes/quantity_input_script.html' %}
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const editButtons = document.querySelectorAll(".btn-edit");
+    document.addEventListener("DOMContentLoaded", function () {
+        const editButtons = document.querySelectorAll(".btn-edit");
 
-    editButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const ratingId = this.getAttribute("data-rating-id");
-            const form = document.getElementById(`edit-rating-form-${ratingId}`);
-            form.style.display = form.style.display === "none" ? "block" : "none";
+        editButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const ratingId = this.getAttribute("data-rating-id");
+                const form = document.getElementById(`edit-rating-form-${ratingId}`);
+                form.style.display = form.style.display === "none" ? "block" : "none";
+            });
         });
     });
-});
 </script>
 
 {% endblock %}
