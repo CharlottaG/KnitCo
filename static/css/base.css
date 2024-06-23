@@ -11,14 +11,14 @@ html {
     font-style: normal;
 }
 
-.message {
+.text {
     font-family: "Teachers", sans-serif;
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
 }
 
-.message-small{
+.text-small{
     font-size: 0.8rem;
 
 }
@@ -131,3 +131,12 @@ h1 {
     height: auto;
     display: inline-block;
 }
+
+/*-------------------------------- Toast styling */
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+

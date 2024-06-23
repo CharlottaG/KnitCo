@@ -20,7 +20,7 @@
         <div class="row">
             {% if bag_items %}
             <div class="col-6"></div>
-            <div class="table-responsive rounded message">
+            <div class="table-responsive rounded text">
                 <!-- Table structure -->
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
@@ -69,8 +69,8 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="#" class="update-link message-small txt-blue">Update</a>
-                            <a href="#" class="remove-item message-small txt-red float-right"
+                            <a href="#" class="update-link text-small txt-blue">Update</a>
+                            <a href="#" class="remove-item text-small txt-red float-right"
                                 id="remove_{{ item.item_id }}">Delete item</a>
                         </td>
                         <td class="py-3">
@@ -98,7 +98,7 @@
                 </table>
                 </div> 
             {% else %}
-            <div class="message lead">
+            <div class="text lead">
                 <p>Whoops! Your bag is feeling light as a feather!</p>
                 <a href="{% url 'products' %}" class="btn bg-blue">Look for some goodies to fill your bag with!</a>
             </div>
