@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'crispy_forms',
+    'crispy_bootstrap4',
     'home',
     'products',
     'bag',
@@ -174,6 +175,8 @@ AUTH_PASSWORD_VALIDATORS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net',"https://*.gitpod.io",  "https://*.herokuapp.com"
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

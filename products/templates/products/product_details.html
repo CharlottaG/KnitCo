@@ -96,17 +96,19 @@
                 </div>
 
                 <!-- Show all available colors for the product -->
-                <p>Available Colors</p>
+                {% if all_options %}
+                <p>Available Options</p>
                 <div>
-                    {% for product_color in all_colors %}
-                    <div class="all-colors">
-                        <a href="{% url 'product_detail' product_color.id %}">
-                            <img class="available-colors" src="{{ product_color.image.url }}" alt="{{ product_color.name }}">
-                            <p>{{ product_color.color }}</p>
+                    {% for option in product.all_options %}
+                    <div class="option">
+                        <a href="{% url 'product_detail' option.id %}">
+                            <img class="available-options" src="{{ option.image.url }}" alt="{{ option.name }}">
+                            <p>{{ option.name }}</p>
                         </a>
                     </div>
                 {% endfor %}
                 </div>
+                {% endif %}
 
                 <!-- Show reviews -->
                 {% if product.ratings.exists %}
@@ -118,8 +120,10 @@
                             <span>|</span>
                             <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
                             {% if rating.user == request.user %}
-                            <button class="btn btn-sm btn-warning ms-3 btn-edit"
+                            <button class="btn btn-sm btn-warning mx-1 btn-edit"
                                 data-rating-id="{{ rating.id }}">Edit</button>
+                            <a href="{% url 'delete_rating' rating.id %}" class="btn btn-sm btn-danger mx-1 btn-delete"
+                                data-rating-id="{{ rating.id }}">Delete</a>
                             {% endif %}
                         </div>
                         <div>
@@ -130,7 +134,7 @@
                             id="edit-rating-form-{{ rating.id }}" style="display: none;">
                             {% csrf_token %}
                             <textarea class="form-control" name="comment" rows="3">{{ rating.comment }}</textarea>
-                            <button type="submit" class="btn btn-primary mt-2">Update</button>
+                            <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
                         </form>
                     </div>
                     {% endfor %}
@@ -164,12 +168,25 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const editButtons = document.querySelectorAll(".btn-edit");
+        const deleteButtons = document.querySelectorAll(".btn-delete");
 
         editButtons.forEach(button => {
             button.addEventListener("click", function () {
                 const ratingId = this.getAttribute("data-rating-id");
                 const form = document.getElementById(`edit-rating-form-${ratingId}`);
                 form.style.display = form.style.display === "none" ? "block" : "none";
+            });
+        });
+
+        deleteButtons.forEach(button => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+                const ratingId = this.getAttribute("data-rating-id");
+                let confirmed = confirm('Are you sure you want to delete this review?');
+                if (confirmed) {
+                    const ratingId = this.getAttribute("data-rating-id");
+                    window.location.href = `/rating/${ratingId}/delete/`;
+                }
             });
         });
     });

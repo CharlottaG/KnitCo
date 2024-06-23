@@ -51,15 +51,16 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     user_has_rated = False
-    all_colors = product.all_colors()
+    all_options = product.all_options()
 
     if request.user.is_authenticated:
         user_has_rated = Rating.objects.filter(product=product, user=request.user).exists()
     rating_form = RatingForm()
+    
 
     context = {
         'product': product,
-        'all_colors': all_colors,
+        'all_options': all_options,
         'rating_form': rating_form,
         'user_has_rated': user_has_rated,
     }
@@ -115,3 +116,20 @@ def edit_rating(request, rating_id):
         }
 
     return redirect('product_detail', product_id=rating.product.id)
+
+@login_required
+def delete_rating(request, rating_id):
+    rating = get_object_or_404(Rating, id=rating_id)
+
+    # Only the user who created the review can delete it
+    if rating.user != request.user:
+        messages.error(request, "You can only delete your own reviews.")
+        return redirect('product_detail', product_id=rating.product.id)
+
+    if request.method == 'POST':
+        rating.delete()
+        messages.success(request, 'Your rating has been deleted.')
+
+    return redirect('product_detail', product_id=rating.product.id)
+
+    return HttpResponseNotAllowed(['POST'])
