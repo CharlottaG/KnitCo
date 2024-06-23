@@ -4,6 +4,7 @@ from django.db.models import Q
 from .models import Product, Category, SubCategory, Rating
 from .forms import RatingForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -49,15 +50,21 @@ def product_detail(request, product_id):
     """ A view to show product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    user_has_rated = False
+
+    if request.user.is_authenticated:
+        user_has_rated = Rating.objects.filter(product=product, user=request.user).exists()
     rating_form = RatingForm()
 
     context = {
         'product': product,
         'rating_form': rating_form,
+        'user_has_rated': user_has_rated,
     }
 
     return render(request, 'products/product_details.html', context)
 
+@login_required
 def add_rating(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     rating = None
@@ -80,3 +87,29 @@ def add_rating(request, product_id):
     }
 
     return render(request, 'products/product_details.html', context)
+
+@login_required
+def edit_rating(request, rating_id):
+
+    rating = get_object_or_404(Rating, id=rating_id)
+
+    # Only the user who created the review can edit it
+    if rating.user != request.user:
+        messages.error(request, "You can only edit your own reviews.")
+        return redirect('product_detail', product_id=rating.product.id)
+
+    if request.method == 'POST':
+        form = RatingForm(request.POST,  instance=rating)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your rating has been updated.')
+            return redirect('product_detail', product_id=rating.product.id)
+        else:
+            form = RatingForm(instance=rating)
+
+            context = {
+            'product': rating.product,
+            'rating_form': rating_form,
+        }
+
+    return redirect('product_detail', product_id=rating.product.id)

@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary',
     'cloudinary_storage',
+    'crispy_forms',
     'home',
     'products',
     'bag',
