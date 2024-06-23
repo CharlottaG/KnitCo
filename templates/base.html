@@ -57,7 +57,7 @@
     <!-- First row: Logo -->
     <div class="d-flex justify-content-center">
       <a href="{% url 'home' %}" class="nav-link-logo">
-        <h1 class="m-0">Knit & co</h1>
+        <h1 class="m-0">Knit & Co</h1>
       </a>
     </div>
     <!-- Second row: Banner with delivery info -->
@@ -80,7 +80,10 @@
           </nav>
         </div>
       </div>
-      <div class="d-none d-lg-flex">
+
+      <!-- Only on large screens-->
+      <div class="d-none d-lg-flex col-4 justify-content-end">
+
         <!-- Account links -->
         <li class="list-inline-item dropdown">
           <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
@@ -103,6 +106,7 @@
             {% endif %}
           </div>
         </li>
+
         <!-- Shopping bag -->
         <li class="list-inline-item">
           <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
@@ -119,6 +123,7 @@
             </div>
           </a>
         </li>
+
       </div>
     </div>
   </header>

@@ -3,42 +3,42 @@
         <a class="nav-link mr-5" href="{% url 'products'%}">All products</a>
         <!-- Dropdown Yarn -->
         <li class="nav-item dropdown">
-            <a class="nav-link mr-5" href="#" id="yarnDropdown" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+            <a class="nav-link mr-5" href="#" id="yarnDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 Yarn
             </a>
-            <div class="dropdown-menu" aria-labelledby="yarnDropdown">
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Wool">Wool</a>
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Merino">Merino wool</a>
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Alpaca">Alpaca</a>
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Cotton">Cotton</a>
-                <a class="dropdown-item" href="{% url 'products' %}?category=Yarn">All yarn</a>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="yarnDropdown">
+                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Wool">Wool</a></li>
+                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Merino">Merino wool</a></li>
+                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Alpaca">Alpaca</a></li>
+                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cotton">Cotton</a></li>
+                <li></li><a class="dropdown-item" href="{% url 'products' %}?category=Yarn">All yarn</a></li>
+            </ul>
         </li>
+
         <!-- Dropdown Needles -->
         <li class="nav-item dropdown">
-            <a class="nav-link mr-5" href="#" id="needlesDropdown" data-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link mr-5" href="#" id="needlesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 Needles
             </a>
-            <div class="dropdown-menu" aria-labelledby="needlesDropdown">
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Cable-Needles">Cable Needles</a>
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Double-Pointed-Needles">Double-Pointed Needles (DPNs)</a>
-                <a class="dropdown-item" href="{% url 'products' %}?category=Needles">All needles</a>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="needlesDropdown">
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cable-Needles">Cable Needles</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Double-Pointed-Needles">Double-Pointed Needles (DPNs)</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=Needles">All needles</a></li>
+            </ul>
         </li>
         <!-- Dropdown Accessories -->
         <li class="nav-item dropdown">
-            <a class="nav-link mr-5" href="#" id="accessoriesDropdown" data-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link mr-5" href="#" id="accessoriesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 Accessories
             </a>
-            <div class="dropdown-menu" aria-labelledby="accessoriesDropdown">
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Markers">Stitch Markers</a>
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Holders">Stitch Holders</a>
-                <a class="dropdown-item" href="{% url 'products' %}?subcategory=Blocking-Tools">Blocking Tools</a>
-                <a class="dropdown-item" href="{% url 'products' %}?category=Accessories">All accessories</a>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="accessoriesDropdown">
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Markers">Stitch Markers</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Holders">Stitch Holders</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Blocking-Tools">Blocking Tools</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=Accessories">All accessories</a></li>
+            </ul>
         </li>
     <!-- Search Box -->
     <div class="col-lg-4 d-none d-lg-flex align-items-center justify-content-end">
