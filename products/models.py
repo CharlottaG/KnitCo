@@ -71,7 +71,7 @@ class ProductColors(models.Model):
 class Rating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ratings')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.DecimalField(max_digits=6, decimal_places=0, null=True, blank=True)
+    score = models.DecimalField(max_digits=1, decimal_places=0, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)
 

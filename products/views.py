@@ -49,9 +49,11 @@ def product_detail(request, product_id):
     """ A view to show product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    rating_form = RatingForm()
 
     context = {
         'product': product,
+        'rating_form': rating_form,
     }
 
     return render(request, 'products/product_details.html', context)
@@ -72,4 +74,9 @@ def add_rating(request, product_id):
     else:
         rating_form = RatingForm()
 
-    return render(request, 'products/product_details.html', {'product': product, 'rating_form': rating_form, 'rating': rating})
+    context = {
+        'product': product,
+        'rating_form': rating_form,
+    }
+
+    return render(request, 'products/product_details.html', context)
