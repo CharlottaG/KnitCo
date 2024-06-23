@@ -118,3 +118,8 @@ h1 {
     font-weight: 100;
     font-style: normal;
 }
+
+.product-img {
+    max-width: 300px;
+    height: auto;
+}

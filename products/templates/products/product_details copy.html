@@ -88,38 +88,41 @@
                 {% if product.ratings.exists %}
                 <div class="reviews my-3">
                     {% for rating in product.ratings.all %}
-                    <div class="rating mb-2 p-3 border border-bottom">
+                    <div class="rating mb-2 p-3 border border-bottom" id="rating-{{rating.id}}">
                         <div class="d-flex align-items-center">
                             <p class="m-0 px-2 semibold">{{ rating.user.username }}</p>
                             <span>|</span>
-                            <p class="m-0 px-2">{{ rating.comment }}</p>
+                            <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
+                            {% if rating.user == request.user %}
+                                <button class="btn btn-sm btn-warning ms-3 btn-edit" data-rating-id="{{ rating.id }}">Edit</button>
+                            {% endif %}
                         </div>
                         <div>
                             <p class="m-0 px-2 smaller lighter">{{ rating.created_at }}</p>
                         </div>
+                        <!-- Edit form (hidden by default) -->
+                        <form action="{% url 'edit_rating' rating.id %}" method="POST" class="edit-rating-form" id="edit-rating-form-{{ rating.id }}" style="display: none;">
+                            {% csrf_token %}
+                            <textarea class="form-control" name="comment" rows="3">{{ rating.comment }}</textarea>
+                            <button type="submit" class="btn btn-primary mt-2">Update</button>
+                        </form>
                     </div>
                     {% endfor %}
                 </div>
                 {% endif %}
 
-            <!-- Add rating and review -->
-            {% if request.user.is_authenticated %}
-            <div class="rating-form border border-1 my-4">
-                <p class="p-3">Rate this product</p>
-                <form class="p-3" method="POST" action="{% url 'add_rating' product_id=product.id %}">
-                    {% csrf_token %}
-                    {{ rating_form.as_p }}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                {% if user.is_authenticated and rating.author == user %}
-                <button class="btn btn-secondary btn-sm btn-edit" rating_id="{{ rating.id }}">Edit</button>
-                <button class="btn  btn-danger btn-sm btn-delete" rating_id="{{ rating.id }}">Delete</button>
-            {% endif %}
+                <!-- Add rating and review -->
+                {% if request.user.is_authenticated and not user_has_rated %}
+                <div class="rating-form border border-1 my-4">
+                    <p class="p-3">Rate this product</p>
+                    <form class="p-3" method="POST" action="{% url 'add_rating' product_id=product.id %}">
+                        {% csrf_token %}
+                        {{ rating_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
-
-
-
 
             <!-- Show all available colors for the product -->
             {% if product.product_colors.exists %}
@@ -147,4 +150,19 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const editButtons = document.querySelectorAll(".btn-edit");
+
+    editButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const ratingId = this.getAttribute("data-rating-id");
+            const form = document.getElementById(`edit-rating-form-${ratingId}`);
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        });
+    });
+});
+</script>
+
 {% endblock %}

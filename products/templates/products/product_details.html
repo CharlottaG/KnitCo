@@ -15,19 +15,30 @@
     <div class="row m-0 overlay">
     </div>
     <div class="container">
+        <div class="breadcrumb-top">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white reviews">
+                  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">{{ product.category }}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                </ol>
+            </nav>
+        </div>
         <!-- Product name, price, and rating -->
         <div class="row">
             <div class="col-md-8">
+                {% if product.average_rating %}
+                <div class="d-flex z-3 position-absolute p-3">
+                    <p class="px-1 text-black">
+                        <i class="fa-solid fa-heart"></i> {{ product.average_rating|floatformat:2 }}
+                    </p>
+                </div>
+                {% endif %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top img-fluid product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
                 <h2 class="text-black">{{ product.name }} | {{ product.brand }} <small>{{ product.price }}€</small></h2>
             </div>
-            {% if product.average_rating %}
-            <div class="col-md-4 d-flex justify-content-md-end align-items-center">
-                <p class="px-1 text-black">
-                    <i class="fa-solid fa-heart"></i>
-                    <span class="d-none d-lg-inline">{{ product.average_rating|floatformat:2 }}</span>
-                </p>
-            </div>
-            {% endif %}
         </div>
 
         <!-- Product details and reviews -->
