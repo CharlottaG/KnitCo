@@ -45,8 +45,10 @@ html {
 }
 
 .nav-link-logo:hover,
-.nav-link-logo:active {
-    color:rgb(246, 221, 32);
+.nav-link-logo:active, 
+.nav-link-logo:visited,
+.nav-link-logo:focus {
+    color:#000066 !important;
     text-decoration: none;
 }
 
