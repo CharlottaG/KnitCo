@@ -150,3 +150,12 @@ h1 {
     z-index: 99999999999;
 }
 
+/*-------------------------------- Shopping bag styling */
+.img-bag{
+    max-width: 30% !important;
+    height: 30px !important;
+    overflow: hidden !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important; 
+}

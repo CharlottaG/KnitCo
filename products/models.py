@@ -1,8 +1,8 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.utils.crypto import get_random_string
 
-# Create your models here.
 
 class Category(models.Model):
 
@@ -37,7 +37,6 @@ class Brand(models.Model):
         return self.name
 
 class Product(models.Model):
-
     name = models.CharField(max_length=254, unique=True)
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.SET_NULL)
@@ -47,6 +46,18 @@ class Product(models.Model):
     image = CloudinaryField('image', null=True, blank=True)
     color = models.CharField(max_length=50, null=True, blank=True)
     size = models.CharField(max_length=50, null=True, blank=True)
+    sku = models.CharField(max_length=100, unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.sku:
+            self.sku = self.generate_sku()
+            while Product.objects.filter(sku=self.sku).exists():
+                self.sku = self.generate_sku()
+        super().save(*args, **kwargs)
+
+    def generate_sku(self):
+        """ Generate a random SKU """
+        return get_random_string(length=8).upper()
 
     def __str__(self):
         return self.name
@@ -63,7 +74,8 @@ class Product(models.Model):
         return Product.objects.filter(
             brand=self.brand,
             subcategory=self.subcategory
-    ).exclude(id=self.id)
+        ).exclude(id=self.id)
+
 
 
 
