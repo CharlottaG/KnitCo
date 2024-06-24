@@ -1,8 +1,22 @@
+/*-------------------------------- General styling */
 html {
     height: 100%;
     overflow: auto;
 }
 
+body {
+    background: url('/static/images/background-home.webp') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 2000px);
+    color: #555;
+    font-family: "Ysabeau SC", sans-serif !important;
+}
+
+h1 {
+    font-family: "Caveat", cursive !important;
+}
+
+/*-------------------------------- Logo styling */
 .nav-link-logo {
     color: #555;
     font-family: "Caveat", cursive !important;
@@ -11,6 +25,15 @@ html {
     font-style: normal;
 }
 
+.nav-link-logo:hover,
+.nav-link-logo:active, 
+.nav-link-logo:visited,
+.nav-link-logo:focus {
+    color:#000066 !important;
+    text-decoration: none;
+}
+
+/*-------------------------------- Text styling */
 .text {
     font-family: "Teachers", sans-serif;
     font-optical-sizing: auto;
@@ -29,58 +52,6 @@ html {
 
 .txt-red{
     color: #f12626 !important;
-}
-
-.nav-link, 
-.dropdown-item {
-    color: #555;
-    white-space: nowrap;
-}
-
-.nav-link:hover,
-.nav-link:active,
-.nav-link:focus {
-    background: rgb(246, 221, 32);
-    color: white;
-}
-
-.nav-link-logo:hover,
-.nav-link-logo:active, 
-.nav-link-logo:visited,
-.nav-link-logo:focus {
-    color:#000066 !important;
-    text-decoration: none;
-}
-
-.update-link,
-.remove-item {
-    cursor: pointer;
-}
-
-body {
-    background: url('/static/images/background-home.webp') no-repeat center center fixed;
-    background-size: cover;
-    height: calc(100vh - 2000px);
-    color: #555;
-    font-family: "Ysabeau SC", sans-serif !important;
-}
-
-h1 {
-    font-family: "Caveat", cursive !important;
-}
-
-.content-container {
-    margin-top: 200px;
-}
-
-.overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: white;
-	z-index: -1;
 }
 
 .description {
@@ -109,11 +80,6 @@ h1 {
     color:#a6a6a6;
 }
 
-.bg-blue {
-    background-color: #000066;
-    color: #fafafa;
-}
-
 .add-to-bag {
     font-family: "Teachers", sans-serif;
     font-size: 1rem;
@@ -121,6 +87,69 @@ h1 {
     font-style: normal;
 }
 
+/*-------------------------------- Button styling */
+.btn-bg-blue {
+    background-color: #000066 !important;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.btn-incr-decr {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+/*-------------------------------- Link styling */
+.nav-link, 
+.dropdown-item {
+    color: #555;
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus,
+.collapse-link:hover,
+.collapse-link:active {
+    background: rgb(246, 221, 32);
+    color: white;
+}
+
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+.collapse-link {
+    text-decoration: none;
+    color: black;
+}
+
+/*-------------------------------- Block styling */
+.content-container {
+    margin-top: 200px;
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
+
+.bg-blue {
+    background-color: #000066;
+    color: #fafafa;
+}
+
+/*-------------------------------- Image styling */
 .product-main-img {
     max-width: 400px !important;
     height: auto !important;

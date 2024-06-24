@@ -10,11 +10,13 @@
 <div class="container-sign-in">
     <div class="row">
         <div class="col-md-8 mt-5 offset-md-2">
-            <p class="text">{% trans "Verify Your Email Address" %}</p>
+            <h3>{% trans "Verify Your Email Address" %}</h3>
+            <hr>
             <p class="text">{% blocktrans %}We have sent an email to you for verification. Follow the link provided to
                 finalize the signup process. If you do not see the verification email in your main inbox, check your
-                spam folder. Please contact us if you do not receive the verification email within a few minutes.{%endblocktrans %}
+                spam folder. Please <a href="mailto:knitco@knitco.com">contact us</a> if you do not receive the verification email within a few minutes.{%endblocktrans %}
             </p>
+            <p>The Knit & Co team</p>
         </div>
     </div>
 {% endblock content %}

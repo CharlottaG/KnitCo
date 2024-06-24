@@ -9,6 +9,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
   {% endblock %}
 
   {% block extra_meta %}
@@ -23,11 +29,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Teachers:ital,wght@0,400..800;1,400..800&family=Ysabeau+SC:wght@1..1000&display=swap"
     rel="stylesheet">
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="staticfiles/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="staticfiles/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="staticfiles/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="staticfiles/images/favicon/site.webmanifest">
   {% endblock %}
 
   {% block extra_css %}
@@ -57,7 +58,7 @@
     <!-- First row: Logo -->
     <div class="d-flex justify-content-center">
       <a href="{% url 'home' %}" class="nav-link-logo">
-        <h1 class="m-2">K n i t  &  C o</h1>
+        <h1 class="m-2">K n i t & C o</h1>
       </a>
     </div>
     <!-- Second row: Banner with delivery info -->
@@ -99,10 +100,10 @@
             {% endif %}
             <li><a href="" class="dropdown-item">My Profile</a></li>
             <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
-              {% else %}
+            {% else %}
             <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
             <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
-              {% endif %}
+            {% endif %}
           </ul>
         </li>
 
