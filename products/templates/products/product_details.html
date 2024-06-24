@@ -14,17 +14,16 @@
 <div class="container content-container">
     <div class="row m-0 overlay">
     </div>
-    <div class="container">
+    <div class="row">
         <!-- Breadcrumbs -->
-        <div class="breadcrumb-top">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-white reviews">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">{{ product.category }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
-                </ol>
-            </nav>
-        </div>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'products' %}">{{ product.category }}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+            </ol>
+          </nav>
+
         <!-- Product image and rating -->
         <div class="row">
             <div class="col-4">

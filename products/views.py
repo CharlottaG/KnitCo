@@ -149,3 +149,7 @@ def delete_rating(request, rating_id):
     return redirect('product_detail', product_id=rating.product.id)
 
     return HttpResponseNotAllowed(['POST'])
+
+@login_required
+def manage_shop():
+    return render(request, 'products/manage_shop.html')
