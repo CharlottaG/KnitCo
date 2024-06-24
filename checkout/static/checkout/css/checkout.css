@@ -1,0 +1,37 @@
+
+/* Form and button styles */
+.form-check {
+    /* Add your styles here */
+}
+
+.form-check-inline {
+    display: inline-flex;
+    align-items: center;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+}
+
+.form-check-input {
+    position: relative;
+    margin-top: 0.3rem;
+    margin-left: 0;
+}
+
+#payment-form {
+    /* Add your styles here */
+}
+
+#id-save-info {
+    /* Add your styles here */
+}
+
+#card-element {
+    /* Add your styles here */
+}
+
+#card-errors {
+    /* Add your styles here */
+}
+
