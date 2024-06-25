@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+    <div class="row m-0 overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col p-0">
+                <h2 class="txt-blue text-uppercase p-1">Thank You For Shopping at Knit&Co!</h2>
+                <hr class="bg-blue mb-4">
+            </div>
+            <div>
+                <p class="text">A confirmation email is sent to <strong>{{ order.email }}</strong>. See below for your order information.</p>
+            </div>
+        </div>
+        <div class="row">
+
+		</div>
+    </div>
+{% endblock %}
