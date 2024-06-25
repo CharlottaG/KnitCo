@@ -11,8 +11,10 @@ import stripe
 
 
 def checkout(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    
+    stripe_secret_key = 'sk_test_51PVTL2P3kNHn6Hc20YactcMWWnQxZkrgn0PpIAGEhnd08GV3OjKuUWHXKlpq0D61Sj8FIqVrEJeGjIrHQEnLcfxn00ushodHnW'
+    stripe_public_key = 'pk_test_51PVTL2P3kNHn6Hc2EfhOYN5hml14PDsN6vsj2vinkgAXorTAvfl7yp7PsofJFk2Vurvni8PXCxxLQiKFRurVFyqZ00wX0MTg76'
+
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
