@@ -185,7 +185,7 @@ h1 {
 /*-------------------------------- Shopping bag styling */
 .img-bag{
     max-width: 30% !important;
-    height: 30px !important;
+    height: 100px !important;
     overflow: hidden !important;
     object-fit: cover !important;
     object-position: center !important;

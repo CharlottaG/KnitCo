@@ -4,6 +4,7 @@
 }
 
 #payment-form .form-control,
-##payment-element {
-  color: #006;border: 1px solid #000066;
+#payment-element {
+  color: #006;
+  border: 1px solid #000066;
 }

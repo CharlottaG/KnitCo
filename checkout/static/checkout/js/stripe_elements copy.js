@@ -10,7 +10,7 @@ const appearance = {
         fontFamily: 'Ideal Sans, system-ui, sans-serif',
         spacingUnit: '2px',
         borderRadius: '4px',
-        // See all possible variables below
+
       }
       rules: {
         '.Tab': {
@@ -46,12 +46,9 @@ const options = {
 };
 const clientSecret = {{CLIENT_SECRET}};
 const elements = stripe.elements({ clientSecret, appearance });
-const paymentElement = elements.create('payment', options);
+const payment = elements.create('payment', options);
 payment.mount('#payment-element');
 
-// Card payment
-var card = elements.create('card', {style: style});
-card.mount('#card-element');
 
 // Handle realtime validation errors on the card element
 payment.addEventListener('change', function (event) {
