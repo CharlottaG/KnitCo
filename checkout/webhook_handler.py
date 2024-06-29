@@ -1,6 +1,9 @@
 from django.http import HttpResponse
+import logging
 
-class StripeWH_handler:
+logger = logging.getLogger(__name__)
+
+class StripeWH_Handler:
     """ Handle Stripe webhooks """
 
     def __init__(self, request):
@@ -8,6 +11,25 @@ class StripeWH_handler:
     
     def handle_event(self, event):
         """ Handle unexpected webhook event """
+
+        return HttpResponse(
+            content=f'Webhook received: {event["type"]}',
+            status=200
+        )
+    
+    def handle_payment_intent_succeeded(self, event):
+        """ Handle webhook for payment intent succeeded from Stripe """
+
+        intent = event.data.object
+        print(intent)
+
+        return HttpResponse(
+            content=f'Webhook received: {event["type"]}',
+            status=200
+        )
+
+    def handle_payment_intent_payment_failed(self, event):
+        """ Handle webhook for payment intent failed payment from Stripe """
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',

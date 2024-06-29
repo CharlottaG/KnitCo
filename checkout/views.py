@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
@@ -8,15 +9,33 @@ from products.models import Product
 from bag.contexts import bag_contents
 
 import stripe
+import json
 
+def cache_checkout_data(request):
+    """ Capture metadata in payment intent """
+    try:
+        client_secret = request.POST.get('client_secret')
+        if not client_secret:
+            return HttpResponse(content="Missing client_secret", status=400)
+        
+        pid = client_secret.split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})), # Get shopping bag session data
+            'save_info': request.POST.get('save_info'), # Save user details in form
+            'username': request.user.username,  
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+        return HttpResponse(content=str(e), status=400)
 
 def checkout(request):
     
-    stripe_secret_key = 'sk_test_51PVTL2P3kNHn6Hc20YactcMWWnQxZkrgn0PpIAGEhnd08GV3OjKuUWHXKlpq0D61Sj8FIqVrEJeGjIrHQEnLcfxn00ushodHnW'
-    stripe_public_key = 'pk_test_51PVTL2P3kNHn6Hc2EfhOYN5hml14PDsN6vsj2vinkgAXorTAvfl7yp7PsofJFk2Vurvni8PXCxxLQiKFRurVFyqZ00wX0MTg76'
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     intent = None
-
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -56,8 +75,7 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
+                        "One of the products in your bag wasn't found in our database. ")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))

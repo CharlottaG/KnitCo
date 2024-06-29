@@ -60,8 +60,10 @@ SECRET_KEY = 'django-insecure-rx$d2yzyt7odx)d8wwbac$qrax(=1hly05jg&7)36&d5zyx$!*
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'eur'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+
+STRIPE_PUBLIC_KEY = 'pk_test_51PVTL2P3kNHn6Hc2EfhOYN5hml14PDsN6vsj2vinkgAXorTAvfl7yp7PsofJFk2Vurvni8PXCxxLQiKFRurVFyqZ00wX0MTg76'
+STRIPE_SECRET_KEY = 'sk_test_51PVTL2P3kNHn6Hc20YactcMWWnQxZkrgn0PpIAGEhnd08GV3OjKuUWHXKlpq0D61Sj8FIqVrEJeGjIrHQEnLcfxn00ushodHnW'
+STRIPE_WH_SECRET = 'whsec_9E3OynZuR93k6KAdESC546G1eGrhs1gZ'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
