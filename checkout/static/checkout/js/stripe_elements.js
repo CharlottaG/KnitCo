@@ -44,7 +44,7 @@ form.addEventListener('submit', function (ev) {
     card.update({ 'disabled': true });
     $('#submit-button').attr('disabled', true);
 
-    // Capture if save-info box is checked
+    // Capture form data if save-info box is checked
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
@@ -54,7 +54,7 @@ form.addEventListener('submit', function (ev) {
     };
     var url = '/checkout/cache_checkout_data/';
 
-    // Trigger cache_checkout_data view to save info in form
+    // Post data to url after confirm card payment from Stripe
     $.post(url, postData).done(function() {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -102,7 +102,7 @@ form.addEventListener('submit', function (ev) {
                 }
             }
         });
-    // If failure reload the page, display error without charging user
+    // Reload the page if failure, display error without charging user
     }).fail(function() {
         location.reload();
     })

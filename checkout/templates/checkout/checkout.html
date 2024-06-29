@@ -115,12 +115,12 @@
 
                     <fieldset class="text">
                         <legend class="mt-3 txt-blue">Payment</legend>
-                        
                         <!-- A stripe payment element will go here -->
                          <div id="card-element"></div>
-                        
                         <!-- Display form errors -->
                         <div class="text-danger" id="card-errors" role="alert"></div>
+                        <!-- Pass client secret to the view to get payment intent id -->
+                         <input type="hidden" value="{{ client_secret}}" name="client_secret">
                     </fieldset>
 
                     <!-- Submit button -->

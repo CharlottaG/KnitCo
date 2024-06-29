@@ -14,10 +14,7 @@ import json
 def cache_checkout_data(request):
     """ Capture metadata in payment intent """
     try:
-        client_secret = request.POST.get('client_secret')
-        if not client_secret:
-            return HttpResponse(content="Missing client_secret", status=400)
-        
+        client_secret = request.POST.get('client_secret')     
         pid = client_secret.split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
@@ -53,7 +50,13 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            # Get payment id
+            order = order_form.save(commit=False)
+            client_secret = request.POST.get('client_secret')     
+            pid = client_secret.split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
