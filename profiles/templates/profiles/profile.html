@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+    <div class="row m-0 overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col p-0">
+                <h2 class="txt-blue text-uppercase p-1">{{ username }} Profile</h2>
+                <hr class="bg-blue mb-4">
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- Profile details form -->
+            <div class="col-12 col-lg-6">
+                <p class="text-muted text fst-italic">Please fill in your user profile.</p>
+                
+                    <!-- Save profile details -->
+                    <button id="submit-button" class="btn">
+                        <span class="bg-blue p-2 text-uppercase">Update details</span>
+                        </span>
+                    </button>
+                </form>
+
+            </div>
+
+            <!-- Order history -->
+            <div>
+                <p>Order history</p>
+            </div>
+
+            <!-- Liked products -->
+            <div>
+                <p>Liked products</p>
+            </div>
+            <!-- My reviews -->
+            <div>
+                <p>My reviews</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
