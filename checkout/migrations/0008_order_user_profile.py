@@ -7,8 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('checkout', '0007_remove_order_user_profile'),
-        ('profiles', '0003_initial'),
+        ('checkout', '0007_remove_order_user_profile')
     ]
 
     operations = [

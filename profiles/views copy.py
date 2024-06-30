@@ -11,6 +11,4 @@ def profile(request):
         'profile': profile
     }
 
-    return render(request, 'profiles/profile.html', context)
-
-    
+    return render(request, 'profile.html', context)

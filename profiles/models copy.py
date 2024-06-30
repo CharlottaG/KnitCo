@@ -20,12 +20,15 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
-    Create/update user profile
+    Create or update user profile when saving User instance
     """
-    #if created:
-    UserProfile.objects.create(user=instance)
-    # Existing users: just save the profile
-    #instance.userprofile.save()
+    if created:
+        # If new user - creates user profile
+        UserProfile.objects.create(user=instance)
+    else: 
+        # If user exists - updates user profile
+        instance.userprofile.save()

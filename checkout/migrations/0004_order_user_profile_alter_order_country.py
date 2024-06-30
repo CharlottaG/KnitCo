@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('checkout', '0003_alter_order_country'),
-        ('profiles', '0001_initial'),
     ]
 
     operations = [
