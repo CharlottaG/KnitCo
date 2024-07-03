@@ -20,9 +20,8 @@
     <div class="container">
         <div class="row">
             <div class="col p-0">
-                <h2 class="txt-blue text-uppercase p-1">{{ user.username }}'s Profile</h2>
+                <h2 class="txt-blue text-uppercase p-1">{{ user.username }}'s Profile page</h2>
                 <hr class="bg-blue mb-4">
-                
             </div>
         </div>
         <div class="row">
@@ -31,7 +30,7 @@
                 <h2>User profile</h2>
                 <hr>
                 <!-- Show user info stored in database -->
-                <div id="profile-info">
+                <div id="profile-info" class="text">
                     Username: {{ user.username }} <br>
                     Email: {{ user.userprofile.default_email }} <br>
                     Phone Number: {{ user.userprofile.default_phone_number }} <br>
@@ -39,10 +38,13 @@
                     Postcode: {{ user.userprofile.default_postcode }} <br>
                     Town/City: {{ user.userprofile.default_town_or_city }} <br>
                     Country: {{ user.userprofile.default_country }} <br>
-                    <button id="edit-profile-btn" class="mt-3 btn btn-primary">Edit Profile</button> <!-- Button to toggle edit form -->
+                    <button id="edit-profile-btn" class="mt-3 btn btn-primary">Edit Profile</button>
+                    <!-- Button to toggle edit form -->
                 </div>
+
                 <!-- Edit profile form (initially hidden) -->
-                <form class="mt-3 text" action="{% url 'profile' %}" method="POST" id="profile-update-form" style="display: none;">
+                <form class="mt-3 text" action="{% url 'profile' %}" method="POST" id="profile-update-form"
+                    style="display: none;">
                     {% csrf_token %}
                     {{ profile_form|crispy }}
                     <button type="submit" class="btn btn-primary">
@@ -51,21 +53,61 @@
                 </form>
             </div>
 
-            <!-- Other profile sections (Order history, Liked products, My reviews) -->
+            <!-- Order history -->
             <div class="col-12 col-lg-6">
                 <h2>Order history</h2>
                 <hr>
-                <!-- Display order history information here -->
+                <div>
+                    {% if orders %}
+                    <div class="oder-history"> 
+                        <table>
+                            <thead>
+                                <th>Order number:</th>
+                                <th>Date:</th>
+                                <th>Items:</th>
+                                <th>Order total:</th>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ order.date }}</td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                                <li class="small">
+                                                    {{ item.product.name }} x{{ item.quantity }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>${{ order.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p>You have no previous orders.</p>
+                    {% endif %}
+                </div>
 
+                <!-- Liked products -->
                 <h2>Liked products</h2>
                 <hr>
                 <!-- Display liked products information here -->
 
+                <!-- My reviews products -->
                 <h2>My reviews</h2>
                 <hr>
                 <!-- Display user's reviews information here -->
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -74,15 +116,16 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    <!-- Open update user profile form when Edit Profile is clicked -->
+    document.addEventListener('DOMContentLoaded', function () {
         const editProfileBtn = document.getElementById('edit-profile-btn');
         const profileInfo = document.getElementById('profile-info');
         const profileUpdateForm = document.getElementById('profile-update-form');
-    
-        editProfileBtn.addEventListener('click', function() {
+
+        editProfileBtn.addEventListener('click', function () {
             profileInfo.style.display = 'none'; // Hide profile info
             profileUpdateForm.style.display = 'block'; // Show edit form
         });
     });
-    </script>
+</script>
 {% endblock %}

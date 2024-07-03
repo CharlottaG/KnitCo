@@ -32,4 +32,6 @@ class UserProfileForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
 
-        
+        # Make the email field readonly
+            if field == 'default_email':
+                self.fields[field].widget.attrs['readonly'] = 'readonly'
