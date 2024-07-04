@@ -41,7 +41,7 @@ def checkout(request):
         profile = UserProfile.objects.get(user=request.user)
         initial_data = {
             'full_name': profile.default_full_name,
-            'email': request.user.email,
+            'email': profile.default_email,
             'phone_number': profile.default_phone_number,
             'country': profile.default_country,
             'postcode': profile.default_postcode,
