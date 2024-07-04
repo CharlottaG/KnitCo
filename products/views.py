@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category, SubCategory, Rating
-from .forms import RatingForm
+from .forms import RatingForm, ProductForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
@@ -151,5 +151,11 @@ def delete_rating(request, rating_id):
     return HttpResponseNotAllowed(['POST'])
 
 @login_required
-def manage_shop():
-    return render(request, 'products/manage_shop.html')
+def add_product(request):
+    """ Superuser functionality """
+    add_product_form = ProductForm()
+    context = {
+        'add_product_form': add_product_form,
+    }
+
+    return render(request, 'products/add_product.html', context)

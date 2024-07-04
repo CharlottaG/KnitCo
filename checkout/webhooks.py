@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-from checkout.webhook_handler import StripeWH_Handler
+from .webhook_handler import StripeWH_Handler
 
 import stripe
 import logging
+
 
 logger = logging.getLogger(__name__)
 
@@ -54,5 +55,9 @@ def webhook(request):
     event_handler = event_map.get(event_type, handler.handle_event)
 
     # Call the event handler with the event
-    response = event_handler(event)
+    try:
+        response = event_handler(event)
+    except Exception as e:
+        logger.error(f'Error processing webhook event {event_type}: {e}')
+        return HttpResponse(content=str(e), status=500)
     return response

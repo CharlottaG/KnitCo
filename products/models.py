@@ -44,7 +44,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.SET_NULL)
     subcategory = models.ForeignKey('SubCategory', blank=True, null=True, on_delete=models.SET_NULL)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='products', default=1)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='products', default='')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = CloudinaryField('image', null=True, blank=True)
     color = models.CharField(max_length=50, null=True, blank=True)
