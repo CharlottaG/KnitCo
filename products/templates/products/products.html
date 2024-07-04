@@ -60,13 +60,23 @@
                 </a>
                 {% else %}
                 <a href="{% url 'product_detail' product.id %}">
-                    <img class="card-img-top img-fluid" src="{static/images/noimage.jpg}" alt="{{ product.name }}">
+                    <img class="card-img-top img-fluid" src="{% static 'images/noimage.jpg' %}"
+                        alt="{{ product.name }}">
                 </a>
                 {% endif %}
             </div>
             <div class="d-flex justify-content-between text">
                 <p class="fs-6"><small>{{ product.brand }} | {{ product.name }}</small></p>
                 <p class="fs-6"><small>{{ product.price }} €</small></p>
+            </div>
+            <!-- For suerpusers to edit/delete products in shop -->
+            <div class="mb-2 mt-0">
+                {% if request.user.is_superuser %}
+                <small class="ml-3">
+                    <a href="{% url 'edit_product' product.id %}" class="px-1">Edit</a>
+                    <a href="{% url 'delete_product' product.id %}" class="text-danger px-1">Delete</a>
+                </small>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

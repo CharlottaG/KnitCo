@@ -40,6 +40,15 @@
                     <img class="card-img-top img-fluid product-img" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
                 </a>
+                <!-- For suerpusers to edit/delete products in shop -->
+                <div>
+                    {% if request.user.is_superuser %}
+                    <small class="ml-3">
+                        <a href="{% url 'edit_product' product.id %}" class="px-2">Edit - {{ product.name }}</a>
+                        <a href="{% url 'delete_product' product.id %}" class="text-danger px-2">Delete - {{ product.name }}</a>
+                    </small>
+                    {% endif %}
+                </div>
             </div>
 
             <!-- Product details -->
