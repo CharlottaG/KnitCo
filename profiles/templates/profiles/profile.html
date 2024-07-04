@@ -56,11 +56,10 @@
 
             <!-- Order history -->
             <div class="col-12 col-lg-6">
+                <!-- Display order history -->
                 <h2>Order history</h2>
                 <hr>
-
                 <div class="order-history">
-                    <!-- Display order history -->
                     {% if orders %}
                     <table>
                         <thead>
@@ -98,36 +97,50 @@
                     {% endif %}
                 </div>
 
-
-                <!-- Liked products -->
-                <h2>Liked products</h2>
+                <!-- Rated and/or reviewed products -->
+                <h2>Rated and/or reviewed products</h2>
                 <hr>
-                <!-- Display liked products information here -->
-
-                <!-- My reviews products -->
-                <h2>My reviews</h2>
-                <hr>
-                <!-- Display user's reviews information here -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Score</th>
+                            <th>Comment</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rating in user_ratings %}
+                        <tr>
+                            <td>{{ rating.product }}</td>
+                            <td>{{ rating.score }}</td>
+                            {% if rating.comment %}
+                            <td>{{ rating.comment }}</td>
+                            {% endif %}
+                            <td>{{ rating.created_at }}</td>
+                        </tr>
+                        {% empty %}
+                        <p>No ratings found.</p>
+                        {% endfor %}
+                    </tbody>
             </div>
-
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
-{% block postloadjs %}
-{{ block.super }}
-<script>
-    <!-- Open update user profile form when Edit Profile is clicked -->
-    document.addEventListener('DOMContentLoaded', function () {
-        const editProfileBtn = document.getElementById('edit-profile-btn');
-        const profileInfo = document.getElementById('profile-info');
-        const profileUpdateForm = document.getElementById('profile-update-form');
+    {% block postloadjs %}
+    {{ block.super }}
+    <script>
+        <!-- Open update user profile form when Edit Profile is clicked -->
+        document.addEventListener('DOMContentLoaded', function () {
+            const editProfileBtn = document.getElementById('edit-profile-btn');
+            const profileInfo = document.getElementById('profile-info');
+            const profileUpdateForm = document.getElementById('profile-update-form');
 
-        editProfileBtn.addEventListener('click', function () {
-            profileInfo.style.display = 'none'; // Hide profile info
-            profileUpdateForm.style.display = 'block'; // Show edit form
+            editProfileBtn.addEventListener('click', function () {
+                profileInfo.style.display = 'none'; // Hide profile info
+                profileUpdateForm.style.display = 'block'; // Show edit form
+            });
         });
-    });
-</script>
-{% endblock %}
+    </script>
+    {% endblock %}

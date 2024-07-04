@@ -4,6 +4,7 @@ from .forms import UserProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from checkout.models import Order
+from products.models import Rating
 
 
 @login_required
@@ -26,10 +27,13 @@ def profile(request):
 
     # Get orders related to the user profile
     orders = Order.objects.filter(user=request.user)
+    # Get ratings related to the user profile
+    user_ratings = Rating.objects.filter(user=request.user)
 
     context = {
         'profile_form': profile_form,
         'orders': orders,
+        'user_ratings': user_ratings,
         'user': request.user,
     }
     return render(request, 'profiles/profile.html', context)

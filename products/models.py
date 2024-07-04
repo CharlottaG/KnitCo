@@ -14,6 +14,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class SubCategory(models.Model):
 
     class Meta:
@@ -26,6 +27,7 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 class Brand(models.Model):
 
     name = models.CharField(max_length=254, unique=True)
@@ -35,6 +37,7 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=254, unique=True)
@@ -75,8 +78,6 @@ class Product(models.Model):
             brand=self.brand,
             subcategory=self.subcategory
         ).exclude(id=self.id)
-
-
 
 
 class Rating(models.Model):
