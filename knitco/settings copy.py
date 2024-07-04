@@ -65,7 +65,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net', 'knitco-7d640c861cc6.herokuapp.com']
 
@@ -162,11 +162,15 @@ WSGI_APPLICATION = 'knitco.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
-DATABASE_URL = os.getenv('DATABASE_URL')
+#DATABASES = {
+#   'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 DATABASES = {
-    'default': dj_database_url.config(default=DATABASE_URL)
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
@@ -207,14 +211,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = ''
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'checkout', 'static'),
+    os.path.join(BASE_DIR, 'products', 'static'),
 ]
 
 # Default primary key field type
