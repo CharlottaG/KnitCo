@@ -64,7 +64,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def average_rating(self):
         ratings = self.ratings.all()

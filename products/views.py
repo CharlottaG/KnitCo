@@ -73,7 +73,6 @@ def product_detail(request, product_id):
         user_has_rated = Rating.objects.filter(product=product, user=request.user).exists()
     rating_form = RatingForm()
     
-
     context = {
         'product': product,
         'all_options': all_options,
@@ -152,7 +151,7 @@ def delete_rating(request, rating_id):
 
 @login_required
 def add_product(request):
-    """ Superuser functionality """
+    """ Add products in webshop """
     if request.method == 'POST':
         add_product_form = ProductForm(request.POST, request.FILES)
         if add_product_form.is_valid():
@@ -169,3 +168,26 @@ def add_product(request):
     }
 
     return render(request, 'products/add_product.html', context)
+
+@login_required
+def edit_product(request):
+    """ Add products in webshop """
+    product = get_object_or_404(Product, pk=product_id)
+    if request == 'POST':
+        edit_product_form = ProductForm(request.POST, request.FILES, instance=product)
+        if edit_product_form.is_valid():
+            edit_product_form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update product.')
+    else:
+        edit_product_form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+        
+    context = {
+        'edit_product_form': edit_product_form,
+        'product': product,
+    }
+
+    return render(request, 'products/edit_product.html', context)
