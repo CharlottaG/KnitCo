@@ -32,6 +32,7 @@
                 <!-- Show user info stored in database -->
                 <div id="profile-info" class="text">
                     Username: {{ user.username }} <br>
+                    Full Name: {{ user.userprofile.default_full_name }} <br>
                     Email: {{ user.userprofile.default_email }} <br>
                     Phone Number: {{ user.userprofile.default_phone_number }} <br>
                     Street Address: {{ user.userprofile.default_street_address }} <br>
@@ -57,45 +58,46 @@
             <div class="col-12 col-lg-6">
                 <h2>Order history</h2>
                 <hr>
-                <div>
+
+                <div class="order-history">
+                    <!-- Display order history -->
                     {% if orders %}
-                    <div class="oder-history"> 
-                        <table>
-                            <thead>
-                                <th>Order number:</th>
-                                <th>Date:</th>
-                                <th>Items:</th>
-                                <th>Order total:</th>
-                            </thead>
-                            <tbody>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Order total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {% for order in orders %}
-                                <tr>
-                                    <td>
-                                        <a href="{% url 'order_history' order.order_number %}"
-                                        title="{{ order.order_number }}">
-                                            {{ order.order_number|truncatechars:6 }}
-                                        </a>
-                                    </td>
-                                    <td>{{ order.date }}</td>
-                                    <td>
-                                        <ul class="list-unstyled">
-                                            {% for item in order.lineitems.all %}
-                                                <li class="small">
-                                                    {{ item.product.name }} x{{ item.quantity }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </td>
-                                    <td>${{ order.grand_total }}</td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}">
+                                        {{ order.order_number|truncatechars:6 }}
+                                    </a>
+                                </td>
+                                <td>{{ order.date }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for item in order.lineitems.all %}
+                                        <li>{{ item.product.name }} x{{ item.quantity }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>${{ order.grand_total }}</td>
+                            </tr>
                             {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                     {% else %}
+                    <!-- No orders message -->
                     <p>You have no previous orders.</p>
                     {% endif %}
                 </div>
+
 
                 <!-- Liked products -->
                 <h2>Liked products</h2>

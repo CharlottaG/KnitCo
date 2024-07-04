@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from checkout.models import Order
 
+
 @login_required
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -36,9 +37,11 @@ def profile(request):
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    order_date = order.date.strftime('%Y-%m-%d %H:%M')
+
     messages.info(request, (
-        f'This is from a previuos order, with order number: {order_number}.'
-        f'A conformation was sent to your email address on {order_date}'
+        f'This is from a previous order, with order number: {order_number}. '
+        f'A confirmation was sent to your email address on {order_date}.'
     ))
 
     context = {
@@ -46,4 +49,4 @@ def order_history(request, order_number):
         'from_profile': True,
     }
 
-    return render(request, checkout/checkout_success.html, context)
+    return render(request, 'checkout/checkout_success.html', context)

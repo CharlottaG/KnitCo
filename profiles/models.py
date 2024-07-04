@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 class UserProfile(models.Model):
@@ -9,6 +7,7 @@ class UserProfile(models.Model):
     User profile to manage profile settings and order history
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_full_name = models.CharField(max_length=50, null=True, blank=True)
     default_email = models.EmailField(max_length=254, null=False, blank=True)
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     default_street_address = models.CharField(max_length=80, null=True, blank=True)
