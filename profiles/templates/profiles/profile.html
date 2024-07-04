@@ -112,8 +112,14 @@
                     <tbody>
                         {% for rating in user_ratings %}
                         <tr>
-                            <td>{{ rating.product }}</td>
+                            <td>
+                                <a href="{% url 'product_detail' rating.product.id %}">
+                                    {{ rating.product }}
+                                </a>
+                            </td>
+                            {% if rating.score %}
                             <td>{{ rating.score }}</td>
+                            {% endif %}
                             {% if rating.comment %}
                             <td>{{ rating.comment }}</td>
                             {% endif %}
