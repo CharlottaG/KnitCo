@@ -153,7 +153,17 @@ def delete_rating(request, rating_id):
 @login_required
 def add_product(request):
     """ Superuser functionality """
-    add_product_form = ProductForm()
+    if request.method == 'POST':
+        add_product_form = ProductForm(request.POST, request.FILES)
+        if add_product_form.is_valid():
+            add_product_form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        add_product_form = ProductForm()
+    
     context = {
         'add_product_form': add_product_form,
     }
