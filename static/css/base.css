@@ -202,9 +202,24 @@ h1 {
     background-color: white;
 }
 
-/*-------------------------------- Footer styling */
+/*--------------------------------- Media queries */
+/* Laptop */
+@media only screen and (min-width: 1024px) {
+    .element {
+        height: calc(100vh - 2000px);
+    }
+}
 
-footer {
-    color: #555;
-    font-family: "Ysabeau SC", sans-serif !important;
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .element {
+        height: calc(100vh - 1000px);
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .element {
+        height: calc(100vh - 500px);
+    }
 }

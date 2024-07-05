@@ -73,7 +73,7 @@
     </div>
     <!-- Third row: Main Navigation & Account links -->
     <div class="row">
-      <div class="col-lg-8 mb-4">
+      <div class="col-lg-8">
         <div class="row bg-white">
           <nav class="navbar navbar-expand-lg navbar-light w-100 justify-content-around">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
@@ -156,38 +156,74 @@
   {% block content %}
   {% endblock %}
 
-  <footer class="container-fluid relative-bottom bg-blue p-0">
-    <div class="d-flex">
-    <div class="col-3 text mt-3">
-      <p class="m-2"><strong>About us</strong></p>
-        <a class="nav-link" href="#">Brands</a>
-        <a class="nav-link" href="#">Sustainability</a>
-        <a class="nav-link" href="{% url 'subscribe' %}">Subscribe to our Newsletter</a>
+  <footer class="container-fluid relative-bottom bg-white pt-3 px-5">
+    <div class="row m-0">
+      <div class="col-12 col-md-2 mb-3">
+        <h5>About us</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-muted" href="#">Our story</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-muted" href="#">Brands we work with</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-muted" href="#">Sustainability</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-2 mb-3">
+        <h5>Policies</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-muted" href="#">Return policy</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-muted" href="#">Cookie policy</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-2 mb-3">
+        <h5>Contact</h5>
+        <p>Phone: +46 70 515 87 14</p>
+        <p>Email: knitco.store@gmail.com</p>
+        <p>Opening hours: <br>Mon-Fri 9 a.m. - 6 p.m.</p>
+      </div>
+      <div class="col-12 col-md-4 offset-md-2 mb-3">
+        <form>
+          <h5>Subscribe to our Newsletter</h5>
+          <p class="text d-none d-md-block">Monthly thread about the wonderful world of Nordic yarn and patterns!</p>
+          <div class="d-flex w-100 gap-2">
+            <label for="newsletter" class="visually-hidden">Email address</label>
+            <input type="text" id="newsletter" class="form-control" placeholder="Email address">
+            <button class="btn btn-primary" type="button" action="{% url 'subscribe' %}">Subscribe</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="col-3 text mt-3">
-      <p><strong>Contact</strong></p>
-      <p>Phone: +46 70 515 87 14</p>
-      <p>Address:<br>
-        Knit & Co <br>
-        Spadvägen 10 <br>
-        125 33 Älvsjö <br>
-      </p>
-      <p>Email: knitco.store@gmail.com</p>
-      <p>Social media:</p>
+    <div class="d-flex justify-content-between py-2 my-2 border-top">
+      <p>© 2024 Knit&Co - Sweden</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="bs-light" href="#">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+        <li class="ms-3">
+          <a class="bs-light" href="#">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </li>
+        <li class="ms-3">
+          <a class="bs-light" href="#">
+            <i class="fa-brands fa-ravelry"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="col-3 text mt-3">
-      <p><strong>Opening hours</strong></p>
-      <p> Monday-Friday<br>
-        9 a.m. - 6 p.m.</p>
-    </div>
-    <div class="col-3 text mt-3">
-      <p><strong>Policies</strong></p>
-      <a class="nav-link" href="#">Return policy</a>
-      <a class="nav-link" href="#">Cookie policy</a>
-      <a class="nav-link" href="#">xxx</a>
-    </div>
-  </div>
   </footer>
+  
+
 
   {% block postloadjs %}
   <script>
