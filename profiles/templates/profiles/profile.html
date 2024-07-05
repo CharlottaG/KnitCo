@@ -3,7 +3,7 @@
 {% load tz %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -66,7 +66,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Order number</th>
-                                <th scope="col">Date</th>
+                                <th scope="col" class="sortable" onclick="sortTable()">Date <span
+                                        class="sort-icon">▼</span></th>
                                 <th scope="col">Items</th>
                                 <th scope="col">Order total</th>
                             </tr>
@@ -151,5 +152,67 @@
                 profileUpdateForm.style.display = 'block'; // Show edit form
             });
         });
+    </script>
+    <script>
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+
+            // Get the order history table and initialize sorting variables
+            table = document.getElementById("order-history");
+            switching = true;
+            var direction = "asc";  // Initial sorting direction is ascending
+            var switchcount = 0;    // Count how many times rows have been switched
+
+            // Loop through rows until no more switches are needed
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                // Loop through all table rows except the headers
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    // Get the two elements to compare: current row and next row
+                    x = rows[i].getElementsByTagName("TD")[1];  
+                    y = rows[i + 1].getElementsByTagName("TD")[1];  
+
+                    // Compare based on current sorting direction
+                    if (direction == "asc") {
+                        // Sort alphabetically (case insensitive)
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (direction == "desc") {
+                        // Sort dates in descending order
+                        if (new Date(x.innerHTML) < new Date(y.innerHTML)) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Perform row switch if necessary
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    // If no switching has been done and direction is ascending, switch to descending
+                    if (switchcount == 0 && direction == "asc") {
+                        direction = "desc";
+                        switching = true;
+                    }
+                }
+            }
+
+            // Update sorting icon based on current direction
+            var icon = document.querySelector(".sort-icon");
+            if (direction == "asc") {
+                icon.innerHTML = "▼";
+            } else {
+                icon.innerHTML = "▲";
+            }
+        }
+
     </script>
     {% endblock %}

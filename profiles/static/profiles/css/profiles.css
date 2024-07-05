@@ -1,0 +1,9 @@
+/*--------------------------------- Table styling */
+.sortable:hover {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.sort-icon {
+    margin-left: 5px;
+}
