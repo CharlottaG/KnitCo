@@ -56,7 +56,7 @@ def checkout(request):
         if request.user.is_authenticated:
             form_data = {
                 'full_name': request.POST.get('full_name', profile.default_full_name),
-                'email': request.POST.get('email', request.user.email),
+                'email': request.POST.get('email', profile.default_email),
                 'phone_number': request.POST.get('phone_number', profile.default_phone_number),
                 'country': request.POST.get('country', profile.default_country),
                 'postcode': request.POST.get('postcode', profile.default_postcode),
@@ -160,6 +160,7 @@ def checkout_success(request, order_number):
         if save_info:
             profile_data = {
                 'default_full_name': order.full_name,
+                'default_email': order.email,
                 'default_phone_number': order.phone_number,
                 'default_street_address': order.street_address,
                 'default_postcode': order.postcode,

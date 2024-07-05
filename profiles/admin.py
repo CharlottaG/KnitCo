@@ -10,12 +10,3 @@ class UserProfileAdmin(admin.ModelAdmin):
     ordering = ('-user',)
 
 admin.site.register(UserProfile, UserProfileAdmin)
-
-
- 
-    
-    
-     
-
-     
-    

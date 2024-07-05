@@ -12,17 +12,14 @@ from products.models import Rating
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     
+    # Update profile
     if request.method == 'POST':
         profile_form = UserProfileForm(request.POST, instance=request.user.userprofile)
         if profile_form.is_valid():
             profile_form.save()
             messages.success(request, 'Profile updated successfully')
-            # Update user's email in the User model
-            request.user.email = profile_form.cleaned_data['default_email']
-            request.user.save()
             return redirect('profile')
     else:
-        #profile_form = UserProfileForm(instance=profile)
         profile_form = UserProfileForm(instance=request.user.userprofile)
 
     # Get orders related to the user profile
@@ -34,6 +31,7 @@ def profile(request):
         'profile_form': profile_form,
         'orders': orders,
         'user_ratings': user_ratings,
+        'user_email': request.user.email, 
         'user': request.user,
     }
     return render(request, 'profiles/profile.html', context)
