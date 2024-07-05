@@ -201,3 +201,10 @@ h1 {
     margin-right: 10%;
     background-color: white;
 }
+
+/*-------------------------------- Footer styling */
+
+footer {
+    color: #555;
+    font-family: "Ysabeau SC", sans-serif !important;
+}

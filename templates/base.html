@@ -156,6 +156,39 @@
   {% block content %}
   {% endblock %}
 
+  <footer class="container-fluid relative-bottom bg-blue p-0">
+    <div class="d-flex">
+    <div class="col-3 text mt-3">
+      <p class="m-2"><strong>About us</strong></p>
+        <a class="nav-link" href="#">Brands</a>
+        <a class="nav-link" href="#">Sustainability</a>
+        <a class="nav-link" href="{% url 'subscribe' %}">Subscribe to our Newsletter</a>
+    </div>
+    <div class="col-3 text mt-3">
+      <p><strong>Contact</strong></p>
+      <p>Phone: +46 70 515 87 14</p>
+      <p>Address:<br>
+        Knit & Co <br>
+        Spadvägen 10 <br>
+        125 33 Älvsjö <br>
+      </p>
+      <p>Email: knitco.store@gmail.com</p>
+      <p>Social media:</p>
+    </div>
+    <div class="col-3 text mt-3">
+      <p><strong>Opening hours</strong></p>
+      <p> Monday-Friday<br>
+        9 a.m. - 6 p.m.</p>
+    </div>
+    <div class="col-3 text mt-3">
+      <p><strong>Policies</strong></p>
+      <a class="nav-link" href="#">Return policy</a>
+      <a class="nav-link" href="#">Cookie policy</a>
+      <a class="nav-link" href="#">xxx</a>
+    </div>
+  </div>
+  </footer>
+
   {% block postloadjs %}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -167,7 +200,6 @@
     });
   </script>
   {% endblock %}
-
 
 </body>
 
