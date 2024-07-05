@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load tz %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -46,7 +47,8 @@
                             <p class="mb-0 text">Date</p>
                         </div>
                         <div class="col-8 col-md-8 text-md-right">
-                            <p class="mb-0 text">{{ order.date|date:"D d M Y" }}</p>
+                            {% get_current_timezone as TIME_ZONE %}
+                            <p class="mb-0 text">{{ order.date |date:'j M, Y (P)' }}</p>
                         </div>
                     </div>
                     <hr>

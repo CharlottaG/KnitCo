@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load tz %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
@@ -61,7 +62,7 @@
                 <hr>
                 <div class="order-history">
                     {% if orders %}
-                    <table class="table">
+                    <table class="table" id="order-history">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Order number</th>
@@ -78,7 +79,8 @@
                                         {{ order.order_number|truncatechars:10 }}
                                     </a>
                                 </td>
-                                <td scope="row">{{ order.date }}</td>
+                                {% get_current_timezone as TIME_ZONE %}
+                                <td scope="row">{{ order.date | date:'j M, Y (P)' }}</td>
                                 <td scope="row">
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
@@ -102,33 +104,33 @@
                 <hr>
                 <div class="user_reviews">
 
-                <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Score</th>
-                            <th scope="col">Comment</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for rating in user_ratings %}
-                        <tr>
-                            <td scope="row">
-                                <a href="{% url 'product_detail' rating.product.id %}">
-                                    {{ rating.product }}
-                                </a>
-                            </td>
-                            <td scope="row">{{ rating.score }}</td>
-                            {% if rating.comment %}
-                            <td scope="row">{{ rating.comment }}</td>
-                            {% endif %}
-                            <td scope="row">{{ rating.created_at }}</td>
-                        </tr>
-                        {% empty %}
-                        <p>No ratings found.</p>
-                        {% endfor %}
-                    </tbody>
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Score</th>
+                                <th scope="col">Comment</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rating in user_ratings %}
+                            <tr>
+                                <td scope="row">
+                                    <a href="{% url 'product_detail' rating.product.id %}">
+                                        {{ rating.product }}
+                                    </a>
+                                </td>
+                                <td scope="row">{{ rating.score }}</td>
+                                {% if rating.comment %}
+                                <td scope="row">{{ rating.comment }}</td>
+                                {% endif %}
+                                <td scope="row">{{ rating.created_at }}</td>
+                            </tr>
+                            {% empty %}
+                            <p>No ratings found.</p>
+                            {% endfor %}
+                        </tbody>
                 </div>
             </div>
         </div>

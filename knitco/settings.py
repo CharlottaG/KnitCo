@@ -197,7 +197,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Stockholm'
 
 USE_I18N = True
 
