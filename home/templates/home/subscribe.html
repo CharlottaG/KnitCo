@@ -32,9 +32,9 @@
         </div>
         <div>
             <!-- Subscription form -->
-            <form class="mt-3 text" action="{% url 'subscribe' %}" method="POST" id="subscription-form">
+            <form class="mt-3 text" method="POST" id="subscription-form">
                 {% csrf_token %}
-                {{ subscribe_form.as_p }}
+                {{ subscribe_form | crispy }}
                 <button type="submit" class="btn btn-primary">Subscribe</button>
             </form>
         </div>

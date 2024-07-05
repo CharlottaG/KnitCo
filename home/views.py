@@ -13,7 +13,7 @@ def subscribe(request):
         if subscribe_form.is_valid():
             subscribe_form.save()
             messages.success(request, 'You have successfully subscribed to the Knit&Co newsletter!')
-            return redirect('subscribe')
+            return redirect('thank_you')
     else:
         subscribe_form = SubscriptionForm()
 
@@ -22,3 +22,8 @@ def subscribe(request):
     }
 
     return render(request, 'home/subscribe.html', context)
+
+
+def thank_you(request):
+    """ Return to thank you page """
+    return render(request, 'home/thank_you.html')
