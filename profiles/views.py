@@ -37,6 +37,7 @@ def profile(request):
     return render(request, 'profiles/profile.html', context)
 
 
+@login_required
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     formatted_date = DateFormat(order.date).format('j M, Y (P)')

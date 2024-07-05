@@ -7,8 +7,6 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
-
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
@@ -106,6 +104,7 @@ def add_rating(request, product_id):
 
     return render(request, 'products/product_details.html', context)
 
+
 @login_required
 def edit_rating(request, rating_id):
 
@@ -132,6 +131,7 @@ def edit_rating(request, rating_id):
 
     return redirect('product_detail', product_id=rating.product.id)
 
+
 @login_required
 def delete_rating(request, rating_id):
     rating = get_object_or_404(Rating, id=rating_id)
@@ -149,9 +149,15 @@ def delete_rating(request, rating_id):
 
     return HttpResponseNotAllowed(['POST'])
 
+
+# Store owner functionalities
 @login_required
 def add_product(request):
     """ Add products in webshop """
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to do that, only store managers do.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         add_product_form = ProductForm(request.POST, request.FILES)
         if add_product_form.is_valid():
@@ -169,9 +175,14 @@ def add_product(request):
 
     return render(request, 'products/add_product.html', context)
 
+
 @login_required
 def edit_product(request, product_id):
     """ Edit product in webshop """
+    if not request.user.is_superuser:
+            messages.error(request, 'You do not have permission to do that, only store managers do.')
+            return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
@@ -194,8 +205,14 @@ def edit_product(request, product_id):
     return render(request, 'products/edit_product.html', context)
 
 
+@login_required
 def delete_product(request, product_id):
     """ Delete a product from shop """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to do that, only store managers do.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Successfully deleted product!')

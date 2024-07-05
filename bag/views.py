@@ -9,6 +9,7 @@ def view_bag(request):
 
     return render(request, 'bag/bag.html')
 
+
 def add_to_bag(request, item_id):
     """ Add specified product and quantity to shopping bag """
     
@@ -27,6 +28,7 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
     return redirect(redirect_url)
 
+
 def update_bag(request, item_id):
     """ Update quantities in shopping bag """
     
@@ -43,6 +45,7 @@ def update_bag(request, item_id):
         
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
+
 
 def remove_from_bag(request, item_id):
     """ Remove items in shopping bag """
