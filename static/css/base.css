@@ -151,9 +151,14 @@ h1 {
 }
 
 .our-story {
-    background: url('/static/images/ungureanu-ionut-vzddrop37Ek-unsplash.jpg') no-repeat center center fixed;
+    background: url('/static/images/our_story.webp') no-repeat center center fixed;
     background-size: cover;
 }
+
+.thank-you {
+        background: url('/static/images/thank_you.webp') no-repeat center center fixed;
+        background-size: cover;
+    }
 
 /*-------------------------------- Image styling */
 .product-main-img {
