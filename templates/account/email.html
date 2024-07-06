@@ -1,12 +1,14 @@
-{% extends "account/base_manage_email.html" %}
+{% extends "base.html" %}
 {% load allauth i18n %}
 {% block head_title %}
     {% trans "Email Addresses" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
+<div class="container-account mb-3">
+    <div class="col-12 col-md-6">
+    <h3>
         {% trans "Email Addresses" %}
-    {% endelement %}
+    </h3>
     {% if emailaddresses %}
         {% element p %}
             {% trans 'The following email addresses are associated with your account:' %}
@@ -55,9 +57,9 @@
         {% include "account/snippets/warn_no_email.html" %}
     {% endif %}
     {% if can_add_email %}
-        {% element h2 %}
+        <p class="mt-4 fw-bold">
             {% trans "Add Email Address" %}
-        {% endelement %}
+        </p>
         {% url 'account_email' as action_url %}
         {% element form form=form method="post" action=action_url tags="email,add" %}
             {% slot body %}
@@ -72,7 +74,10 @@
             {% endslot %}
         {% endelement %}
     {% endif %}
+    </div>
+</div>
 {% endblock content %}
+
 {% block extra_body %}
     <script type="text/javascript">
 (function() {

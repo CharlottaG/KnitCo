@@ -220,13 +220,12 @@ h1 {
 }
 
 /*-------------------------------- Account pages styling */
-.container-sign-in {
+.container-account {
     width: 80%;
     padding: 10px;
     margin-top: 200px;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: white;
 }
 
 /*--------------------------------- Media queries */
