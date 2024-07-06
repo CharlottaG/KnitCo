@@ -87,6 +87,7 @@ h1 {
     font-style: normal;
 }
 
+
 /*-------------------------------- Button styling */
 .btn-bg-blue {
     background-color: #000066 !important;
@@ -147,6 +148,11 @@ h1 {
 .bg-blue {
     background-color: #000066;
     color: #fafafa;
+}
+
+.our-story {
+    background: url('/static/images/ungureanu-ionut-vzddrop37Ek-unsplash.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /*-------------------------------- Image styling */

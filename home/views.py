@@ -27,3 +27,8 @@ def subscribe(request):
 def thank_you(request):
     """ Return to thank you page """
     return render(request, 'home/thank_you.html')
+
+
+def our_story(request):
+    """ Return to thank you page """
+    return render(request, 'home/our_story.html')
