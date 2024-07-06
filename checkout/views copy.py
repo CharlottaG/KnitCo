@@ -13,8 +13,6 @@ from profiles.models import UserProfile
 import stripe
 import json
 
-from decimal import Decimal
-
 def cache_checkout_data(request):
     """ Capture metadata in payment intent """
     try:
@@ -123,15 +121,13 @@ def checkout(request):
             return redirect(reverse('products'))
 
     current_bag = bag_contents(request)
-    total = Decimal(current_bag['total'])  # Convert total to Decimal
-    delivery_cost = total * Decimal('0.1')  # Calculate delivery cost as 10% of total
-    grand_total = total + delivery_cost  # Calculate grand total
-    stripe_total = round((total + delivery_cost) * Decimal('100'))  # Include delivery cost in stripe_total
+    total = current_bag['total']
+    stripe_total = round(total * 100)
     stripe.api_key = stripe_secret_key
-    
+
 
     intent = stripe.PaymentIntent.create(
-        amount=int(stripe_total),  # Convert stripe_total to integer for Stripe API
+        amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
     )
 
@@ -142,8 +138,6 @@ def checkout(request):
         'order_form': order_form if 'order_form' in locals() else OrderForm(initial=initial_data),  # Use order_form if already defined
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
-        'delivery_cost': delivery_cost, 
-        'grand_total': grand_total, 
     }
 
     return render(request, 'checkout/checkout.html', context)

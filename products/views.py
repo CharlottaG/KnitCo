@@ -4,6 +4,7 @@ from django.db.models import Q
 from .models import Product, Category, SubCategory, Rating
 from .forms import RatingForm, ProductForm
 from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
 
 
@@ -60,6 +61,7 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_detail(request, product_id):
     """ A view to show product details """
 
@@ -79,6 +81,7 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_details.html', context)
+
 
 @login_required
 def add_rating(request, product_id):
@@ -148,6 +151,8 @@ def delete_rating(request, rating_id):
     return redirect('product_detail', product_id=rating.product.id)
 
     return HttpResponseNotAllowed(['POST'])
+
+
 
 
 # Store owner functionalities
