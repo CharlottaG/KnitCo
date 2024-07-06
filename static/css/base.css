@@ -151,14 +151,30 @@ h1 {
 }
 
 .our-story {
-    background: url('/static/images/our_story.webp') no-repeat center center fixed;
+    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/our_story.webp') no-repeat center center fixed;
     background-size: cover;
 }
 
 .thank-you {
-        background: url('/static/images/thank_you.webp') no-repeat center center fixed;
+        background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/thank_you.webp') no-repeat center center fixed;
         background-size: cover;
     }
+
+.returns {
+    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/returns.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.cookies {
+    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/knit_life.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.profile {
+    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url("/static/images/profile.webp") no-repeat center center fixed;
+    background-size: cover;   
+}
+
 
 /*-------------------------------- Image styling */
 .product-main-img {

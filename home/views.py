@@ -32,3 +32,18 @@ def thank_you(request):
 def our_story(request):
     """ Return to thank you page """
     return render(request, 'home/our_story.html')
+
+
+def return_policy(request):
+    """ Return to thank you page """
+    return render(request, 'home/return_policy.html')
+
+
+def sustainability(request):
+    """ Return to thank you page """
+    return render(request, 'home/sustainability.html')
+
+
+def cookie_policy(request):
+    """ Return to thank you page """
+    return render(request, 'home/cookie_policy.html')
