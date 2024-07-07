@@ -153,8 +153,6 @@ def delete_rating(request, rating_id):
     return HttpResponseNotAllowed(['POST'])
 
 
-
-
 # Store owner functionalities
 @login_required
 def add_product(request):
