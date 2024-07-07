@@ -12,17 +12,25 @@
 
 {% block content %}
 <div class="container content-container mb-5">
-    <div class="row m-0 overlay thank-you"></div>
+    <div class="row m-0 overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col p-0">
-                <h2 class="txt-blue text-uppercase p-1">Thank you!</h2>
+                <h2 class="txt-blue text-uppercase p-1">Welcome to our newsletter</h2>
+                <h3>There is joy in every stitch</h3>
                 <hr class="bg-blue mb-4">
             </div>
         </div>
-        <div class="row">
-            <p>You are now subscribing to our newsletter.</p>
-            <p>Exiting news will soon come your way!</p>
+        <div class="col-6 text">
+            <p>As a newsletter subscriber, you will receive exclusive designs, product insights, and special offers
+                curated just for you.</p>
+            <p> As a logged-in user, you can dive into the wonderful world of Nordic yarn and patterns with even more
+                perks. Rate and review products to share your insights and experiences. Create a personalized profile to
+                save your shipping information and track your order history effortlessly. Be inspired by beautiful,
+                exclusive patterns from our talented Nordic designers, and enjoy a seamless, customized shopping
+                experience.</p>
+            <p><a href="{% url 'account_signup' %}">Register</a> for an account to join our creative community.</p>
+
             <p><em>The Knit&Co Team</em></p>
         </div>
     </div>
