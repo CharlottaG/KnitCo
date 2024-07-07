@@ -146,7 +146,6 @@
                     <div class="d-flex align-items-center">
                         <p class="m-0 px-2 semibold">{{ rating.user.username }}</p>
                         <span>|</span>
-                        <p class="m-0 px-2">Rating: {{ rating.score }}</p>
                         <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
                         {% if rating.user == request.user %}
                         <button class="btn btn-sm btn-warning mx-1 btn-edit"
@@ -176,7 +175,7 @@
                 <p class="p-3 text">Rate this product</p>
                 <form class="p-3 text" method="POST" action="{% url 'add_rating' product_id=product.id %}">
                     {% csrf_token %}
-                    {{ rating_form | crispy }}
+                    {{ rating_form.as_p }}
                     <button type="submit" class="btn btn-bg-blue">Submit</button>
                 </form>
             </div>
