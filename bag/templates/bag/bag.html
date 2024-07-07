@@ -34,11 +34,11 @@
                     <!-- Iterate through all products -->
                     {% for item in bag_items %}
                     <tr class="border-bottom">
-                        <td class="p-3 w-25">
+                        <td class="py-3 w-25">
                             <img class="img-fluid rounded img-bag" src="{{ item.product.image.url }}">
                         </td>
                         <td class="py-3">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                            <p class="my-0">{{ item.product.name }}</p>
                         </td>
                         <td class="py-3">
                             <p class="my-0">{{ item.product.price }}€</p>

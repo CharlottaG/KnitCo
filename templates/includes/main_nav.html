@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse" id="main-nav">
+<div class="collapse navbar-collapse px-5 bg-light" id="main-nav">
     <div class="navbar-nav w-auto mx-auto">
         <a class="nav-link mr-5" href="{% url 'products'%}">All products</a>
         <!-- Dropdown Yarn -->
@@ -7,14 +7,13 @@
                 Yarn
             </a>
             <ul class="dropdown-menu" aria-labelledby="yarnDropdown">
-                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Wool">Wool</a></li>
-                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Merinowool">Merino wool</a></li>
-                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Alpaca">Alpaca</a></li>
-                <li></li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cotton">Cotton</a></li>
-                <li></li><a class="dropdown-item" href="{% url 'products' %}?category=Yarn">All yarn</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Wool">Wool</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Merinowool">Merino wool</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Alpaca">Alpaca</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cotton">Cotton</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=Yarn">All yarn</a></li>
             </ul>
         </li>
-
         <!-- Dropdown Needles -->
         <li class="nav-item dropdown">
             <a class="nav-link mr-5" href="#" id="needlesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -22,8 +21,11 @@
                 Needles
             </a>
             <ul class="dropdown-menu" aria-labelledby="needlesDropdown">
-                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cable-Needles">Cable Needles</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Double-Pointed-Needles">Double-Pointed Needles (DPNs)</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cable-Needles">Cable Needles</a>
+                </li>
+                <li><a class="dropdown-item"
+                        href="{% url 'products' %}?subcategory=Double-Pointed-Needles">Double-Pointed Needles (DPNs)</a>
+                </li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=Needles">All needles</a></li>
             </ul>
         </li>
@@ -34,23 +36,27 @@
                 Accessories
             </a>
             <ul class="dropdown-menu" aria-labelledby="accessoriesDropdown">
-                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Markers">Stitch Markers</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Holders">Stitch Holders</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Blocking-Tools">Blocking Tools</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Markers">Stitch Markers</a>
+                </li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Holders">Stitch Holders</a>
+                </li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Blocking-Tools">Blocking Tools</a>
+                </li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=Accessories">All accessories</a></li>
             </ul>
         </li>
-    <!-- Search Box -->
-    <div class="col-lg-4 d-none d-lg-flex align-items-center justify-content-end">
-        <form class="form" method="GET" action="{% url 'products' %}">
-            <div class="input-group w-100">
-                <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search">
-                <div class="input-group-append">
-                    <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+        <!-- Search Box -->
+        <div class="col-lg-4 d-none d-lg-flex align-items-center justify-content-end">
+            <form class="form" method="GET" action="{% url 'products' %}">
+                <div class="input-group w-100">
+                    <input class="form-control border border-black rounded-0" type="text" name="q"
+                        placeholder="Search products">
+                    <div class="input-group-append">
+                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
