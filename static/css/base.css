@@ -12,17 +12,20 @@ body {
     font-family: "Ysabeau SC", sans-serif !important;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4, 
+h5 {
     font-family: "Caveat", cursive !important;
+    color:#000066 !important;
 }
-
+a {
+    color:#000066 !important;
+}
 /*-------------------------------- Logo styling */
 .nav-link-logo {
-    color: #555;
-    font-family: "Caveat", cursive !important;
-    font-size: 2rem;
-    font-weight: 700;
-    font-style: normal;
+    text-decoration: none;
 }
 
 .nav-link-logo:hover,
@@ -106,8 +109,9 @@ h1 {
 
 /*-------------------------------- Link styling */
 .nav-link, 
+.nav-link:visited,
 .dropdown-item {
-    color: #555;
+    color: #000066 !important;
     white-space: nowrap;
 }
 
@@ -120,6 +124,12 @@ h1 {
     color: white;
 }
 
+.footer-nav-link,
+.footer-nav-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
 .update-link,
 .remove-item {
     cursor: pointer;
@@ -129,6 +139,15 @@ h1 {
     text-decoration: none;
     color: black;
 }
+
+.navbar-toggler, 
+.sorting-item {
+    color: #000066 !important;
+}
+.social {
+    color: white;
+}
+
 
 /*-------------------------------- Block styling */
 .content-container {
@@ -155,8 +174,8 @@ h1 {
     background-size: cover;
 }
 
-.thank-you {
-        background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/thank_you.webp') no-repeat center center fixed;
+.sustainability {
+        background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/sustainability.webp') no-repeat center center fixed;
         background-size: cover;
     }
 
@@ -211,8 +230,6 @@ h1 {
 
 /*-------------------------------- Shopping bag styling */
 .img-bag{
-    max-width: 30% !important;
-    height: 100px !important;
     overflow: hidden !important;
     object-fit: cover !important;
     object-position: center !important;

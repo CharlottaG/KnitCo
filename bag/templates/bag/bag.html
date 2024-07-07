@@ -15,17 +15,16 @@
 <div class="container content-container mb-5">
     <div class="row m-0 overlay"></div>
         <div class="row text-blue border-bottom mb-3">
-            <h1>Shopping bag</h1>
+            <h2>Shopping bag</h2>
         </div>
         <div class="row">
             {% if bag_items %}
-            <div class="col-6"></div>
             <div class="table-responsive rounded text">
                 <!-- Table structure -->
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
-                            <th scope="col">Product Info</th>
+                            <th scope="col">Product</th>
                             <th scope="col"></th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
@@ -34,7 +33,7 @@
                     </thead>
                     <!-- Iterate through all products -->
                     {% for item in bag_items %}
-                    <tr>
+                    <tr class="border-bottom">
                         <td class="p-3 w-25">
                             <img class="img-fluid rounded img-bag" src="{{ item.product.image.url }}">
                         </td>
@@ -50,21 +49,19 @@
                                 <div class="input-group">
                                     <!-- Decrement button -->
                                     <div class="input-group-preprend">
-                                        <button class="decrement-qty btn btn-bg-blue btn-sm btn-incr-decr rounded-0 border-0"
+                                        <button class="decrement-qty btn btn-sm btn-bg-blue rounded-0"
                                             type="button" data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                             <span>
                                                 <i class="fas fa-minus fa-sm"></i>
                                             </span>
                                         </button>
                                     </div>
-
                                     <!-- Form control quantity -->
                                     <input class="form-control form-control-sm qty_input" type="number" name="quantity"
                                         value="1" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                    
                                     <!-- Increment button -->
                                     <div class="input-group-append">
-                                        <button class="increment-qty btn btn-bg-blue btn-sm btn-incr-decr rounded-0 border-0"
+                                        <button class="increment-qty btn btn-sm btn-bg-blue rounded-0"
                                             type="button" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item.id }}">
                                             <span>
                                                 <i class="fas fa-plus fa-sm"></i>                                           
@@ -74,8 +71,8 @@
                                 </div>
                             </form>
                             <a href="#" class="update-link text-small txt-blue">Update</a>
-                            <a href="#" class="remove-item text-small txt-red float-right"
-                                id="remove_{{ item.item_id }}">Delete item</a>
+                            <a href="#" class="remove-item text-small txt-red float-md-right"
+                                id="remove_{{ item.item_id }}">Delete</a>
                         </td>
                         <td class="py-3">
                             <p class="my-0">{{ item.product.price | calc_subtotal:item.quantity }}€</p>
@@ -86,7 +83,7 @@
                     <!-- Calculate total price -->
                     <tr>
                         <td colspan="5" class="pt-5 text-right">
-                            <h4><span class="text-uppercase">Total: {{ total|floatformat:2 }} €</span></h4>
+                            <p class="fs-5"><span class="text-uppercase">Total: {{ total|floatformat:2 }} €</span></p>
                         </td>
                     </tr>
                     <tr>

@@ -62,7 +62,7 @@
     <!-- First row: Logo -->
     <div class="d-flex justify-content-center">
       <a href="{% url 'home' %}" class="nav-link-logo">
-        <h1 class="m-2">K n i t & C o</h1>
+        <h1 class="m-2">Knit &  Co</h1>
       </a>
     </div>
     <!-- Second row: Banner with delivery info -->
@@ -159,29 +159,29 @@
   <footer class="container-fluid relative-bottom bg-blue pt-3 px-5">
     <div class="row m-0">
       <div class="col-12 col-md-4 col-lg-2 mb-3">
-        <h5>About us</h5>
+        <p class="fs-4">About us</p>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a class="nav-link p-0 text-muted" a href="{% url 'our_story' %}">Our story</a>
+            <a class="footer-nav-link p-0" a href="{% url 'our_story' %}">Our story</a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link p-0 text-muted" href="{% url 'sustainability' %}">Sustainability</a>
+            <a class="footer-nav-link p-0" href="{% url 'sustainability' %}">Sustainability</a>
           </li>
         </ul>
       </div>
       <div class="col-12 col-md-4 col-lg-2 mb-3">
-        <h5>Policies</h5>
+        <p class="fs-4">Policies</p>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a class="nav-link p-0 text-muted" href="{% url 'return_policy' %}">Return policy</a>
+            <a class="footer-nav-link p-0" href="{% url 'return_policy' %}">Return policy</a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link p-0 text-muted" href="{% url 'cookie_policy' %}">Cookie policy</a>
+            <a class="footer-nav-link p-0" href="{% url 'cookie_policy' %}">Cookie policy</a>
           </li>
         </ul>
       </div>
       <div class="col-12 col-md-4 col-lg-2 mb-3">
-        <h5>Contact</h5>
+        <p class="fs-4">Contact</p>
         <p class="text small">Phone: +46 705158714</p>
         <p class="text small">Email: knitco.store@gmail.com</p>
         <p class="text small">Opening hours: <br>Mon-Fri: 9 am - 6 pm</p>
@@ -190,7 +190,7 @@
 
         <form method="post" action="{% url 'subscribe' %}">
           {% csrf_token %}
-          <h5>Subscribe to our Newsletter</h5>
+          <p class="fs-4">Subscribe to our Newsletter</p>
           <p class="text d-none d-md-block">Monthly thread about the wonderful world of Nordic yarn and patterns!</p>
           <div class="d-flex w-100 gap-2">
               <label for="newsletter" class="visually-hidden">Email address</label>
@@ -203,17 +203,17 @@
           <ul class="list-unstyled d-flex">
             <li class="fw-semibold">Follow us:</li>
             <li class="ms-3">
-              <a class="bs-light" href="#">
+              <a class="social" href="https://www.facebook.com/">
                 <i class="fa-brands fa-facebook"></i>
               </a>
             </li>
             <li class="ms-3">
-              <a class="bs-light" href="#">
+              <a class="social" href="https://www.instagram.com/">
                 <i class="fa-brands fa-instagram"></i>
               </a>
             </li>
             <li class="ms-3">
-              <a class="bs-light" href="#">
+              <a class="social" href="https://www.ravelry.com/">
                 <i class="fa-brands fa-ravelry"></i>
               </a>
             </li>
