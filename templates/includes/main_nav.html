@@ -1,9 +1,9 @@
-<div class="collapse navbar-collapse px-5 bg-light" id="main-nav">
+<div class="collapse navbar-collapse px-5 bg-mid-blue" id="main-nav">
     <div class="navbar-nav w-auto mx-auto">
-        <a class="nav-link mr-5" href="{% url 'products'%}">All products</a>
+        <a class="nav-link mx-3" href="{% url 'products'%}">All products</a>
         <!-- Dropdown Yarn -->
         <li class="nav-item dropdown">
-            <a class="nav-link mr-5" href="#" id="yarnDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link mx-3" href="#" id="yarnDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 Yarn
             </a>
             <ul class="dropdown-menu" aria-labelledby="yarnDropdown">
@@ -16,7 +16,7 @@
         </li>
         <!-- Dropdown Needles -->
         <li class="nav-item dropdown">
-            <a class="nav-link mr-5" href="#" id="needlesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link mx-3" href="#" id="needlesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 Needles
             </a>
@@ -31,7 +31,7 @@
         </li>
         <!-- Dropdown Accessories -->
         <li class="nav-item dropdown">
-            <a class="nav-link mr-5" href="#" id="accessoriesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link mx-3" href="#" id="accessoriesDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 Accessories
             </a>
@@ -48,11 +48,11 @@
         <!-- Search Box -->
         <div class="col-lg-4 d-none d-lg-flex align-items-center justify-content-end">
             <form class="form" method="GET" action="{% url 'products' %}">
-                <div class="input-group w-100">
-                    <input class="form-control border border-black rounded-0" type="text" name="q"
+                <div class="input-group w-100 mx-2">
+                    <input class="form-control border rounded-0" type="text" name="q"
                         placeholder="Search products">
                     <div class="input-group-append">
-                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                        <button class="form-control btn bg-white border rounded-0" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>

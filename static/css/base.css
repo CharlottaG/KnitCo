@@ -5,7 +5,6 @@ html {
 }
 
 body {
-    background: url('/static/images/background-home.webp') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 2000px);
     color: #555;
@@ -18,11 +17,40 @@ h3,
 h4, 
 h5 {
     font-family: "Caveat", cursive !important;
-    color:#000066 !important;
+    color:#122a45 !important;
 }
 a {
-    color:#000066 !important;
+    color:#122a45 !important;
 }
+/*-------------------------------- Colors */
+
+.bg-blue {
+    background-color: #122a45 !important;
+    color: #fafafa !important;
+}
+
+.bg-mid-blue {
+    background-color: #1c4b6b !important;
+    color: #fafafa !important;
+}
+
+.bg-grey-green {
+    background-color: #729b8c !important;
+}
+
+.bg-light-green {
+    background-color: #a4d0b5 !important;
+}
+
+.bg-beige-green {
+    background-color: #a5f3d1 !important;
+}
+
+.bg-fafa {
+    background-color: #fafafa;
+}
+
+
 /*-------------------------------- Logo styling */
 .nav-link-logo {
     text-decoration: none;
@@ -32,7 +60,7 @@ a {
 .nav-link-logo:active, 
 .nav-link-logo:visited,
 .nav-link-logo:focus {
-    color:#000066 !important;
+    color:#122a45 !important;
     text-decoration: none;
 }
 
@@ -50,7 +78,7 @@ a {
 }
 
 .txt-blue{
-    color: #000066 !important;
+    color: #122a45 !important;
 }
 
 .txt-red{
@@ -93,7 +121,7 @@ a {
 
 /*-------------------------------- Button styling */
 .btn-bg-blue {
-    background-color: #000066 !important;
+    background-color: #122a45 !important;
     color: white !important;
     border-radius: 5px;
 }
@@ -109,9 +137,13 @@ a {
 
 /*-------------------------------- Link styling */
 .nav-link, 
-.nav-link:visited,
+.nav-link:visited {
+    color: #fafafa !important;
+    white-space: nowrap;
+}
+
 .dropdown-item {
-    color: #000066 !important;
+    color: #122a45 !important;
     white-space: nowrap;
 }
 
@@ -120,7 +152,7 @@ a {
 .nav-link:focus,
 .collapse-link:hover,
 .collapse-link:active {
-    background: rgb(246, 221, 32);
+    background: #729b8c;
     color: white;
 }
 
@@ -141,8 +173,9 @@ a {
 }
 
 .navbar-toggler, 
-.sorting-item {
-    color: #000066 !important;
+.sorting-item,
+..navbar-toggler-icon, {
+    color: #fafafa !important;
 }
 .social {
     color: white !important;
@@ -164,33 +197,29 @@ a {
 	z-index: -1;
 }
 
-.bg-blue {
-    background-color: #000066;
-    color: #fafafa;
-}
 
 .our-story {
-    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/our_story.webp') no-repeat center center fixed;
+    background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/our_story.webp') no-repeat center center fixed;
     background-size: cover;
 }
 
 .sustainability {
-        background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/sustainability.webp') no-repeat center center fixed;
+        background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/sustainability.webp') no-repeat center center fixed;
         background-size: cover;
     }
 
 .returns {
-    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/returns.webp') no-repeat center center fixed;
+    background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/returns.webp') no-repeat center center fixed;
     background-size: cover;
 }
 
 .cookies {
-    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url('/static/images/knit_life.webp') no-repeat center center fixed;
+    background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/knit_life.webp') no-repeat center center fixed;
     background-size: cover;
 }
 
 .profile {
-    background: -webkit-linear-gradient(rgba(246, 221, 32, 0.4), rgba(0, 0, 102, 0.4)), url("/static/images/profile.webp") no-repeat center center fixed;
+    background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url("/static/images/profile.webp") no-repeat center center fixed;
     background-size: cover;   
 }
 
