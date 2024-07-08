@@ -35,7 +35,7 @@
                     {% for item in bag_items %}
                     <tr class="border-bottom">
                         <td class="py-3 w-25">
-                            <img class="img-fluid rounded img-bag" src="{{ item.product.image.url }}">
+                            <img class="img-fluid rounded img-bag w-75" src="{{ item.product.image.url }}">
                         </td>
                         <td class="py-3">
                             <p class="my-0">{{ item.product.name }}</p>
@@ -82,12 +82,12 @@
 
                     <!-- Calculate total price -->
                     <tr>
-                        <td colspan="5" class="pt-5 text-right">
+                        <td colspan="5" class="pt-5 text-end">
                             <p class="fs-5"><span class="text-uppercase">Total: {{ total|floatformat:2 }} €</span></p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="text-right">
+                        <td colspan="5" class="text-end">
                             <a href="{% url 'products' %}" class="btn btn-lg">
                                 <span class="text-uppercase bg-blue p-2">Continue Shopping</span>
                             </a>

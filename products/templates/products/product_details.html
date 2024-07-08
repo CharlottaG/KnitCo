@@ -143,11 +143,15 @@
                             aria-controls="reviews">Click to read reviews</a>
                     </div>
                     <!-- Log in to leave a review-->
+                     {% if user.is_authenticated %}
                     <div class="col-4">
+                        {% else %}
                         <span class="text">
                             <a href="{% url 'account_login' %}">Log in</a> to rate and review this product
                         </span>
+                        {% endif%}
                     </div>
+                    
                 </div>
                 <!-- Collapsable section -->
                 <div class="reviews my-3 collapse" id="reviews">
@@ -203,30 +207,34 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 
-<script>
+<script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
         const editButtons = document.querySelectorAll(".btn-edit");
         const deleteButtons = document.querySelectorAll(".btn-delete");
 
+        // Edit reviews
         editButtons.forEach(button => {
             button.addEventListener("click", function () {
                 const ratingId = this.getAttribute("data-rating-id");
                 const form = document.getElementById(`edit-rating-form-${ratingId}`);
-                form.style.display = form.style.display === "none" ? "block" : "none";
+                if (form) {
+                    form.style.display = form.style.display === "none" ? "block" : "none";
+                }
             });
         });
 
+        // Delete reviews
         deleteButtons.forEach(button => {
             button.addEventListener("click", function (e) {
                 e.preventDefault();
                 const ratingId = this.getAttribute("data-rating-id");
                 let confirmed = confirm('Are you sure you want to delete this review?');
                 if (confirmed) {
-                    const ratingId = this.getAttribute("data-rating-id");
+                    const rating = this.getAttribute("rating-{{rating.id}}");
                     window.location.href = `/rating/${ratingId}/delete/`;
                 }
-            });
-        });
+            })
+        })
     });
 </script>
 

@@ -141,7 +141,7 @@ def delete_rating(request, rating_id):
 
     # Only the user who created the review can delete it
     if rating.user != request.user:
-        messages.error(request, "You can only delete your own reviews.")
+        messages.error(request, "You can only delete your own ratings.")
         return redirect('product_detail', product_id=rating.product.id)
 
     if request.method == 'POST':
@@ -149,8 +149,6 @@ def delete_rating(request, rating_id):
         messages.success(request, 'Your rating has been deleted.')
 
     return redirect('product_detail', product_id=rating.product.id)
-
-    return HttpResponseNotAllowed(['POST'])
 
 
 # Store owner functionalities
