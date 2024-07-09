@@ -84,6 +84,10 @@ a {
     color: #f12626 !important;
 }
 
+.txt-grey-green {
+    color: #729b8c
+}
+
 
 .description {
     font-family: "Teachers", sans-serif;
@@ -173,10 +177,16 @@ a {
 }
 
 .navbar-toggler, 
-.sorting-item,
-..navbar-toggler-icon, {
+.navbar-toggler-icon {
     color: #fafafa !important;
 }
+
+.sorting-item {
+    color: #122a45 !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem;
+}
+
 .social {
     color: white !important;
 }
@@ -201,27 +211,36 @@ a {
 .our-story {
     background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/our_story.webp') no-repeat center center fixed;
     background-size: cover;
+    background-color: #1c4b6b
 }
 
 .sustainability {
         background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/sustainability.webp') no-repeat center center fixed;
         background-size: cover;
+        background-color: #e5f3d1
     }
 
 .returns {
     background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/returns.webp') no-repeat center center fixed;
     background-size: cover;
+    background-color: #e5f3d1
 }
 
-.cookies,
 .index {
     background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/knit_life.webp') no-repeat center center fixed;
     background-size: cover;
+    background-color: #1c4b6b
+}
+.cookies {
+    background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/knit_life.webp') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #e5f3d1
 }
 
 .profile {
     background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url("/static/images/profile.webp") no-repeat center center fixed;
-    background-size: cover;   
+    background-size: cover;
+    background-color: #e5f3d1
 }
 
 
@@ -235,7 +254,7 @@ a {
 
 .product-img {
     max-width: 100% !important;
-    height: 350px !important;
+    height: 300px !important;
     overflow: hidden !important;
     margin-bottom: 15px;
     object-fit: cover !important;
@@ -251,7 +270,7 @@ a {
 
 .product-img-top-rated {
     height: 100% !important;
-    max-height: 300px !important;
+    max-height: 260px !important;
     overflow: hidden !important;
     object-fit: cover !important;
     object-position: center !important;
