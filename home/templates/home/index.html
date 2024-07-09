@@ -20,8 +20,8 @@
             </h2>
             <div class="col-12 col-md-8 lh-sm">
                 <p class="text fs-3 text-white me-4">
-                    Providing yarns produced sustainably in the Nordic countries, crafted by skilled artisans.
-                    Each skein tells a story of tradition and craftsmanship.
+                    Nordic quality yarns from natural fibers produced sustainably in the Nordic countries. Patterns from
+                    skilled knitters. Each stitch tells a story of tradition and craftsmanship.
                 </p>
 
                 {% if not user.is_authenticated %}
@@ -53,7 +53,8 @@
                             </p>
                         </div>
                         <div class="card-body bg">
-                            <p class="card-title text-black fs-5">{{ product.name }} | <small>{{ product.brand }}</small>
+                            <p class="card-title text-black fs-5">{{ product.name }} | <small>{{ product.brand
+                                    }}</small>
                             </p>
                             <p class="card-text">{{ product.price }}€</p>
                         </div>
