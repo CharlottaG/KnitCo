@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
 
+
 class Category(models.Model):
 
     class Meta:
@@ -89,3 +90,5 @@ class Rating(models.Model):
 
     def __str__(self):
         return f'{self.product.name} - {self.score} by {self.user.username}'
+
+

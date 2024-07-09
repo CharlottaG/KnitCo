@@ -3,9 +3,10 @@ from django.contrib import messages
 from .forms import SubscriptionForm
 from .models import NewsletterSubscriber
 
+
 def index(request):
     """ Return to index page """
-    
+       
     return render(request, 'home/index.html')
 
 def subscribe(request):

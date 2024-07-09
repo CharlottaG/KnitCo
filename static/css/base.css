@@ -5,7 +5,6 @@ html {
 }
 
 body {
-    background-size: cover;
     height: calc(100vh - 2000px);
     color: #555;
     font-family: "Ysabeau SC", sans-serif !important;
@@ -17,7 +16,7 @@ h3,
 h4, 
 h5 {
     font-family: "Caveat", cursive !important;
-    color:#122a45 !important;
+    color:#122a45;
 }
 a {
     color:#122a45 !important;
@@ -43,7 +42,7 @@ a {
 }
 
 .bg-beige-green {
-    background-color: #a5f3d1 !important;
+    background-color: #e5f3d1 !important;
 }
 
 .bg-fafa {
@@ -213,7 +212,8 @@ a {
     background-size: cover;
 }
 
-.cookies {
+.cookies,
+.index {
     background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/knit_life.webp') no-repeat center center fixed;
     background-size: cover;
 }

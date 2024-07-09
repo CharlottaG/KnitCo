@@ -119,7 +119,7 @@ def edit_rating(request, rating_id):
         return redirect('product_detail', product_id=rating.product.id)
 
     if request.method == 'POST':
-        form = RatingForm(request.POST,  instance=rating)
+        form = RatingForm(request.POST, instance=rating)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your rating has been updated.')
@@ -129,14 +129,17 @@ def edit_rating(request, rating_id):
 
             context = {
             'product': rating.product,
-            'rating_form': rating_form,
+            'form': form,
+            'product_id' : rating.product.id,
+            #'rating_form': rating_form,
         }
 
-    return redirect('product_detail', product_id=rating.product.id)
+    return redirect('product_detail', context)
 
 
 @login_required
 def delete_rating(request, rating_id):
+    """ A view to delete a rating """
     rating = get_object_or_404(Rating, id=rating_id)
 
     # Only the user who created the review can delete it
@@ -147,9 +150,10 @@ def delete_rating(request, rating_id):
     if request.method == 'POST':
         rating.delete()
         messages.success(request, 'Your rating has been deleted.')
+        return redirect('product_detail', product_id=rating.product.id)
 
     return redirect('product_detail', product_id=rating.product.id)
-
+    
 
 # Store owner functionalities
 @login_required
