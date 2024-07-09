@@ -177,10 +177,16 @@ a {
 }
 
 .navbar-toggler, 
-.sorting-item,
-..navbar-toggler-icon, {
+.navbar-toggler-icon {
     color: #fafafa !important;
 }
+
+.sorting-item {
+    color: #122a45 !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem;
+}
+
 .social {
     color: white !important;
 }

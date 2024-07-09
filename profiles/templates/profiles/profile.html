@@ -19,120 +19,121 @@
 {% block content %}
 <div class="container content-container mb-5">
     <div class="row m-0 overlay profile"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col p-0">
-                <h2 class="text-white text-uppercase p-1">{{ user.username }}'s Profile page</h2>
-            </div>
-        </div>
-        <div class="row bg-light-green bg-opacity-75 p-3">
-            <!-- Profile details form -->
-            <div class="col-12 col-lg-6">
-                <h2>My profile</h2>
-                <hr>
-                <!-- Show user info stored in database -->
-                <div id="profile-info" class="text">
-                    Username: {{ user.username }} <br>
-                    Full Name: {{ user.userprofile.default_full_name }} <br>
-                    Email: {{ user.email }} <br>
-                    Phone Number: {{ user.userprofile.default_phone_number }} <br>
-                    Street Address: {{ user.userprofile.default_street_address }} <br>
-                    Postcode: {{ user.userprofile.default_postcode }} <br>
-                    Town/City: {{ user.userprofile.default_town_or_city }} <br>
-                    Country: {{ user.userprofile.default_country }} <br>
-                    <button id="edit-profile-btn" class="mt-3 btn btn-primary" aria-label="Edit button">Edit Profile</button>
-                    <!-- Button to toggle edit form -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <h2 class="text-white p-1">Profile for {{ user.username }}</h2>
                 </div>
-                <!-- Edit profile form (initially hidden) -->
-                <form class="mt-3 text" action="{% url 'profile' %}" method="POST" id="profile-update-form"
-                    style="display: none;">
-                    {% csrf_token %}
-                    {{ profile_form|crispy }}
-                    <button type="submit" class="btn btn-primary" aria-label="Submit button">
-                        Update profile
-                    </button>
-                </form>
             </div>
-            <!-- Order history -->
-            <div class="col-12 col-lg-6">
-                <!-- Display order history -->
-                <h3>Order history</h3>
-                <hr>
-                <div class="order-history">
-                    {% if orders %}
-                    <table class="table" id="order-history">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Order number</th>
-                                <th scope="col" class="sortable" onclick="sortTable()">Date <span
-                                        class="sort-icon">▼</span></th>
-                                <th scope="col">Items</th>
-                                <th scope="col">Order total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for order in orders %}
-                            <tr>
-                                <td scope="row">
-                                    <a href="{% url 'order_history' order.order_number %}">
-                                        {{ order.order_number|truncatechars:10 }}
-                                    </a>
-                                </td>
-                                {% get_current_timezone as TIME_ZONE %}
-                                <td scope="row">{{ order.date | date:'j M, Y (P)' }}</td>
-                                <td scope="row">
-                                    <ul class="list-unstyled">
-                                        {% for item in order.lineitems.all %}
-                                        <li>{{ item.product.name }} x{{ item.quantity }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </td>
-                                <td scope="row">${{ order.grand_total }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+            <div class="row">
+                <!-- Profile details form -->
+                <div class="p-3 col-6 bg-white">
+                    <h2>My details</h2>
+                    <hr>
+                    <!-- Show user info stored in database -->
+                    <div id="profile-info" class="text">
+                        Username: {{ user.username }} <br>
+                        Full Name: {{ user.userprofile.default_full_name }} <br>
+                        Email: {{ user.email }} <br>
+                        Phone Number: {{ user.userprofile.default_phone_number }} <br>
+                        Street Address: {{ user.userprofile.default_street_address }} <br>
+                        Postcode: {{ user.userprofile.default_postcode }} <br>
+                        Town/City: {{ user.userprofile.default_town_or_city }} <br>
+                        Country: {{ user.userprofile.default_country }} <br>
+                        <button id="edit-profile-btn" class="mt-3 btn btn-primary" aria-label="Edit button">Edit Profile</button>
+                        <!-- Button to toggle edit form -->
+                    </div>
+                    <!-- Edit profile form (initially hidden) -->
+                    <form class="mt-3 text" action="{% url 'profile' %}" method="POST" id="profile-update-form"
+                        style="display: none;">
+                        {% csrf_token %}
+                        {{ profile_form|crispy }}
+                        <button type="submit" class="btn btn-primary" aria-label="Submit button">
+                            Update profile
+                        </button>
+                    </form>
+                </div>
+                <!-- Order history -->
+                <div class="p-3 col-6 bg-white">
+                    <!-- Display order history -->
+                    <h3>Order history</h3>
+                    <hr>
+                    <div class="order-history">
+                        {% if orders %}
+                        <table class="table" id="order-history">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Order number</th>
+                                    <th scope="col" class="sortable" onclick="sortTable()">Date <span
+                                            class="sort-icon">▼</span></th>
+                                    <th scope="col">Items</th>
+                                    <th scope="col">Order total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td scope="row">
+                                        <a href="{% url 'order_history' order.order_number %}">
+                                            {{ order.order_number|truncatechars:10 }}
+                                        </a>
+                                    </td>
+                                    {% get_current_timezone as TIME_ZONE %}
+                                    <td scope="row">{{ order.date | date:'j M, Y (P)' }}</td>
+                                    <td scope="row">
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                            <li>{{ item.product.name }} x{{ item.quantity }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td scope="row">${{ order.grand_total }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <p>You have no previous orders.</p>
+                        {% endif %}
+                    </div>
+                    <!-- Rated and/or reviewed products -->
+                    <h3>Rated and/or reviewed products</h3>
+                    <hr>
+                    {% if user_ratings %}
+                    <div class="user_reviews">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col">Comment</th>
+                                    <th scope="col">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for rating in user_ratings %}
+                                <tr>
+                                    <td scope="row">
+                                        <a href="{% url 'product_detail' rating.product.id %}">
+                                            {{ rating.product }}
+                                        </a>
+                                    </td>
+                                    <td scope="row">{{ rating.score }}</td>
+                                    {% if rating.comment %}
+                                    <td scope="row">{{ rating.comment }}</td>
+                                    {% endif %}
+                                    <td scope="row">{{ rating.created_at }}</td>
+                                </tr>
+                                {% empty %}
+                                <p>No ratings found.</p>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                     {% else %}
-                    <p>You have no previous orders.</p>
+                    <p>You have not rated any products.</p>
                     {% endif %}
                 </div>
-                <!-- Rated and/or reviewed products -->
-                <h3>Rated and/or reviewed products</h3>
-                <hr>
-                {% if user_ratings %}
-                <div class="user_reviews">
-                    <table class="table">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Score</th>
-                                <th scope="col">Comment</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for rating in user_ratings %}
-                            <tr>
-                                <td scope="row">
-                                    <a href="{% url 'product_detail' rating.product.id %}">
-                                        {{ rating.product }}
-                                    </a>
-                                </td>
-                                <td scope="row">{{ rating.score }}</td>
-                                {% if rating.comment %}
-                                <td scope="row">{{ rating.comment }}</td>
-                                {% endif %}
-                                <td scope="row">{{ rating.created_at }}</td>
-                            </tr>
-                            {% empty %}
-                            <p>No ratings found.</p>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                {% else %}
-                <p>You have not rated any products.</p>
-                {% endif %}
             </div>
         </div>
     </div>
