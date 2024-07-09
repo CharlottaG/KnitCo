@@ -84,6 +84,10 @@ a {
     color: #f12626 !important;
 }
 
+.txt-grey-green {
+    color: #729b8c
+}
+
 
 .description {
     font-family: "Teachers", sans-serif;
@@ -244,7 +248,7 @@ a {
 
 .product-img {
     max-width: 100% !important;
-    height: 350px !important;
+    height: 300px !important;
     overflow: hidden !important;
     margin-bottom: 15px;
     object-fit: cover !important;

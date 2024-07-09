@@ -168,7 +168,7 @@ def add_product(request):
         if add_product_form.is_valid():
             product = add_product_form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', product_id=product_id))
+            return redirect(reverse('product_detail', kwargs={'product_id': product.id}))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
@@ -195,9 +195,9 @@ def edit_product(request, product_id):
         if edit_product_form.is_valid():
             edit_product_form.save()
             messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', product_id=product_id))
+            return redirect(reverse('product_detail', kwargs={'product_id': product.id}))
         else:
-            messages.error(request, 'Failed to update product.')
+             messages.error(request, 'Failed to update product. Please ensure the form is valid.')
     else:
         edit_product_form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -212,7 +212,7 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from shop """
+    """ Delete a product from webshop """
 
     if not request.user.is_superuser:
         messages.error(request, 'You do not have permission to do that, only store managers do.')

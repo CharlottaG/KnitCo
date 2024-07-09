@@ -8,6 +8,7 @@
         </div>
     </div>
 </div>
+{% block extra_title %} | Products {{ product.name}} {% endblock %}
 {% endblock %}
 
 {% block content %}
@@ -44,8 +45,8 @@
                     {% if request.user.is_superuser %}
                     <small class="ml-3">
                         <a href="{% url 'edit_product' product.id %}" class="px-2">Edit - {{ product.name }}</a>
-                        <a href="{% url 'delete_product' product.id %}" class="text-danger px-2">Delete - {{
-                            product.name }}</a>
+                        <a href="{% url 'delete_product' product.id %}" 
+                            class="text-danger px-2">Delete - {{product.name }}</a>
                     </small>
                     {% endif %}
                 </div>
@@ -160,12 +161,17 @@
                         <div class="d-flex align-items-center">
                             <p class="m-0 px-2 semibold">{{ rating.user.username }}</p>
                             <span>|</span>
+                            <br>
+                            <p class="px-1 text-black">
+                                <i class="fa-solid fa-heart txt-grey-green"></i> {{ rating.score|floatformat:2 }}
+                            </p>
+                            </div>
                             <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
                             {% if rating.user == request.user %}
                             <button class="btn btn-sm bg-mid-blue mx-1 btn-edit"
-                                data-rating-id="{{ rating.id }}" aria-label="Edit button">Edit</button>
+                                data-rating-id="{{ rating.id }}">Edit</button>
                             <a href="{% url 'delete_rating' rating.id %}" class="btn btn-sm btn-danger mx-1 btn-delete"
-                                data-rating-id="{{ rating.id }} aria-label="Delete button"">Delete</a>
+                                data-rating-id="{{ rating.id }}">Delete</a>
                             {% endif %}
                         </div>
                         <div>
@@ -175,7 +181,14 @@
                         <form action="{% url 'edit_rating' rating.id %}" method="POST" class="edit-rating-form"
                             id="edit-rating-form-{{ rating.id }}" style="display: none;">
                             {% csrf_token %}
-                            <textarea class="form-control" name="comment" rows="3">{{ rating.comment }}</textarea>
+                            <div class="form-group">
+                                <label for="score-{{ rating.id }}">Score</label>
+                                <input type="number" class="form-control" name="score" id="score-{{ rating.id }}" placeholder= "{{ user.product.rating }}" value="{{ rating.score }}" min="1" max="5" step="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment-{{ rating.id }}">Comment</label>
+                                <textarea class="form-control" name="comment" id="comment-{{ rating.id }}" rows="3">{{ rating.comment }}</textarea>
+                            </div>
                             <button type="submit" class="btn btn-sm bg-mid-blue mt-2" aria-label="Update button">Update</button>
                         </form>
                     </div>
@@ -188,8 +201,15 @@
                 <div class="rowrating-form border border-1 my-4">
                     <p class="p-3 text">Rate this product</p>
                     <form class="p-3 text" method="POST" action="{% url 'add_rating' product_id=product.id %}">
+                        
                         {% csrf_token %}
-                        {{ rating_form.as_p }}
+                    <fieldset class="text">
+                        <legend class="mt-1 txt-blue">Rating (1-5)</legend>
+                        <input type="number" class="form-control" name="score" id="score-{{ rating.id }}" value="{{ rating.score }}" min="1" max="5" step="1">
+                    <legend class="mt-1 txt-blue">Review</legend>
+                        {{rating_form.comment | as_crispy_field}}
+                    </fieldset>
+                    
                         <button type="submit" class="btn btn-bg-blue" aria-label="Submit button">Submit</button>
                     </form>
                 </div>
