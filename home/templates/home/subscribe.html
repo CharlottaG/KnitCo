@@ -27,7 +27,7 @@
                 <form method="post" action="{% url 'subscribe' %}">
                     {% csrf_token %}
                     {{ subscribe_form | crispy}}
-                    <button type="submit">Subscribe</button>
+                    <button type="submit" aria-label="Subscribe button">Subscribe</button>
                 </form>
             <p><em>The Knit&Co Team</em></p>
         </div>

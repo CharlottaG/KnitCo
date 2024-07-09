@@ -37,7 +37,7 @@
                 {% endif %}
                 <a href="{% url 'product_detail' product.id %}">
                     <img class="card-img-top img-fluid product-img" src="{{ product.image.url }}"
-                        alt="{{ product.name }}">
+                        alt="Image for {{ product.name }}">
                 </a>
                 <!-- For superusers to edit/delete products in shop -->
                 <div>
@@ -77,7 +77,7 @@
                                         <div class="input-group-preprend">
                                             <button
                                                 class="decrement-qty btn btn-bg-blue btn-incr-decr rounded-0 border-0"
-                                                data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                                data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}" aria-label="Decrement button">
                                                 <span>
                                                     <i class="fas fa-minus"></i>
                                                 </span>
@@ -86,13 +86,13 @@
                                         <!-- Form control -->
                                         <input class="form-control qty_input" type="number" name="quantity" value="1"
                                             min="1" max="99" data-item_id="{{ product.id }}"
-                                            id="id_qty_{{ product.id }}">
+                                            id="id_qty_{{ product.id }}"aria-labelledby="Quantity input for bag items">
                                         <!-- Button to increase number of products to buy -->
                                         <div class="input-group-append">
                                             <button
                                                 class="increment-qty btn btn-bg-blue btn-incr-decr rounded-0 border-0"
                                                 type="number" data-item_id="{{ product.id }}"
-                                                id="increment-qty_{{ product.id }}">
+                                                id="increment-qty_{{ product.id }}" aria-label="Increment button">
                                                 <span>
                                                     <i class="fas fa-plus"></i>
                                                 </span>
@@ -108,7 +108,7 @@
                                 </a>
                                 <input type="submit"
                                     class="btn btn-bg-blue btn-sm rounded-0 text-uppercase mt-1 mb-3 my-1 border-0"
-                                    value="Add to Bag">
+                                    value="Add to Bag" aria-labelledby="Add to bag">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
@@ -125,7 +125,7 @@
                         {% for option in product.all_options %}
                         <div class="p-3">
                             <a href="{% url 'product_detail' option.id %}">
-                                <img class="available-options" src="{{ option.image.url }}" alt="{{ option.name }}">
+                                <img class="available-options" src="{{ option.image.url }}" alt="Image for {{ option.name }}">
                                 <p>{{ option.name }}</p>
                             </a>
                         </div>
@@ -163,9 +163,9 @@
                             <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
                             {% if rating.user == request.user %}
                             <button class="btn btn-sm bg-mid-blue mx-1 btn-edit"
-                                data-rating-id="{{ rating.id }}">Edit</button>
+                                data-rating-id="{{ rating.id }}" aria-label="Edit button">Edit</button>
                             <a href="{% url 'delete_rating' rating.id %}" class="btn btn-sm btn-danger mx-1 btn-delete"
-                                data-rating-id="{{ rating.id }}">Delete</a>
+                                data-rating-id="{{ rating.id }} aria-label="Delete button"">Delete</a>
                             {% endif %}
                         </div>
                         <div>
@@ -176,7 +176,7 @@
                             id="edit-rating-form-{{ rating.id }}" style="display: none;">
                             {% csrf_token %}
                             <textarea class="form-control" name="comment" rows="3">{{ rating.comment }}</textarea>
-                            <button type="submit" class="btn btn-sm bg-mid-blue mt-2">Update</button>
+                            <button type="submit" class="btn btn-sm bg-mid-blue mt-2" aria-label="Update button">Update</button>
                         </form>
                     </div>
                     {% endfor %}
@@ -190,7 +190,7 @@
                     <form class="p-3 text" method="POST" action="{% url 'add_rating' product_id=product.id %}">
                         {% csrf_token %}
                         {{ rating_form.as_p }}
-                        <button type="submit" class="btn btn-bg-blue">Submit</button>
+                        <button type="submit" class="btn btn-bg-blue" aria-label="Submit button">Submit</button>
                     </form>
                 </div>
                 {% endif %}
