@@ -3,7 +3,7 @@
 
 {% block page_header %}
 <div class="container header-container">
-    <div class="row overlay index">
+    <div class="row overlay index m-0">
         <div class="col">
         </div>
     </div>
@@ -12,27 +12,54 @@
 
 {% block content %}
 <div class="container content-container mb-5">
-    <div class="row m-0 "></div>
-    <div class="col-12 col-md-8 col-lg-6 my-3 p-4">
+    <div class="row m-0"></div>
+    <div class="row mt-5">
         <h2 class="display-4 text-white">
-            Nordic Threads, <br> Woven with Tradition
+            Nordic quality yarns for you
         </h2>
-        <p class="text text-white me-4">
-            Welcome to Knit & Co, where Nordic heritage comes to life through exquisite yarns and inspired
-            designs.</p>
-        <p class="text text-white me-4">
-            Our collection features the finest yarns produced sustainably in Norway, Sweden, Iceland,
-            Denmark, and Finland, crafted by skilled artisans and inspired by the region's natural beauty. Each
-            skein tells a story of tradition and craftsmanship, connecting you to the timeless spirit of the
-            North.
-        </p>
-        <p class="text text-white me-4">
-            At Knit&Co, shopping is seamless whether you're <a class="text-white" href="{% url 'account_login' %}">logged in</a> or not. <a class="text-white"
-                href="{% url 'account_signup' %}">Create an account</a> to store
-            personal info and track orders easily. Plus, registered users can <u>rate and comment on products</u>,
-            adding
-            valuable insights to our community. Start crafting your way with Knit&Co today!
-        </p>
+        <div class="col-12 col-md-8 lh-sm">
+            <p class="text fs-3 text-white me-4">
+                Providing yarns produced sustainably in the Nordic countries, crafted by skilled artisans.
+                Each skein tells a story of tradition and craftsmanship.</p>
+
+            {% if not user.is_authenticated %}
+                <p class="text fs-5 text-white me-4">
+                    <a class="text-white" href="{% url 'account_signup' %}">Register</a> or <a class="text-white"
+                        href="{% url 'account_login' %}">sign in</a> for more features.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <!--- Top performing products -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3 class="text-white">
+                From other knitters' project bags
+            </h3>
+
+            <div class="row mt-3 grid gap-4">
+                {% for product in products %}
+                {% if product.average_rating and product.average_rating >= 5 %}
+                    <div class="card gap-2" style="width: 18rem;">
+                        <a href="{% url 'product_detail' product.id %}"></a>
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid product-img-top-rated" alt="Image for {{ product.name }}">
+                        </a>
+                        <div class="z-3 position-absolute p-3">
+                            <p class="px-1 text-white">
+                                <i class="fa-solid fa-heart"></i> {{ product.average_rating|floatformat:2 }}
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-title text-black fs-5">{{ product.name }} | <small>{{ product.brand }}</small></p>
+                            <p class="card-text">{{ product.price }}€</p>
+                        </div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
+</div>
 {% endblock %}
+  

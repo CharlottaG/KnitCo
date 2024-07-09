@@ -39,7 +39,7 @@
                     <img class="card-img-top img-fluid product-img" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
                 </a>
-                <!-- For suerpusers to edit/delete products in shop -->
+                <!-- For superusers to edit/delete products in shop -->
                 <div>
                     {% if request.user.is_superuser %}
                     <small class="ml-3">

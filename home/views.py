@@ -2,12 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import SubscriptionForm
 from .models import NewsletterSubscriber
+from products.models import Product
 
 
 def index(request):
     """ Return to index page """
-       
-    return render(request, 'home/index.html')
+    # Get all products for template function displaying products with rating >=5
+    products = Product.objects.all()
+
+    context = {
+        'products': products
+    }
+    return render(request, 'home/index.html', context)
 
 def subscribe(request):
     if request.method == 'POST':

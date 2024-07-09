@@ -248,6 +248,15 @@ a {
     display: inline-block;
 }
 
+.product-img-top-rated {
+    height: 100% !important;
+    max-height: 300px !important;
+    overflow: hidden !important;
+    object-fit: cover !important;
+    object-position: center !important;
+
+}
+
 /*-------------------------------- Toast styling */
 .message-container {
     position: fixed;
