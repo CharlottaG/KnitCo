@@ -11,18 +11,13 @@ import stripe
 
 logger = logging.getLogger(__name__)
 
-from django.http import HttpResponse
-import logging
-
-
-logger = logging.getLogger(__name__)
 
 class StripeWH_Handler:
     """ Handle Stripe webhooks """
 
     def __init__(self, request):
         self.request = request
-    
+
     def handle_event(self, event):
         """ Handle unexpected webhook event """
 
@@ -34,7 +29,6 @@ class StripeWH_Handler:
             status=200
         )
 
-    
     def handle_payment_intent_succeeded(self, event):
         """ Handle webhook for payment intent succeeded from Stripe """
 
@@ -48,7 +42,7 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        billing_details = stripe_charge.billing_details 
+        billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)
 
@@ -68,15 +62,13 @@ class StripeWH_Handler:
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_town_or_city = shipping_details.address.city
                 profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
-                profile.default_county = shipping_details.address.state
                 profile.save()
 
         # Check if order exists, if not get it from the payment intent
         # Check 5 times if order exists or not before proceeding
         order_exists = False
-        attempt= 1
-        while attempt <=5:
+        attempt = 1
+        while attempt <= 5:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -100,8 +92,9 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
-             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Order already exists in database', status=200
+            return HttpResponse(
+                content=f'Webhook received: {event["type"]} | SUCCESS: Order already exists in database', 
+                status=200
                 )
         else:
             order = None
@@ -141,11 +134,10 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-           
+   
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Order created in webhook',
             status=200)
-
 
     def handle_payment_intent_payment_failed(self, event):
         """ Handle webhook for payment intent failed payment from Stripe """

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from dotenv import load_dotenv
+import json
 
 from pathlib import Path
 import dj_database_url
@@ -38,9 +39,9 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Import to format the JSON responses
 # ==============================
-import json
 
-# Set configuration parameter: return "https" URLs by setting secure=True  
+
+# Set configuration parameter: return "https" URLs by setting secure=True
 # ==============================
 config = cloudinary.config(secure=True)
 
@@ -127,7 +128,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.bag_contents',
             ],
-           'builtins': [
+            'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
             ]
@@ -187,7 +188,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net',"https://*.gitpod.io",  "https://*.herokuapp.com"
+    'https://8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net',
+            "https://*.gitpod.io",  "https://*.herokuapp.com"
 ]
 
 # Internationalization
@@ -221,7 +223,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-APPEND_SLASH=False
+APPEND_SLASH = False
 
 # Temporarily send email verification to console - REPLACE BEFORE DEPLOYMENT
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

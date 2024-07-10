@@ -3,8 +3,6 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category, SubCategory, Rating
 from .forms import RatingForm, ProductForm
-from django.http import HttpResponseRedirect
-from django.http import HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
 
 
@@ -15,8 +13,8 @@ def all_products(request):
     query = None
     categories = None
     subcategories = None
-    sort = request.GET.get('sort', 'brand')  
-    order = request.GET.get('order', 'asc')  
+    sort = request.GET.get('sort', 'brand')
+    order = request.GET.get('order', 'asc')
 
     if request.GET:
         if 'category' in request.GET:
@@ -34,11 +32,11 @@ def all_products(request):
             if not query:
                 messages.error(request, "It looks like you didn't weave any search terms into the box!")
                 return redirect(reverse('products'))
-            
+
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
-     # Add sorting
+    # Add sorting
     if sort == 'brand':
         ordering = 'brand' if order == 'asc' else '-brand'
     elif sort == 'name':
@@ -48,7 +46,7 @@ def all_products(request):
     else:
         ordering = 'brand'
 
-    products = products.order_by(ordering)       
+    products = products.order_by(ordering)
 
     context = {
         'products': products,
@@ -70,9 +68,10 @@ def product_detail(request, product_id):
     all_options = product.all_options()
 
     if request.user.is_authenticated:
-        user_has_rated = Rating.objects.filter(product=product, user=request.user).exists()
+        user_has_rated = Rating.objects.filter(product=product, 
+                user=request.user).exists()
     rating_form = RatingForm()
-    
+
     context = {
         'product': product,
         'all_options': all_options,
@@ -128,11 +127,11 @@ def edit_rating(request, rating_id):
             form = RatingForm(instance=rating)
 
             context = {
-            'product': rating.product,
-            'form': form,
-            'product_id' : rating.product.id,
-            #'rating_form': rating_form,
-        }
+                'product': rating.product,
+                'form': form,
+                'product_id' : rating.product.id,
+                #'rating_form': rating_form,
+            }
 
     return redirect('product_detail', context)
 
@@ -153,14 +152,15 @@ def delete_rating(request, rating_id):
         return redirect('product_detail', product_id=rating.product.id)
 
     return redirect('product_detail', product_id=rating.product.id)
-    
+
 
 # Store owner functionalities
 @login_required
 def add_product(request):
     """ Add products in webshop """
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have permission to do that, only store managers do.')
+        messages.error(request,
+                'You do not have permission to do that, only store managers do.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -168,12 +168,14 @@ def add_product(request):
         if add_product_form.is_valid():
             product = add_product_form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', kwargs={'product_id': product.id}))
+            return redirect(reverse('product_detail',
+                    kwargs={'product_id': product.id}))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request,
+                    'Failed to add product. Please ensure the form is valid.')
     else:
         add_product_form = ProductForm()
-    
+
     context = {
         'add_product_form': add_product_form,
     }
@@ -185,23 +187,27 @@ def add_product(request):
 def edit_product(request, product_id):
     """ Edit product in webshop """
     if not request.user.is_superuser:
-            messages.error(request, 'You do not have permission to do that, only store managers do.')
-            return redirect(reverse('home'))
+        messages.error(request,
+                'You do not have permission to do that, only store managers do.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
-        edit_product_form = ProductForm(request.POST, request.FILES, instance=product)
+        edit_product_form = ProductForm(request.POST, 
+                request.FILES, instance=product)
         if edit_product_form.is_valid():
             edit_product_form.save()
             messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', kwargs={'product_id': product.id}))
+            return redirect(reverse('product_detail', 
+                    kwargs={'product_id': product.id}))
         else:
-             messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request,
+                    'Failed to update product. Please ensure the form is valid.')
     else:
         edit_product_form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
-        
+
     context = {
         'edit_product_form': edit_product_form,
         'product': product,
@@ -215,7 +221,8 @@ def delete_product(request, product_id):
     """ Delete a product from webshop """
 
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have permission to do that, only store managers do.')
+        messages.error(request,
+                'You do not have permission to do that, only store managers do.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)

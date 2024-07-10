@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
 
-
 class Category(models.Model):
 
     class Meta:
@@ -23,7 +22,8 @@ class SubCategory(models.Model):
 
 
     name = models.CharField(max_length=254, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subcategories', default=1)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+            related_name='subcategories', default=1)
 
     def __str__(self):
         return self.name
@@ -32,7 +32,7 @@ class SubCategory(models.Model):
 class Brand(models.Model):
 
     name = models.CharField(max_length=254, unique=True)
-    website =  models.URLField(null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
     location = models.CharField(max_length=254, unique=True)
     description = models.TextField(null=True, blank=True)
 
@@ -43,9 +43,12 @@ class Brand(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=254, unique=True)
     description = models.TextField(blank=True, null=True)
-    category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.SET_NULL)
-    subcategory = models.ForeignKey('SubCategory', blank=True, null=True, on_delete=models.SET_NULL)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='products', default='')
+    category = models.ForeignKey('Category',
+            blank=True, null=True, on_delete=models.SET_NULL)
+    subcategory = models.ForeignKey('SubCategory',
+            blank=True, null=True, on_delete=models.SET_NULL)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE,
+            related_name='products', default='')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = CloudinaryField('image', null=True, blank=True)
     color = models.CharField(max_length=50, null=True, blank=True)
@@ -72,7 +75,7 @@ class Product(models.Model):
         if ratings.exists():
             return ratings.aggregate(models.Avg('score'))['score__avg']
         return None
-    
+
     # Get all options for the same product
     def all_options(self):
         return Product.objects.filter(
@@ -82,13 +85,13 @@ class Product(models.Model):
 
 
 class Rating(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ratings')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+            related_name='ratings')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.DecimalField(max_digits=1, decimal_places=0, null=True, blank=True)
+    score = models.DecimalField(max_digits=1, decimal_places=0,
+            null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.product.name} - {self.score} by {self.user.username}'
-
-

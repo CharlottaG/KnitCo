@@ -7,13 +7,14 @@ from products.models import Product
 
 def index(request):
     """ Return to index page """
-    # Get all products for template function displaying products with rating >=5
+    # Get products for display function for products with rating >=5
     products = Product.objects.all()
 
     context = {
         'products': products
     }
     return render(request, 'home/index.html', context)
+
 
 def subscribe(request):
     if request.method == 'POST':
@@ -26,22 +27,27 @@ def subscribe(request):
 
             if existing_subscription:
                 if user and user.email.strip().lower() == email:
-                    # Scenario 1: Logged-in user's email with an existing subscription
+                    # Logged-in user's email with an existing subscription
                     messages.info(request, 'You are already a subscriber!')
                 else:
-                    # Scenario 3: Email not same as logged-in user, but with an existing subscription
-                    messages.error(request, 'This email is already subscribed. Please provide a different email address.')
+                    # Email not same as logged-in user, but with an existing subscription
+                    messages.error(request,
+                                'This email is already subscribed. Please provide a different email address.')
             else:
                 # No existing subscription found, create a new one
-                new_subscription = NewsletterSubscriber.objects.create(email=email, user=user if user and user.email.strip().lower() == email else None)
+                new_subscription = NewsletterSubscriber.objects.create(email=email,
+                        user=user if user and user.email.strip().lower() == email else None)
 
                 if user and user.email.strip().lower() == email:
-                    # Scenario 2: Logged-in user's email without a subscription
-                    messages.success(request, 'Excellent, you will soon get our newsletter with more inspiration!')
+                    # Logged-in user's email without a subscription
+                    messages.success(request,
+                                'Excellent, you will soon get our newsletter with more inspiration!')
                 else:
-                    # Scenario 4: Different email without a subscription
-                    messages.success(request, 'Thank you. You have successfully subscribed to the Knit&Co newsletter!')
-                    return render(request, 'home/thank_you.html')  # Show thank you page for unregistered users
+                    # Different email without a subscription
+                    messages.success(request,
+                                'Thank you. You have successfully subscribed to the Knit&Co newsletter!')
+                    return render(request,
+                                'home/thank_you.html')
 
         else:
             # Handle form errors

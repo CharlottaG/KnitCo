@@ -6,7 +6,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number',
-                  'street_address', 'town_or_city', 
+                  'street_address', 'town_or_city',
                   'postcode', 'country', )
 
     def __init__(self, *args, **kwargs):
@@ -34,4 +34,3 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
-            

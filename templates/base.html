@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="meta name="description" content="Knit&Co is a family-owned yarn store in Stockholm, Sweden, proudly featuring Nordic-made products. Our goal is to preserve local traditions and craftsmanship. Enjoy easy shopping with fast, secure delivery.">
+  <meta name="description" content="description" content="Knit&Co is a family-owned yarn store in Stockholm, Sweden, proudly featuring Nordic-made products. Our goal is to preserve local traditions and craftsmanship. Enjoy easy shopping with fast, secure delivery.">
   <meta name="robots" content="index,follow">
   <meta name="googlebot" content="index,follow">
 
@@ -91,43 +91,47 @@
       <!-- Only on large screens-->
       <div class="d-none d-lg-flex col-3 justify-content-end">
         <!-- Account links -->
-        <li class="list-inline-item dropdown">
-          <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="text-center">
-              <div><i class="fa-solid fa-user"></i></div>
-              <p class="my-0">{% if request.user.is_authenticated %}My account{% else %}Login{% endif %}</p>
-            </div>
-          </a>
-          <ul class="dropdown-menu border-0" aria-labelledby="user-options">
-            {% if request.user.is_authenticated %}
-            {% if request.user.is_superuser %}
-            <li><a href="{% url 'add_product' %}" class="dropdown-item">Manage shop</a></li>
-            {% endif %}
-            <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile</a></li>
-            <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
-            {% else %}
-            <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
-            <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
-            {% endif %}
-          </ul>
-        </li>
+        <ul>
+          <li class="list-inline-item dropdown">
+            <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="text-center">
+                <div><i class="fa-solid fa-user"></i></div>
+                <p class="my-0">{% if request.user.is_authenticated %}My account{% else %}Login{% endif %}</p>
+              </div>
+            </a>
+            <ul class="dropdown-menu border-0" aria-labelledby="user-options">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <li><a href="{% url 'add_product' %}" class="dropdown-item">Manage shop</a></li>
+              {% endif %}
+              <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile</a></li>
+              <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
+              {% else %}
+              <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
+              <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
+              {% endif %}
+            </ul>
+          </li>
+        </ul>
 
         <!-- Shopping bag -->
-        <li class="list-inline-item pr-2">
-          <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-            href="{% url 'view_bag' %}">
-            <div class="text-center">
-              <div><i class="fa-solid fa-bag-shopping"></i></div>
-              <p class="my-0">
-                {% if total %}
-                {{ total|floatformat:2 }} €
-                {% else %}
-                0.00 €
-                {% endif %}
-              </p>
-            </div>
-          </a>
-        </li>
+        <ul>
+          <li class="list-inline-item pr-2">
+            <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+              href="{% url 'view_bag' %}">
+              <div class="text-center">
+                <div><i class="fa-solid fa-bag-shopping"></i></div>
+                <p class="my-0">
+                  {% if total %}
+                  {{ total|floatformat:2 }} €
+                  {% else %}
+                  0.00 €
+                  {% endif %}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
 
       </div>
     </div>
@@ -163,7 +167,7 @@
         <p class="fs-4">About us</p>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a class="footer-nav-link p-0" a href="{% url 'our_story' %}">Our story</a>
+            <a class="footer-nav-link p-0" href="{% url 'our_story' %}">Our story</a>
           </li>
           <li class="nav-item mb-2">
             <a class="footer-nav-link p-0" href="{% url 'sustainability' %}">Sustainability</a>
@@ -195,7 +199,7 @@
           <p class="text d-none d-md-block">Monthly thread about the wonderful world of Nordic yarn and patterns!</p>
           <div class="d-flex w-100 gap-2">
             <label for="newsletter" class="visually-hidden">Email address</label>
-            <input type="email" name="email" id="newsletter" class="form-control" placeholder="Email address" aria-labelledby="Email address" required>
+            <input type="email" name="email" id="newsletter" class="form-control" placeholder="Email address" aria-label="Email address" required>
             <button class="btn bg-light-green" type="submit" aria-label="Subscribe button">Subscribe</button>
           </div>
         </form>

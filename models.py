@@ -92,7 +92,8 @@ class AuthUserGroups(models.Model):
 class AuthUserUserPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission,
+            models.DO_NOTHING)
 
     class Meta:
         managed = False
@@ -106,9 +107,11 @@ class CheckoutOrder(models.Model):
     email = models.CharField(max_length=254)
     phone_number = models.CharField(max_length=20)
     country = models.CharField(max_length=40)
-    postcode = models.CharField(max_length=20, blank=True, null=True)
+    postcode = models.CharField(max_length=20,
+            blank=True, null=True)
     town_or_city = models.CharField(max_length=40)
-    street_address2 = models.CharField(max_length=80, blank=True, null=True)
+    street_address2 = models.CharField(max_length=80,
+            blank=True, null=True)
     county = models.CharField(max_length=80, blank=True, null=True)
     date = models.DateTimeField()
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2)
@@ -116,7 +119,8 @@ class CheckoutOrder(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2)
     original_bag = models.TextField()
     stripe_pid = models.CharField(max_length=254)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser,
+            models.DO_NOTHING, blank=True, null=True)
     street_address = models.CharField(max_length=80)
     full_name = models.CharField(max_length=50)
 
@@ -143,7 +147,8 @@ class DjangoAdminLog(models.Model):
     object_repr = models.CharField(max_length=200)
     action_flag = models.SmallIntegerField()
     change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    content_type = models.ForeignKey('DjangoContentType',
+            models.DO_NOTHING, blank=True, null=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
 
     class Meta:
@@ -187,7 +192,8 @@ class HomeNewslettersubscriber(models.Model):
     email = models.CharField(unique=True, max_length=254)
     name = models.CharField(max_length=50, blank=True, null=True)
     date_subscribed = models.DateTimeField()
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser,
+            models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -221,8 +227,10 @@ class ProductsProduct(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.CharField(max_length=255, blank=True, null=True)
-    category = models.ForeignKey(ProductsCategory, models.DO_NOTHING, blank=True, null=True)
-    subcategory = models.ForeignKey('ProductsSubcategory', models.DO_NOTHING, blank=True, null=True)
+    category = models.ForeignKey(ProductsCategory,
+            models.DO_NOTHING, blank=True, null=True)
+    subcategory = models.ForeignKey('ProductsSubcategory',
+            models.DO_NOTHING, blank=True, null=True)
     brand = models.ForeignKey(ProductsBrand, models.DO_NOTHING)
     color = models.CharField(max_length=50, blank=True, null=True)
     size = models.CharField(max_length=50, blank=True, null=True)
@@ -235,7 +243,8 @@ class ProductsProduct(models.Model):
 
 class ProductsRating(models.Model):
     id = models.BigAutoField(primary_key=True)
-    score = models.DecimalField(max_digits=1, decimal_places=0, blank=True, null=True)
+    score = models.DecimalField(max_digits=1,
+            decimal_places=0, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
     created_at = models.DateField()
     product = models.ForeignKey(ProductsProduct, models.DO_NOTHING)
@@ -259,12 +268,18 @@ class ProductsSubcategory(models.Model):
 class ProfilesUserprofile(models.Model):
     user = models.OneToOneField(AuthUser, models.DO_NOTHING)
     default_email = models.CharField(max_length=254)
-    default_phone_number = models.CharField(max_length=20, blank=True, null=True)
-    default_street_address = models.CharField(max_length=80, blank=True, null=True)
-    default_postcode = models.CharField(max_length=20, blank=True, null=True)
-    default_town_or_city = models.CharField(max_length=40, blank=True, null=True)
-    default_country = models.CharField(max_length=40, blank=True, null=True)
-    default_full_name = models.CharField(max_length=50, blank=True, null=True)
+    default_phone_number = models.CharField(max_length=20,
+            blank=True, null=True)
+    default_street_address = models.CharField(max_length=80,
+            blank=True, null=True)
+    default_postcode = models.CharField(max_length=20,
+            blank=True, null=True)
+    default_town_or_city = models.CharField(max_length=40,
+            blank=True, null=True)
+    default_country = models.CharField(max_length=40,
+            blank=True, null=True)
+    default_full_name = models.CharField(max_length=50,
+            blank=True, null=True)
 
     class Meta:
         managed = False
@@ -303,8 +318,10 @@ class SocialaccountSocialtoken(models.Model):
     token = models.TextField()
     token_secret = models.TextField()
     expires_at = models.DateTimeField(blank=True, null=True)
-    account = models.ForeignKey(SocialaccountSocialaccount, models.DO_NOTHING)
-    app = models.ForeignKey(SocialaccountSocialapp, models.DO_NOTHING, blank=True, null=True)
+    account = models.ForeignKey(SocialaccountSocialaccount,
+            models.DO_NOTHING)
+    app = models.ForeignKey(SocialaccountSocialapp,
+            models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False

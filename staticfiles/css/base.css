@@ -21,6 +21,13 @@ h5 {
 a {
     color:#122a45 !important;
 }
+
+ul, li::marker {
+    list-style: disc outside none;
+    display: list-item;
+    margin-left: 1em;
+}
+
 /*-------------------------------- Colors */
 
 .bg-blue {
@@ -337,7 +344,6 @@ a {
     box-sizing: border-box;
     border-radius: 0px;
   }
-
 
 /*-------------------------------- Account pages styling */
 .container-account {
