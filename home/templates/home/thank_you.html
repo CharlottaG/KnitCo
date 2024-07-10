@@ -8,7 +8,7 @@
         </div>
     </div>
 </div>
-{% block extra_title %} | Thank you {% endblock %}
+{% block extra_title %} | Subscribe {% endblock %}
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col p-0">
-                <h2 class="txt-blue text-uppercase p-1">Welcome to our newsletter</h2>
+                <h2 class="txt-blue p-1">Welcome to our newsletter</h2>
                 <h3>There is joy in every stitch</h3>
                 <hr class="bg-blue mb-4">
             </div>
@@ -30,12 +30,12 @@
                 save your shipping information and track your order history effortlessly. Be inspired by beautiful,
                 exclusive patterns from our talented Nordic designers, and enjoy a seamless, customized shopping
                 experience.</p>
-            {% if user.is_autenticated %}
-            <p><em>The Knit & Co Team</em></p>
+            {% if user.is_authenticated %}
+                <p><em>The Knit & Co Team</em></p>
             {%else%}
-            <p><a href="{% url 'account_signup' %}">Register</a> for an account to join our creative community.</p>
-            <p><em>The Knit & Co Team</em></p>
-            {%end if%}            
+                <p><a href="{% url 'account_signup' %}">Register</a> for an account to join our creative community.</p>
+                <p><em>The Knit & Co Team</em></p>
+            {% endif%}
         </div>
     </div>
 </div>

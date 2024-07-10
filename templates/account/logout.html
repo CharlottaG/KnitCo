@@ -60,7 +60,7 @@
         <form class="login text rounded" method="POST" action="{% url 'account_logout' %}">
             {% csrf_token %}
             {{ redirect_field }}
-            <button class="btn btn-signup btn-dark right" type="submit">{% trans "Sign Out" %}</button>
+            <button class="btn btn-signup btn-bg-grey-green right" type="submit">{% trans "Sign Out" %}</button>
         </form>
     </div>
 </div>

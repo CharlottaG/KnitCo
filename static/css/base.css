@@ -151,6 +151,12 @@ ul::marker, li::marker {
     justify-content: center;
   }
 
+.btn-bg-grey-green {
+    background-color: #729b8c !important;
+    color: black !important;
+    border-radius: 5px;
+}
+
 /*-------------------------------- Link styling */
 .nav-link, 
 .nav-link:visited {

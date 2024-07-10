@@ -66,7 +66,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-charlottag-knitco-llb449kz7qq.ws.codeinstitute-ide.net', 'knitco-7d640c861cc6.herokuapp.com']
 
@@ -149,12 +149,27 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# Temporarily send email verification to console - REPLACE BEFORE DEPLOYMENT
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#if 'DEVELOPMENT' in os.environ:
+#    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#    DEFAULT_FROM_EMAIL = 'knitco@example.com'
+#else:
+#    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#    EMAIL_USE_TLS = True
+#    EMAIL_PORT = 587
+#    EMAIL_HOST = 'smtp.gmail.com'
+#    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+#    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+#    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 WSGI_APPLICATION = 'knitco.wsgi.application'
 
@@ -224,18 +239,3 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = False
-
-# Temporarily send email verification to console - REPLACE BEFORE DEPLOYMENT
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-#if 'DEVELOPMENT' in os.environ:
-#    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#    DEFAULT_FROM_EMAIL = 'knitco@example.com'
-#else:
-#    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#    EMAIL_USE_TLS = True
-#    EMAIL_PORT = 587
-#    EMAIL_HOST = 'smtp.gmail.com'
-#    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-#    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-#    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')

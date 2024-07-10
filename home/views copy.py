@@ -54,9 +54,14 @@ def subscribe(request):
             for field, errors in subscribe_form.errors.items():
                 for error in errors:
                     messages.error(request, f"{error}")
+    else:
+        subscribe_form = SubscriptionForm()
 
-    #return redirect(request.META.get('HTTP_REFERER'))
-    return render(request,'home/thank_you.html')
+    context = {
+        'subscribe_form': subscribe_form
+    }
+
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 def thank_you(request):

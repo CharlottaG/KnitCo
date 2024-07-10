@@ -210,6 +210,63 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 # Testing phase
 - Manual testing
 
+|Feature | Expected Outcome | Result| 
+|--|--|--|--|--| 
+| **Navbar** 
+| Logo   |  Go to home page | Pass | 
+| All products link |  Go to an overview of all products | Pass | 
+| Dropdown menus |  Show submenus | Pass | 
+| Category submenu links|  Take user to a selection of products based on sub categories | Pass | 
+| Search function |  Show what products are being search for | Pass | 
+| Search icon |  Show hidden search field on mobile| Pass| 
+| Login dropdown |  Show submenu: Register/Login | Pass| 
+| Register link |  Take user to registration page | Pass| 
+| Form at registration page |  User can register for an account, confirm email and log in  | Pass| 
+| Login link |  Take user to a login page | Pass| 
+| Form at login page |  User can sign in, show toast message, change Login to My account  | Pass|  
+| My account |  Show submenu: My profile/Logout | Pass| 
+| Logout|  Takes user to a logout page and ask user to confirm that they want to logout | Pass| 
+| My profile|  Takes user to their profile page | Pass| 
+| **Profile page**| 
+| Update profile|  Show form to add/update user details (email is not editable) | Pass|  
+| Update profile|  Add user details (email is not editable), show toast message | Pass| 
+| Order history|  Show clickable list of previous orders (if exits), when clicked they take the user to the checkout success page with toast message that it is an old overview| Pass| 
+| Rated products|  Show clickable list of products the user has rated/reviewed, when clicked they take the user to the product detail page | Pass| 
+| **Product overview page**| 
+| Product image|  Takes the user to the product detail page | Pass| 
+| + buttons|  Increase the number of items to add to bag | Pass| 
+| - buttons|  Decrease the number of items to add to bag, stops at 1 | Pass| 
+|Add to bag|  Adds the selected number of items in the shopping bag, displays a toast message | Pass| 
+|Continue shopping|  Takes the user to the product overview page | Pass| 
+|Available options|  Shows clickable options of the same product| Pass| 
+|Reviews|  Collapsed section, displays when user clicks| Pass| 
+|Add rating/review|  Visible for logged in users that have not yet rated/reviewed that product, rating can only be between 1-5 (validation message if not), when saved displays a success toast message, updates average rating on product image| Pass| 
+|Edit rating/review|  Visible for users that provided the rating/review that  product, opens form to edit when clicked| Pass| 
+|Delete rating/review|  Visible for users that provided the rating/review that  product, deleted rating/review| Pass| 
+|Log in to give rating/review|  Visible for non-logged in users| Pass| 
+|Log in to give rating/review|  Visible for non-logged in users| Pass|
+| **Shopping bag**|  
+|Bag icon| Update order total when user puts items in bag, takes user to shopping bag page when clicked| Pass|
+|Shopping bag page| If empty shows a button back to products overview, else displays the shopping bag items and order info| Pass|
+| + buttons|  Increase the number of items in the bag | Pass| 
+| - buttons|  Decrease the number of items in the bag, stops at 1 | Pass| 
+|Update|  Updates the sub total and order total values, displays toast message with info of items in bag | Pass| 
+|Delete| Removes the item(-s) from bag, updates order value and displays toast message that item is removed | Pass| 
+|Delete| Removes the item(-s) from bag | Pass| 
+|Continue shopping|  Takes the user to the product overview page | Pass| 
+|Secure checkout|  Takes the user to the checkout page with order summary and shipping form | Pass| 
+| **Checkout page**|  
+|Order form| Displays a summary of items and cost| Pass|
+|Shipping form| If user has saved their profile info the form is pre-populated, if not it is empty and user can fill in their info, validates that required fields are filled out| Pass|
+|Card payment|Takes users card info, validates the input| Pass|
+|Edit bag|Takes users back to the order bag | Pass|
+|Complete order|Sends user to checkout success page with order summary, send payment to Stripe and order to database, displays toast success message or error if failure (order is not processed and user stays on page) | Pass|
+| **Footer**|  
+|About us links|Takes user to the designated page| Pass|
+|Policy links|Takes user to the designated page, if user clicks the email on those pages opens up a mail client to send an email| Pass|
+|Subscribe to newsletter|When user clicks submit, validates if user already have a subscription or not, displays different toast message depending on situation | Pass|
+
+
 # Validation
 - CSS (https://jigsaw.w3.org/css-validator/validator)
   
