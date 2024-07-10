@@ -33,8 +33,12 @@ def all_products(request):
                 messages.error(request, "It looks like you didn't weave any search terms into the box!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query) | \
+                      Q(brand__name__icontains=query) | \
+                      Q(category__name__icontains=query) | \
+                      Q(subcategory__name__icontains=query)
             products = products.filter(queries)
+
 
     # Add sorting
     if sort == 'brand':

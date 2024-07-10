@@ -45,7 +45,7 @@ def subscribe(request):
                 else:
                     # Different email without a subscription
                     messages.success(request,
-                                'Thank you. You have successfully subscribed to the Knit&Co newsletter!')
+                                'Thank you. You have successfully subscribed to the Knit & Co newsletter!')
                     return render(request,
                                 'home/thank_you.html')
 

@@ -135,7 +135,6 @@
                     </div>
                 </div>
                 {% endif %}
-
                 <!-- Show reviews -->
                 {% if product.ratings.exists %}
                 <h4>Reviews</h4>
@@ -166,7 +165,6 @@
                             <p class="px-1 text-black">
                                 <i class="fa-solid fa-heart txt-grey-green"></i> {{ rating.score|floatformat:2 }}
                             </p>
-                            </div>
                             <p class="m-0 px-2" id="rating-comment-{{rating.id}}">{{ rating.comment }}</p>
                             {% if rating.user == request.user %}
                             <button class="btn btn-sm bg-mid-blue mx-1 btn-edit"
@@ -196,21 +194,18 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-
                 <!-- Add rating and review -->
                 {% if request.user.is_authenticated and not user_has_rated %}
-                <div class="rowrating-form border border-1 my-4">
-                    <p class="p-3 text">Rate this product</p>
+                <div class="row rating-form border border-1 my-4">
+                    <p class="p-3 text fs-4">Rate this product</p>
                     <form class="p-3 text" method="POST" action="{% url 'add_rating' product_id=product.id %}">
-                        
                         {% csrf_token %}
-                    <fieldset class="text">
-                        <legend class="mt-1 txt-blue small fw-bold">Rating (1-5)</legend>
-                        <input type="number" class="form-control" name="score" id="score-{{ rating.id }}" value="{{ rating.score }}" min="1" max="5" step="1">
-                    <legend class="mt-3 txt-blue small fw-bold">Review</legend>
-                        {{rating_form.comment | as_crispy_field}}
-                    </fieldset>
-                    
+                        <fieldset class="text">
+                            <legend class="mt-1 txt-blue small fw-bold">Rating (1-5)</legend>
+                            <input type="number" class="form-control" name="score" id="score-{{ rating.id }}" value="{{ rating.score }}" min="1" max="5" step="1">
+                        <legend class="mt-3 txt-blue small fw-bold">Review</legend>
+                            {{rating_form.comment | as_crispy_field}}
+                        </fieldset>
                         <button type="submit" class="btn btn-bg-blue mt-2 rounded-0" aria-label="Submit button">Submit</button>
                     </form>
                 </div>

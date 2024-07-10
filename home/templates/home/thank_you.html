@@ -30,9 +30,12 @@
                 save your shipping information and track your order history effortlessly. Be inspired by beautiful,
                 exclusive patterns from our talented Nordic designers, and enjoy a seamless, customized shopping
                 experience.</p>
+            {% if user.is_autenticated %}
+            <p><em>The Knit & Co Team</em></p>
+            {%else%}
             <p><a href="{% url 'account_signup' %}">Register</a> for an account to join our creative community.</p>
-
-            <p><em>The Knit&Co Team</em></p>
+            <p><em>The Knit & Co Team</em></p>
+            {%end if%}            
         </div>
     </div>
 </div>

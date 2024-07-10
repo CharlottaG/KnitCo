@@ -1,16 +1,16 @@
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/2b0a726e-e1e8-4068-9688-35fe6254dc0a)
 
-Welcome to Knit&Co, a B2C e-commerce store specializing in yarn, needles, and related products sourced from Nordic producers. At Knit&Co, our goal is to ensure a seamless user experience where users can focus on discovering the perfect yarn for their next project, without navigating the complexities of an online shopping platform.
+Welcome to Knit & Co, a B2C e-commerce store specializing in yarn, needles, and related products sourced from Nordic producers. At Knit & Co, our goal is to ensure a seamless user experience where users can focus on discovering the perfect yarn for their next project, without navigating the complexities of an online shopping platform.
 
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/df09d5f5-7271-4be5-878c-94e4cc85a9bf)
 
 
-### [Link to Knit&Co](https://knitco-7d640c861cc6.herokuapp.com/)
+### [Link to Knit & Co](https://knitco-7d640c861cc6.herokuapp.com/)
 
 
 # Overview
 
-Knit&Co is an online yarn store dedicated to promoting and preserving Nordic knitting traditions by offering high-quality yarn from Nordic producers. Our mission is to ensure that the art of Nordic knitting and the knowledge of producing yarn from Nordic fibers are kept alive for future generations. We carefully select our suppliers based on fair trade principles and sustainability, providing only natural fiber yarns. This means our customers can focus on finding the perfect yarn for their projects without worrying about unsustainable or low-quality synthetic fibers. Knit&Co offers a secure shopping experience with Stripe payment methods and....
+Knit & Co is an online yarn store dedicated to promoting and preserving Nordic knitting traditions by offering high-quality yarn from Nordic producers. Our mission is to ensure that the art of Nordic knitting and the knowledge of producing yarn from Nordic fibers are kept alive for future generations. We carefully select our suppliers based on fair trade principles and sustainability, providing only natural fiber yarns. This means our customers can focus on finding the perfect yarn for their projects without worrying about unsustainable or low-quality synthetic fibers. Knit & Co offers a secure shopping experience with Stripe payment methods and....
 
 # Go to Market Plan
 
@@ -41,13 +41,13 @@ Knit&Co is an online yarn store dedicated to promoting and preserving Nordic kni
 - **Online Community**: Foster a sense of community through forums, virtual knitting circles, and user-generated content, encouraging customers to share their projects and experiences.
 - **Promotions and Discounts**: Offer introductory discounts, loyalty rewards, and seasonal promotions to attract and retain customers.
 
-By focusing on these strategies, Knit&Co aims to build a strong, loyal customer base and establish itself as a trusted source for high-quality, sustainable yarns that celebrate and preserve Nordic knitting traditions.
+By focusing on these strategies, Knit & Co aims to build a strong, loyal customer base and establish itself as a trusted source for high-quality, sustainable yarns that celebrate and preserve Nordic knitting traditions.
 
   
 # Design phase
 ## User stories
 
-Priorities for the first release of the Knit&Co store:
+Priorities for the first release of the Knit & Co store:
 
 **Must have** (Completed for this release)
 - As a user, I want to be able to receive an order confirmation email so that I have a record of my purchase.
@@ -77,7 +77,7 @@ Priorities for the first release of the Knit&Co store:
 
 ## User Experience (UX)
 
-At Knit&Co, we prioritize a seamless and enjoyable user experience throughout your shopping journey. Our UX design not only focuses on ease of use but also adheres to accessibility standards and guidelines to ensure everyone can navigate and interact with our website effectively. 
+At Knit & Co, we prioritize a seamless and enjoyable user experience throughout your shopping journey. Our UX design not only focuses on ease of use but also adheres to accessibility standards and guidelines to ensure everyone can navigate and interact with our website effectively. 
 
 ### UX Design
 - **Smooth Checkout Process**: Our checkout flow ensures a hassle-free experience with pre-populated order information, reducing the time and effort required to complete a purchase.
