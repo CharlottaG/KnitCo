@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    height:100%;
+    height: calc(100vh - 2000px);
     color: #555;
     font-family: "Ysabeau SC", sans-serif !important;
 }
@@ -66,6 +66,7 @@ a {
 /*-------------------------------- Text styling */
 .text {
     font-family: "Teachers", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
 }
@@ -86,6 +87,7 @@ a {
 .txt-grey-green {
     color: #729b8c
 }
+
 
 .description {
     font-family: "Teachers", sans-serif;
@@ -117,13 +119,6 @@ a {
     font-family: "Teachers", sans-serif;
     font-size: 1rem;
     font-weight: 100;
-    font-style: normal;
-}
-
-.productname {
-    font-family: "Ysabeau SC", sans-serif !important;
-    font-size: 1.1rem;
-    font-weight: 300;
     font-style: normal;
 }
 
@@ -189,7 +184,7 @@ a {
 .sorting-item {
     color: #122a45 !important;
     text-transform: uppercase !important;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .social {
@@ -333,11 +328,6 @@ a {
     border: 1px solid #555;
 }
 
-.form-control {
-    box-sizing: border-box;
-    border-radius: 0px;
-  }
-
 
 /*-------------------------------- Account pages styling */
 .container-account {
@@ -350,27 +340,22 @@ a {
 
 /*--------------------------------- Media queries */
 /* Laptop */
-@media screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) {
     .element {
         height: calc(100vh - 2000px);
     }
 }
 
 /* Tablet */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
     .element {
         height: calc(100vh - 1000px);
     }
 }
 
 /* Mobile */
-@media screen and (min-width: 300px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .element {
         height: calc(100vh - 500px);
     }
-    .content-container {
-        margin-top: 280px;
-    }
 }
-
-

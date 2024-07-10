@@ -51,14 +51,15 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-8">
+            <div class="col-sm-12 col-md-6">
                 <!-- Product details -->
                 <div class="row">
                     <div class="col-8">
-                        <h2 class="text-black text-align-">{{ product.name }} | <small>{{ product.brand }}</small></h2>
+                        <h2 class="text-black text-align productname mb-0">{{ product.name }}</h2>
+                        <p class="p-0">{{ product.brand }}</p>
                     </div>
                     <div class="col-4">
-                        <p class="fs-5 text-end">{{ product.price }}€</p>
+                        <p class="fs-6 text-end px-0">{{ product.price }}€</p>
                     </div>
                     <hr>
                 </div>
@@ -70,7 +71,7 @@
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="d-flex-col justify-content-between">
-                            <div class="col-6">
+                            <div class="col-12 col-lg-8">
                                 <p class="mt-3 text">Quantity:</p>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -102,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6 d-flex justify-content-between">
+                            <div class="col-12 col-lg-8 d-flex justify-content-between">
                                 <a href="{% url 'products' %}"
                                     class="btn btn-bg-blue btn-sm rounded-0 mt-1 mb-3 my-1 border-0">
                                     <span class="text-uppercase">Continue Shopping</span>
@@ -204,13 +205,13 @@
                         
                         {% csrf_token %}
                     <fieldset class="text">
-                        <legend class="mt-1 txt-blue">Rating (1-5)</legend>
+                        <legend class="mt-1 txt-blue small fw-bold">Rating (1-5)</legend>
                         <input type="number" class="form-control" name="score" id="score-{{ rating.id }}" value="{{ rating.score }}" min="1" max="5" step="1">
-                    <legend class="mt-1 txt-blue">Review</legend>
+                    <legend class="mt-3 txt-blue small fw-bold">Review</legend>
                         {{rating_form.comment | as_crispy_field}}
                     </fieldset>
                     
-                        <button type="submit" class="btn btn-bg-blue" aria-label="Submit button">Submit</button>
+                        <button type="submit" class="btn btn-bg-blue mt-2 rounded-0" aria-label="Submit button">Submit</button>
                     </form>
                 </div>
                 {% endif %}

@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    height: calc(100vh - 2000px);
+    height:100%;
     color: #555;
     font-family: "Ysabeau SC", sans-serif !important;
 }
@@ -66,7 +66,6 @@ a {
 /*-------------------------------- Text styling */
 .text {
     font-family: "Teachers", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
 }
@@ -87,7 +86,6 @@ a {
 .txt-grey-green {
     color: #729b8c
 }
-
 
 .description {
     font-family: "Teachers", sans-serif;
@@ -119,6 +117,13 @@ a {
     font-family: "Teachers", sans-serif;
     font-size: 1rem;
     font-weight: 100;
+    font-style: normal;
+}
+
+.productname {
+    font-family: "Ysabeau SC", sans-serif !important;
+    font-size: 1.1rem;
+    font-weight: 300;
     font-style: normal;
 }
 
@@ -184,7 +189,7 @@ a {
 .sorting-item {
     color: #122a45 !important;
     text-transform: uppercase !important;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .social {
@@ -206,7 +211,6 @@ a {
 	background: white;
 	z-index: -1;
 }
-
 
 .our-story {
     background: -webkit-linear-gradient(rgba(164, 208, 133, 0.4), rgba(18, 42, 69, 0.4)), url('/static/images/our_story.webp') no-repeat center center fixed;
@@ -293,6 +297,47 @@ a {
     object-position: center !important;
     display: block !important; 
 }
+/*-------------------------------- Stripe */
+
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #a6a6a6 !important;
+  border-radius: 0px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #555;
+}
+
+.stripe-style-input::placeholder {
+    color: #122a45;
+}
+
+/*-------------------------------- Form styling */
+
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+}
+
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #555;
+}
+
+.form-control {
+    box-sizing: border-box;
+    border-radius: 0px;
+  }
+
 
 /*-------------------------------- Account pages styling */
 .container-account {
@@ -305,22 +350,27 @@ a {
 
 /*--------------------------------- Media queries */
 /* Laptop */
-@media only screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .element {
         height: calc(100vh - 2000px);
     }
 }
 
 /* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     .element {
         height: calc(100vh - 1000px);
     }
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media screen and (min-width: 300px) and (max-width: 767px) {
     .element {
         height: calc(100vh - 500px);
     }
+    .content-container {
+        margin-top: 280px;
+    }
 }
+
+
