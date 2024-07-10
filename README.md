@@ -210,6 +210,12 @@ At Knit&Co, we prioritize a seamless and enjoyable user experience throughout yo
 # Testing phase
 - Manual testing
 
+# Validation
+- CSS (https://jigsaw.w3.org/css-validator/validator)
+  
+  ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/1b615185-c64f-4a45-ae15-552d84c84e4b)
+
+
 # Deployment
 - Heroku instructions
 
