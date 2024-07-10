@@ -1,7 +1,6 @@
 
 <div class="d-flex align-items-center">
   <!-- Open search bar -->
-  <ul>
     <li class="list-inline-item">
       <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown" aria-expanded="false">
         <div class="text-center">
@@ -24,10 +23,7 @@
         </form>
       </div>
     </li>
-  </ul>
-
   <!-- Open My account dropdown menu -->
-  <ul>
     <li class="list-inline-item dropdown">
     <a class="nav-link d-block d-lg-none" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
       <div class="text-center">
@@ -47,10 +43,7 @@
       {% endif %}
     </ul>
     </li>
-  </ul>
-
   <!-- Access shoppingbag -->
-  <ul>
     <li class="list-inline-item">
       <a class="{% if total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'view_bag' %}">
         <div class="text-center">
@@ -65,5 +58,4 @@
         </div>
       </a>
     </li>
-  </ul>
 </div>

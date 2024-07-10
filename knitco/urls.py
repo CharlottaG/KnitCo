@@ -14,4 +14,5 @@ urlpatterns = [
     path('profiles/', include('profiles.urls')),
 ]
 
+# Custom 404 handler
 handler404 = 'knitco.views.handler404'

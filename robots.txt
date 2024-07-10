@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /checkout/
+Disallow: /profiles/
+
+Sitemap: https://knitco-7d640c861cc6.herokuapp.com/sitemap.xml

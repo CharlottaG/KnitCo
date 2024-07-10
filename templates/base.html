@@ -89,9 +89,8 @@
       </div>
 
       <!-- Only on large screens-->
-      <div class="d-none d-lg-flex col-3 justify-content-end">
+      <div class="d-none d-lg-flex col-3 justify-content-end me-lg-5">
         <!-- Account links -->
-        <ul>
           <li class="list-inline-item dropdown">
             <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="text-center">
@@ -112,10 +111,7 @@
               {% endif %}
             </ul>
           </li>
-        </ul>
-
         <!-- Shopping bag -->
-        <ul>
           <li class="list-inline-item pr-2">
             <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
               href="{% url 'view_bag' %}">
@@ -131,8 +127,6 @@
               </div>
             </a>
           </li>
-        </ul>
-
       </div>
     </div>
   </header>
@@ -188,7 +182,7 @@
       <div class="col-12 col-md-4 col-lg-2 mb-3">
         <p class="fs-4">Contact</p>
         <p class="text small">Phone: +46 705158714</p>
-        <p class="text small">Email: knitco.store@gmail.com</p>
+        <p class="text small">Email: <a href="mailto:knitco.store@gmail.com" rel="nofollow">knitco.store@gmail.com</a></p>
         <p class="text small">Opening hours: <br>Mon-Fri: 9 am - 6 pm</p>
       </div>
       <div class="col-12 col-md-4 offset-lg-2 mb-3">
@@ -200,7 +194,7 @@
           <div class="d-flex w-100 gap-2">
             <label for="newsletter" class="visually-hidden">Email address</label>
             <input type="email" name="email" id="newsletter" class="form-control" placeholder="Email address" aria-label="Email address" required>
-            <button class="btn bg-light-green" type="submit" aria-label="Subscribe button">Subscribe</button>
+            <button class="btn bg-light-green rounded-0" type="submit" aria-label="Subscribe button">Subscribe</button>
           </div>
         </form>
 

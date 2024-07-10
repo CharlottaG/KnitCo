@@ -17,17 +17,24 @@
     <div class="container-fluid">
         <div class="col-12 mt-5 bg-dark bg-opacity-75 p-5">
             <h2 class="display-4 text-white">
-                Oh no! The page you are looking for is not available
+                Oops! This Page is All Tangled Up!
             </h2>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" 
-                            class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">
-                                Return to shop
-                        </a>
-                    </h4>
-                </div>
+            <div class="my-5">
+                <p class="fs-5 text text-white"> Looks like the page you are looking for has gotten itself in a bit of a knot. But don't worry, it
+                    happens to the best of us!</p>
+                <p class="fs-5 text text-white">
+                    While we untangle this web, why not <a href="{% url 'products' %}" class="text-white">
+                        be inspired by some lovely colorful yarn?</a> You can never have too much yarn, right?
+                </p>
+                <p class="fs-5 text text-white">
+                    If you need a helping hand, feel free to <a href="mailto:knitco.store@gmail.com" rel="nofollow" class="text-white">contact us</a>. We're here to help you stitch things back
+                    together!
+                </p>
+                <p class="fs-5 text text-white">
+                    Happy knitting!
+                </p>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
