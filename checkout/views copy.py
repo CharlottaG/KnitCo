@@ -144,7 +144,6 @@ def checkout(request):
         'client_secret': intent.client_secret,
         'delivery_cost': delivery_cost, 
         'grand_total': grand_total, 
-        'total' : total,
     }
 
     return render(request, 'checkout/checkout.html', context)
@@ -156,7 +155,7 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+
     # Get user profile
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)

@@ -19,7 +19,7 @@ class OrderForm(forms.ModelForm):
             'full_name': 'Full Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
-            'country': 'Country Code',
+            'country': 'Country Code (2 letters)',
             'postcode': 'Postal Code',
             'town_or_city': 'Town or City',
             'street_address': 'Street Address 1',
