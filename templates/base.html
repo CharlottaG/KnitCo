@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="description" content="Knit & Co is a family-owned yarn store in Stockholm, Sweden, proudly featuring Nordic-made products. Our goal is to preserve local traditions and craftsmanship. Enjoy easy shopping with fast, secure delivery.">
+  <meta name="description" content="Knit & Co is a family-owned yarn store in Stockholm, Sweden, proudly featuring Nordic-made products. Our goal is to preserve local traditions and craftsmanship. Enjoy easy shopping with fast, secure delivery.">
   <meta name="robots" content="index,follow">
   <meta name="googlebot" content="index,follow">
 
@@ -98,7 +98,7 @@
                 <p class="my-0">{% if request.user.is_authenticated %}My account{% else %}Login{% endif %}</p>
               </div>
             </a>
-            <ul class="dropdown-menu border-0" aria-labelledby="user-options">
+            <ul class="dropdown-menu border-0" aria-label="user-options">
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
               <li><a href="{% url 'add_product' %}" class="dropdown-item">Add product</a></li>
@@ -156,7 +156,7 @@
   {% endblock %}
 
   <footer class="container-fluid relative-bottom bg-blue pt-3 px-5">
-    <div class="row m-0 ">
+    <div class="row m-0">
       <div class="col-12 col-md-4 col-lg-2 mb-3">
         <p class="fs-4">About us</p>
         <ul class="nav flex-column">
@@ -186,7 +186,6 @@
         <p class="text small">Opening hours: <br>Mon-Fri: 9 am - 6 pm</p>
       </div>
       <div class="col-12 col-md-4 offset-lg-2 mb-3">
-
         <form method="post" action="{% url 'subscribe' %}">
           {% csrf_token %}
           <p class="fs-4">Subscribe to our Newsletter</p>
@@ -197,7 +196,6 @@
             <button class="btn bg-light-green rounded-0" type="submit" aria-label="Subscribe button">Subscribe</button>
           </div>
         </form>
-
         <div class="row mt-5">
           <ul class="list-unstyled d-flex">
             <li class="fw-semibold">Follow us:</li>
@@ -222,6 +220,7 @@
       <div class="d-flex justify-content-between py-2 my-2 border-top">
         <p>© 2024 Knit & Co - Sweden</p>
       </div>
+    </div>
   </footer>
 
   {% block postloadjs %}

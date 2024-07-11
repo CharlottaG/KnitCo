@@ -88,7 +88,7 @@
                                         <!-- Form control -->
                                         <input class="form-control qty_input" type="number" name="quantity" value="1"
                                             min="1" max="99" data-item_id="{{ product.id }}"
-                                            id="id_qty_{{ product.id }}"aria-labelledby="Quantity input for bag items">
+                                            id="id_qty_{{ product.id }}"aria-label="Quantity input for bag items">
                                         <!-- Button to increase number of products to buy -->
                                         <div class="input-group-append">
                                             <button
@@ -110,7 +110,7 @@
                                 </a>
                                 <input type="submit"
                                     class="btn btn-bg-blue btn-sm rounded-0 text-uppercase mt-1 mb-3 my-1 border-0"
-                                    value="Add to Bag" aria-labelledby="Add to bag">
+                                    value="Add to Bag" aria-label="Add to bag">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>

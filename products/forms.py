@@ -2,11 +2,12 @@ from django import forms
 from .models import Rating
 from .models import Product, Category
 
+
 class RatingForm(forms.ModelForm):
-    
+
     class Meta:
         model = Rating
-        fields = ('score','comment')
+        fields = ('score', 'comment')
 
 
 class ProductForm(forms.ModelForm):
@@ -15,8 +16,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         exclude = ('sku',)
         # Include all fields from Product model
-        fields = '__all__' 
-
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -30,15 +30,18 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "It looks like you didn't weave any search terms into the box!")
+                messages.error(
+                    request, 
+                    ("It looks like you didn't weave any "
+                    "search terms into the box!")
+                )
                 return redirect(reverse('products'))
 
             queries = Q(name__icontains=query) | Q(description__icontains=query) | \
-                      Q(brand__name__icontains=query) | \
-                      Q(category__name__icontains=query) | \
-                      Q(subcategory__name__icontains=query)
+                    Q(brand__name__icontains=query) | \
+                    Q(category__name__icontains=query) | \
+                    Q(subcategory__name__icontains=query)
             products = products.filter(queries)
-
 
     # Add sorting
     if sort == 'brand':
@@ -73,7 +76,7 @@ def product_detail(request, product_id):
 
     if request.user.is_authenticated:
         user_has_rated = Rating.objects.filter(product=product, 
-                user=request.user).exists()
+                        user=request.user).exists()
     rating_form = RatingForm()
 
     context = {
@@ -133,8 +136,7 @@ def edit_rating(request, rating_id):
             context = {
                 'product': rating.product,
                 'form': form,
-                'product_id' : rating.product.id,
-                #'rating_form': rating_form,
+                'product_id': rating.product.id,
             }
 
     return redirect('product_detail', context)
@@ -163,8 +165,11 @@ def delete_rating(request, rating_id):
 def add_product(request):
     """ Add products in webshop """
     if not request.user.is_superuser:
-        messages.error(request,
-                'You do not have permission to do that, only store managers do.')
+        messages.error(
+            request,
+                ('You do not have permission to do that, '
+                'only store managers do.')
+        )
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -173,10 +178,13 @@ def add_product(request):
             product = add_product_form.save()
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail',
-                    kwargs={'product_id': product.id}))
+                        kwargs={'product_id': product.id}))
         else:
-            messages.error(request,
-                    'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                    ('Failed to add product. '
+                    'Please ensure the form is valid.')
+            )
     else:
         add_product_form = ProductForm()
 
@@ -191,23 +199,29 @@ def add_product(request):
 def edit_product(request, product_id):
     """ Edit product in webshop """
     if not request.user.is_superuser:
-        messages.error(request,
-                'You do not have permission to do that, only store managers do.')
+        messages.error(
+            request,
+                ('You do not have permission to do that, '
+                'only store managers do.')
+            )
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
         edit_product_form = ProductForm(request.POST, 
-                request.FILES, instance=product)
+                    request.FILES, instance=product)
         if edit_product_form.is_valid():
             edit_product_form.save()
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', 
-                    kwargs={'product_id': product.id}))
+                        kwargs={'product_id': product.id}))
         else:
-            messages.error(request,
-                    'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                    ('Failed to update product. '
+                    'Please ensure the form is valid.')
+            )
     else:
         edit_product_form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -225,8 +239,11 @@ def delete_product(request, product_id):
     """ Delete a product from webshop """
 
     if not request.user.is_superuser:
-        messages.error(request,
-                'You do not have permission to do that, only store managers do.')
+        messages.error(
+            request,
+            ('You do not have permission to do that, '
+            'only store managers do.')
+        )
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)

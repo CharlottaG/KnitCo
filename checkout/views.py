@@ -29,8 +29,11 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 
-                'Sorry, your payment cannot be processed. Please try again later.')
+        messages.error(
+            request,
+                ('Sorry, your payment cannot be processed. '
+                'Please try again later.')
+        )
         return HttpResponse(content=str(e), status=400)
 
 
@@ -61,18 +64,18 @@ def checkout(request):
         if request.user.is_authenticated:
             form_data = {
                 'full_name': request.POST.get('full_name',
-                            profile.default_full_name),
+                                profile.default_full_name),
                 'email': request.POST.get('email', profile.default_email),
                 'phone_number': request.POST.get('phone_number',
-                            profile.default_phone_number),
+                                profile.default_phone_number),
                 'country': request.POST.get('country',
                             profile.default_country),
                 'postcode': request.POST.get('postcode',
                             profile.default_postcode),
                 'town_or_city': request.POST.get('town_or_city',
-                            profile.default_town_or_city),
+                                profile.default_town_or_city),
                 'street_address': request.POST.get('street_address',
-                            profile.default_street_address),
+                                    profile.default_street_address),
             }
         else:
             form_data = {
@@ -90,7 +93,7 @@ def checkout(request):
 
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            client_secret = request.POST.get('client_secret') 
+            client_secret = request.POST.get('client_secret')
             pid = client_secret.split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
@@ -114,8 +117,11 @@ def checkout(request):
 
                 except Product.DoesNotExist:
 
-                    messages.error(request,
-                            "One of the products in your bag wasn't found in our database.")
+                    messages.error(
+                        request,
+                            ("One of the products in your bag "
+                            "wasn't found in our database.")
+                    )
                     order.delete()
 
                     return redirect(reverse('view_bag'))
@@ -126,13 +132,16 @@ def checkout(request):
                 'checkout_success', args=[order.order_number]))
 
         else:
-            messages.error(request,
-                    'There was an error with your form. Please double check your information.')
+            messages.error(
+                request,
+                    ('There was an error with your form. '
+                    'Please double check your information.')
+            )
     else:
         bag = request.session.get('bag', {})
         if not bag:
             messages.error(request,
-                        "There's nothing in your bag at the moment.")
+                            "There's nothing in your bag at the moment.")
             return redirect(reverse('products'))
 
     current_bag = bag_contents(request)
@@ -148,16 +157,19 @@ def checkout(request):
     )
 
     if not stripe_public_key:
-        messages.warning(request,
-                    'Stripe public key is missing. Did you forget to set it in your environment?')
+        messages.warning(
+            request,
+                ('Stripe public key is missing. '
+                'Did you forget to set it in your environment?')
+        )
 
     context = {
         'order_form': order_form if 'order_form' in locals() else OrderForm(initial=initial_data),
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
-        'delivery_cost': delivery_cost, 
-        'grand_total': grand_total, 
-        'total' : total,
+        'delivery_cost': delivery_cost,
+        'grand_total': grand_total,
+        'total': total,
     }
 
     return render(request, 'checkout/checkout.html', context)
@@ -190,7 +202,7 @@ def checkout_success(request, order_number):
             }
 
             user_profile_form = UserProfileForm(profile_data,
-                instance=profile)
+                                                instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
 

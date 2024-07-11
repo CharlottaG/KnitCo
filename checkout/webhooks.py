@@ -38,7 +38,7 @@ def webhook(request):
     except Exception as e:
         logger.error(f'Unexpected error: {e}')
         return HttpResponse(content=e, status=400)
-        
+
     # Set up a webhook handler
     handler = StripeWH_Handler(request)
 

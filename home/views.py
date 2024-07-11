@@ -30,22 +30,31 @@ def subscribe(request):
                     # Logged-in user's email with an existing subscription
                     messages.info(request, 'You are already a subscriber!')
                 else:
-                    # Email not same as logged-in user, but with an existing subscription
-                    messages.info(request,
-                                'This email is already subscribed. Please provide a different email address.')
+                    # Email not logged-in user, but have subscription
+                    messages.info(
+                        request,
+                            ('This email is already subscribed. '
+                            Please provide a different email address.')
+                        )
             else:
                 # No existing subscription found, create a new one
                 new_subscription = NewsletterSubscriber.objects.create(email=email,
-                        user=user if user and user.email.strip().lower() == email else None)
+                                                                        user=user if user and user.email.strip().lower() == email else None)
 
                 if user and user.email.strip().lower() == email:
                     # Logged-in user's email without a subscription
-                    messages.success(request,
-                                'Excellent, you will soon get our newsletter with more inspiration!')
+                    messages.success(
+                        request,
+                            ('Excellent, you will soon get our '
+                            'newsletter with more inspiration!')
+                    )
                 else:
                     # Different email without a subscription
-                    messages.success(request,
-                                'Thank you. You have successfully subscribed to the Knit & Co newsletter!')
+                    messages.success(
+                        request,
+                            ('Thank you. You have successfully subscribed '
+                            'to the Knit & Co newsletter!')
+                    )
                     return render(request,
                                 'home/thank_you.html')
 
@@ -55,8 +64,7 @@ def subscribe(request):
                 for error in errors:
                     messages.error(request, f"{error}")
 
-    #return redirect(request.META.get('HTTP_REFERER'))
-    return render(request,'home/thank_you.html')
+    return render(request, 'home/thank_you.html')
 
 
 def thank_you(request):

@@ -6,7 +6,7 @@
                 <a class="nav-link mx-3  fs-5" href="#" id="yarnDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Yarn
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="yarnDropdown">
+                <ul class="dropdown-menu" aria-label="yarnDropdown">
                     <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Wool">Wool</a></li>
                     <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Merinowool">Merino wool</a></li>
                     <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Alpaca">Alpaca</a></li>
@@ -20,7 +20,7 @@
                     aria-expanded="false">
                     Needles
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="needlesDropdown">
+                <ul class="dropdown-menu" aria-label="needlesDropdown">
                     <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Cable-Needles">Cable Needles</a>
                     </li>
                     <li><a class="dropdown-item"
@@ -35,7 +35,7 @@
                     aria-expanded="false">
                     Accessories
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="accessoriesDropdown">
+                <ul class="dropdown-menu" aria-label="accessoriesDropdown">
                     <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Markers">Stitch Markers</a>
                     </li>
                     <li><a class="dropdown-item" href="{% url 'products' %}?subcategory=Stitch-Holders">Stitch Holders</a>
@@ -50,7 +50,7 @@
             <form class="form" method="GET" action="{% url 'products' %}">
                 <div class="input-group w-100 mx-2">
                     <input class="form-control border rounded-0" type="text" name="q"
-                        placeholder="Search products" aria-labelledby="Product search">
+                        placeholder="Search products" aria-label="Product search">
                     <div class="input-group-append">
                         <button class="form-control btn bg-white border rounded-0" type="submit">
                             <i class="fas fa-search"></i>
