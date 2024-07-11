@@ -31,7 +31,7 @@ config = cloudinary.config(secure=True)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
