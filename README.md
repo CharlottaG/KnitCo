@@ -416,6 +416,32 @@ Success, which will take the user to a checkout success page with success messag
   
   ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/1b615185-c64f-4a45-ae15-552d84c84e4b)
 
+- HTML (https://validator.w3.org/)
+
+- Page performance (Lighthouse)
+
+  Mobile:
+  
+  ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3320530e-d0a9-4943-9e6a-013c04f24a7e)
+
+  Desktop:
+  
+  ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/881db8e5-5745-413b-a048-6fc6176b08bb)
+
+  **Issues to fix for next release:**
+  - Eliminate render-blocking resources Potential savings of 3,410 ms
+  - Largest Contentful Paint element 6,750 ms
+  - Reduce initial server response time Root document took 3,100 ms
+  - Properly size images Potential savings of 317 KiB
+  - Reduce unused JavaScript Potential savings of 178 KiB
+  - Reduce the impact of third-party code Third-party code blocked the main thread for 250 ms
+  - Minify JavaScript Potential savings of 42 KiB
+  - Serve images in next-gen formats Potential savings of 61 KiB
+  - Enable text compression Potential savings of 22 KiB
+  - Reduce unused CSS Potential savings of 44 KiB
+
+
+  
 
 # Deployment to Heroku
 ## Setting up the App:
