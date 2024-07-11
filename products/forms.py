@@ -13,8 +13,10 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
+        exclude = ('sku',)
         # Include all fields from Product model
         fields = '__all__' 
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
