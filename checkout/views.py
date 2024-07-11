@@ -195,8 +195,7 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     messages.success(request, f'Nice stuff, we will pack it asap! \
-        Your order number is {order_number}. \
-        An email is sent to {order.email}.')
+        Your order number is {order_number}.')
 
     if 'bag' in request.session:
         del request.session['bag']
