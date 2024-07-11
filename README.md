@@ -1,8 +1,9 @@
-![image](https://github.com/CharlottaG/KnitCo/assets/138576943/2b0a726e-e1e8-4068-9688-35fe6254dc0a)
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/8385f18f-09d2-40f7-9b5e-ab88abecb05a)
+
 
 Welcome to Knit & Co, a B2C e-commerce store specializing in yarn, needles, and related products sourced from Nordic producers. At Knit & Co, our goal is to ensure a seamless user experience where users can focus on discovering the perfect yarn for their next project, without navigating the complexities of an online shopping platform.
 
-![image](https://github.com/CharlottaG/KnitCo/assets/138576943/df09d5f5-7271-4be5-878c-94e4cc85a9bf)
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/d017815b-532e-4e26-8e09-b8178af6aee2)
 
 
 ### [Link to Knit & Co](https://knitco-7d640c861cc6.herokuapp.com/)
@@ -85,7 +86,7 @@ Priorities for the first release of the Knit & Co store:
 - As a user, I want to be able to view recommended products so that I can discover additional items I might be interested in.
 - As a store owner, I want to be presented with the relevant sub categories for the specified category when adding products, so that I don't have to scroll a long list.
 
-GitHub tool for projects:
+**GitHub tool for projects:**
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/c10dcf42-6f8b-4297-a399-d32ecd6186c5)
 
 
@@ -108,10 +109,7 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 
 - **Personalization Options**: Future plans include personalized recommendations based on user preferences and past purchases, enhancing the overall shopping experience.
 
-
-
-## Design
-  ### Wireframes
+### Wireframes
   
   ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/dcef6aa4-e22b-4b4f-8ad7-86d99db5fd65)
 
@@ -120,7 +118,7 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
   ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/6cff0dcc-b565-4e36-86f4-07b60f0e83e9)
 
 
-  ### Typography
+### Typography
   
 **Google Fonts**
 
@@ -240,12 +238,14 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/26a0e3a6-d1e5-46a3-aae4-29cf529db7d5)
 
-**Search function, user can search for product name, brand, description, category, subcategory:**
+**Search function, user can search for product name, brand, category, subcategory:**
 
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/974da9bd-a73e-4371-99d0-e7baba93d596)
 
 ### Home page
-**Displays products with rating higher or equal to 5, to inspire customers to buy what other's have liked.
+**Displays products with rating higher or equal to 5, to inspire customers to buy what other's have liked.**
+
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/d017815b-532e-4e26-8e09-b8178af6aee2)
 
 
 ### Product details
@@ -269,8 +269,8 @@ If a user has left a review or rated the product, they cannot leave a second rat
 
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ab158523-b873-4c3a-b0de-28c2d97f683d)
 
-**Shopping bag**
-The shopping bag icon is updated with the order amount so the user always know how much they are spending.
+### Shopping bag
+**The shopping bag icon is updated with the order amount so the user always know how much they are spending.**
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b846a9f4-7c40-4e28-acd5-c9401c21c52a)
 
 
@@ -278,7 +278,7 @@ The shopping bag icon is updated with the order amount so the user always know h
 
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/d3d75add-cdd6-4210-9fc5-3f0ee36a8f56)
 
-**Secure checkout**
+### Secure checkout
 User gets an order summary and if they have saved their info/are logged in the user details form will be pre-populated.
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/49b15217-1dfb-47eb-94de-d647b2f8ecb9)
 
@@ -418,7 +418,7 @@ Success, which will take the user to a checkout success page with success messag
 
 
 # Deployment to Heroku
-##Setting up the App:
+## Setting up the App:
 - Connected my Heroku app to my GitHub repository through the Heroku dashboard under the Deploy tab.
 ## Config Vars:
 - Set up config vars with all secret keys and relevant keys for interactivity:
@@ -445,5 +445,3 @@ Success, which will take the user to a checkout success page with success messag
   
  ## Acknowledgments
 I want to extend a huge to Luke Buchanan, my mentor at Code Institute. His structured approach to our discussions, extensive coding knowledge, and ability to help me focus on the right aspects have been invaluable. His guidance in troubleshooting and thinking critically to overcome obstacles, coupled with his positive attitude, has always left me confident that I will reach my goals.
-
-[EOL]
