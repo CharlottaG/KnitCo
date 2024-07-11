@@ -31,7 +31,7 @@ def subscribe(request):
                     messages.info(request, 'You are already a subscriber!')
                 else:
                     # Email not same as logged-in user, but with an existing subscription
-                    messages.error(request,
+                    messages.info(request,
                                 'This email is already subscribed. Please provide a different email address.')
             else:
                 # No existing subscription found, create a new one
