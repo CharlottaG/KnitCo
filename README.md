@@ -168,31 +168,108 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 
 ## Features
 ### Basic functionality
+Header for a non logged in user:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/89d7b7a5-7180-4229-a5ee-ba4481a579d2)
+
+Header for a logged in user:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/02e1716e-8bff-4a67-bb1f-5c58f89a5afc)
+
+Header for a superuser:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/39646ae4-4d1c-45de-b501-0855f1220b6b)
+
+**Account features**
+Sign in:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/4e3994da-bef8-4f2f-8602-effa5c771b62)
+
+Toast success message:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/25055720-5787-402f-a1fc-28756eb1807c)
+
+Error handling/form validation:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/51e129b4-781d-457e-ad96-09542122e123)
+
+
+Log out:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/a42cf98d-850a-4a35-9d22-d0197cc83d87)
+
+Toast success message:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/12cf2292-081e-4918-b6e7-5c427aebb699)
+
+Profile page:
+Pre-populated user details form (if saved info), order history with clickable links to previous orders, clickable links to products the user have rated or reviewed, incl. the review comment:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/61e57000-fca4-4795-b5be-d9fda8680019)
+
+Edit user details, where email field is non editable as that is the user login email:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/9be1f6b6-9f0c-481a-ac5e-22777c5a671f)
+
+Sign up:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/aa3fa8ad-1af0-426d-9a90-09c1bb3a1dbc)
+
 **Browse all products**
-- Category
-- Sub category
+All products, with sorting feature on product name, brand or category:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/80c2aa0f-54bb-471d-ae01-b0f9f78710d4)
+
+Sub category menues opens when clicking head category:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/600431bd-4cdc-4fcd-818f-7614b4fae7d7)
+
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/26a0e3a6-d1e5-46a3-aae4-29cf529db7d5)
+
+
 - Search
 
-**Sort products**
-- Brand
-- Category
-- Name
+**Product details**
+Product details with possibility to add to bad, available options if there are, and for a user that has not yet rated or reviewed the product the form is open:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/2d549811-80b5-4eff-80bf-f1807a302a9b)
 
-**Shop and checkout as a guest**
-- Secure checkout
-- Email confirmation
+Once rated or reviewed, form is no longer displayed for the user:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/10acbe0e-1eac-4406-9623-f723d25e955b)
 
-**Create an account and user profile**
-- Register
-- Sign-in
-- Update user profile
+Reviews are initially hidden to keep focus on the product, user need to click to see them:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/74f1f43d-6f2f-412c-a40c-d3970e547dc1)
+
+If a user has left a review or rated the product, they cannot leave a second rating or review. They need to edit existing one or delete it to see the form again.
+
+Add to bag, if user adds a product a toast message is displayed:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/04f14667-829a-43ad-a34d-c377feedc388)
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ab158523-b873-4c3a-b0de-28c2d97f683d)
+
+**Shopping bag**
+The shopping bag icon is updated with the order amount so the user always know how much they are spending.
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b846a9f4-7c40-4e28-acd5-c9401c21c52a)
+
+
+User gets an overview of their bag and can update the number of items for a product or remove it from the bag.They can continue shopping or go th checkout.
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/d3d75add-cdd6-4210-9fc5-3f0ee36a8f56)
+
+**Secure checkout**
+User gets an order summary and if they have saved their info/are logged in the user details form will be pre-populated.
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/49b15217-1dfb-47eb-94de-d647b2f8ecb9)
+
+To complete the order the user need to fill out the card number and click complete, this will generate an order sent to the database, display a toast message with order details to the user and take them to a order summary page:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3a751fce-314a-45e2-9091-0a7d046e7dd6)
+
+For testing Stripe payment, different scenarios:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/f7880272-09a8-41e7-b554-8243200d610b)
+
+Declined:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ac35a11b-46af-44f6-b56e-184364f007c6)
+
+3DS Authentication:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/04134728-3a08-4a81-8547-f24ed1eba2f6)
+
+Success, which will take the user to a checkout success page with success message:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/8ad4589d-4f75-415e-9761-d95adb55be4a)
 
 **Access general information**
-- About us
-- Policies
-- Contact information
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b301dcb8-0509-4751-9d7b-7c8ac1ec87ec)
+
 
   **Sign up for newsletter**
+
+If user already has subscribed:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/758c3b07-a095-40b8-8724-1af000b9595c)
+
+If user is not logged in and not a subscriber:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3cd5348d-3493-4e41-a8fc-58a26ee873ac)
 
    
 ### Extra features for logged in users
@@ -205,16 +282,41 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 - Store user information
 - Order history
 - Track your own reviews
-  
+
+**Store owners (superusers)**
+Add products:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3268402a-9762-4a62-ba5e-35c327e598a2)
+SKU field is auto generated and will propulate on save.
+
+Edit/Delete products:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/6811c34e-758b-4bc0-8fd4-51b900e1b0a2)
+
+Delete product:
+Toast success message:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/8957d884-3b7d-4fbb-bbe8-23efb8369825)
+
+
+Edit products:
+Toast info message:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ba04c46c-a06a-4cc4-80d4-4ad5ff07bc40)
+
+Edit form:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b06a11ae-b3fd-4fee-86c0-4adbe614aa98)
+Toast success message:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/fbf69d4c-ddab-4725-89ef-df550752f01e)
+
+
+
 
 # Testing phase
 - Manual testing
 
+
 |Feature | Expected Outcome | Result| 
-|--|--|--|--|--| 
+|--|--|--|
 | **Navbar** 
 | Logo   |  Go to home page | Pass | 
-| All products link |  Go to an overview of all products | Pass | 
+| All products link |  Go to an overview of all products | Pass 
 | Dropdown menus |  Show submenus | Pass | 
 | Category submenu links|  Take user to a selection of products based on sub categories | Pass | 
 | Search function |  Show what products are being search for | Pass | 
@@ -265,6 +367,15 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 |About us links|Takes user to the designated page| Pass|
 |Policy links|Takes user to the designated page, if user clicks the email on those pages opens up a mail client to send an email| Pass|
 |Subscribe to newsletter|When user clicks submit, validates if user already have a subscription or not, displays different toast message depending on situation | Pass|
+| **Manage shop (for store owners)**| 
+|Manage shop |Takes the user to a page with the product form where they can fill in all product details, it is only visible for superusers | Pass| 
+|Choose file |Opens the File Explorer on the device| Pass| 
+|Add product |Saves the form and adds the product to the store, displays a toast success message, takes the user to the products overview, if no image has been added a no-image is displayed| Pass| 
+|Cancel|Cancels the form and takes the user the products overview| Pass| 
+|Edit link under image (on products overview page)|Takes the user to the product details page and opens the form for editing, displays an info message that they are editing the specific product| Pass| 
+|Update product |Saves the form, updates the product, displays a toast message, takes the user to the products overview| Pass| 
+|Delete link under image (on products overview page)|Deletes the product from the store, displays a toast success message| Pass| 
+
 
 
 # Validation
