@@ -13,6 +13,12 @@ Welcome to Knit & Co, a B2C e-commerce store specializing in yarn, needles, and 
 Knit & Co is an online yarn store dedicated to promoting and preserving Nordic knitting traditions by offering high-quality yarn from Nordic producers. Our mission is to ensure that the art of Nordic knitting and the knowledge of producing yarn from Nordic fibers are kept alive for future generations. We carefully select our suppliers based on fair trade principles and sustainability, providing only natural fiber yarns. This means our customers can focus on finding the perfect yarn for their projects without worrying about unsustainable or low-quality synthetic fibers. Knit & Co offers a secure shopping experience with Stripe payment methods and....
 
 # Go to Market Plan
+Knit & Co. operates a B2C e-commerce business model with the goal of becoming the premier online destination for premium Nordic knitting yarns, patterns, and accessories, while cultivating a dedicated community of knitting enthusiasts.
+
+## Product Offering:
+- Natural fiber yarns (wool, cotton, alpaca) from sustainable Nordic producers.
+- Essential knitting tools and accessories.
+- Exclusive patterns and kits (future).
 
 ## High-level Goals and Objectives
 - **Promote Nordic Knitting Traditions**: Educate and inspire customers about Nordic knitting techniques and patterns.
@@ -50,7 +56,6 @@ By focusing on these strategies, Knit & Co aims to build a strong, loyal custome
 Priorities for the first release of the Knit & Co store:
 
 **Must have** (Completed for this release)
-- As a user, I want to be able to receive an order confirmation email so that I have a record of my purchase.
 - As a user, I want to be able to recover my password so that I can recover access to my account.
 - As a user, I want to be able to receive email confirmation on registration so that I can verify my account and know that the registration was successful.
 - As a user, I want to be able to login and logout so that I can access my personal info.
@@ -59,6 +64,8 @@ Priorities for the first release of the Knit & Co store:
 - As a user, I want to be able to view product details for each product so that I can learn about the price, description, product rating, see the product image, and available colors.
 - As a user, I want to be able to view the return policy so that I understand the conditions and process for returning items.
 - As a user, I want to be able to search for a product by name so that I can find the product I'm looking for.
+- As a store owner, I want to be able to manage products backend, so that I can keep my store updated and relevant.
+- As a store owner, I want to be able to manage orders backend, so that I can process and send orders to customers.
   
 **Should have** (Completed for this release)
 - As a user, I want to be able to filter products by different criteria (e.g., price, brand, material) so that I can narrow down my options.
@@ -67,12 +74,19 @@ Priorities for the first release of the Knit & Co store:
 - As a user, I want to be able to leave reviews on products, so that I can share my experience with others and take into account what others think of the same product.
 - As a user, I want to be able to view the total of my purchases at any time so that I can avoid spending too much.
 - As a user, I want to be able to view related products so that I can discover additional items I might be interested in.
+- As a store owner, I want to be able to manage users and  profiles backend, so that I can delete user information upon request per GDPR regulations.
+- As a store owner, I want to be able to manage subscriptions backend, so that I can have an updated list of subscribers to send newsletters to.
   
-**Could have** (These will go into next release)
+**Could have** (Improvements that will go into next release)
+- As a user, I want to be able to receive an order confirmation email so that I have a record of my purchase.
 - As a user, I want to be able to save products to a wishlist so that I can easily find and purchase them later.
 - As a user, I want to be able to choose different shipping options so that I can select the delivery speed that suits my needs.
 - As a user, I want to be able to see an estimated delivery date so that I know when to expect my order.
 - As a user, I want to be able to view recommended products so that I can discover additional items I might be interested in.
+- As a store owner, I want to be presented with the relevant sub categories for the specified category when adding products, so that I don't have to scroll a long list.
+
+GitHub tool for projects:
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/c10dcf42-6f8b-4297-a399-d32ecd6186c5)
 
 
 ## User Experience (UX)
@@ -139,12 +153,10 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
 - MosCow
 - Design thinking principles
 - Mobile first design
-
-
-
+- SEO
+- Web Accessibility
  
 # Development phase
-## Agile tool for user stories
 ## Tools & Technologies
   **Backend:**
   
@@ -162,74 +174,99 @@ At Knit & Co, we prioritize a seamless and enjoyable user experience throughout 
   -  Heroku deployment
   -  GitHub repository & agile tool
   -  Gitpod development environment
-   
+
+
 ## Entity Relastionship Diagram (ERD)
+
   ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/5f41e1ce-695f-4bc2-9a01-b717d8f28ae3)
 
+
 ## Features
-### Basic functionality
-Header for a non logged in user:
+#### Header for a non logged in user:
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/89d7b7a5-7180-4229-a5ee-ba4481a579d2)
 
-Header for a logged in user:
+#### Header for a logged in user:
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/02e1716e-8bff-4a67-bb1f-5c58f89a5afc)
 
-Header for a superuser:
+#### Header for a superuser:
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/39646ae4-4d1c-45de-b501-0855f1220b6b)
 
-**Account features**
-Sign in:
+### Account features
+#### Sign in:
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/4e3994da-bef8-4f2f-8602-effa5c771b62)
 
-Toast success message:
+**Toast success message:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/25055720-5787-402f-a1fc-28756eb1807c)
 
-Error handling/form validation:
+**Error handling/form validation:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/51e129b4-781d-457e-ad96-09542122e123)
 
 
-Log out:
+#### Log out:
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/a42cf98d-850a-4a35-9d22-d0197cc83d87)
 
-Toast success message:
+**Toast success message:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/12cf2292-081e-4918-b6e7-5c427aebb699)
 
-Profile page:
-Pre-populated user details form (if saved info), order history with clickable links to previous orders, clickable links to products the user have rated or reviewed, incl. the review comment:
+#### Profile page:
+**Pre-populated user details form (if saved info), order history with clickable links to previous orders, clickable links to products the user have rated or reviewed, incl. the review comment:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/61e57000-fca4-4795-b5be-d9fda8680019)
 
-Edit user details, where email field is non editable as that is the user login email:
+**Edit user details, where email field is non editable as that is the user login email:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/9be1f6b6-9f0c-481a-ac5e-22777c5a671f)
 
-Sign up:
+#### Sign up:
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/aa3fa8ad-1af0-426d-9a90-09c1bb3a1dbc)
 
-**Browse all products**
-All products, with sorting feature on product name, brand or category:
+### Browse all products
+**All products, with sorting feature on product name, brand or category:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/80c2aa0f-54bb-471d-ae01-b0f9f78710d4)
 
-Sub category menues opens when clicking head category:
+**Sub category menues opens when clicking head category:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/600431bd-4cdc-4fcd-818f-7614b4fae7d7)
 
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/26a0e3a6-d1e5-46a3-aae4-29cf529db7d5)
 
+**Search function, user can search for product name, brand, description, category, subcategory:**
 
-- Search
+![image](https://github.com/CharlottaG/KnitCo/assets/138576943/974da9bd-a73e-4371-99d0-e7baba93d596)
 
-**Product details**
-Product details with possibility to add to bad, available options if there are, and for a user that has not yet rated or reviewed the product the form is open:
+### Home page
+**Displays products with rating higher or equal to 5, to inspire customers to buy what other's have liked.
+
+
+### Product details
+**Product details with possibility to add to bad, available options if there are, and for a user that has not yet rated or reviewed the product the form is open:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/2d549811-80b5-4eff-80bf-f1807a302a9b)
 
-Once rated or reviewed, form is no longer displayed for the user:
+**Once rated or reviewed, form is no longer displayed for the user:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/10acbe0e-1eac-4406-9623-f723d25e955b)
 
-Reviews are initially hidden to keep focus on the product, user need to click to see them:
+**Reviews are initially hidden to keep focus on the product, user need to click to see them:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/74f1f43d-6f2f-412c-a40c-d3970e547dc1)
 
 If a user has left a review or rated the product, they cannot leave a second rating or review. They need to edit existing one or delete it to see the form again.
 
-Add to bag, if user adds a product a toast message is displayed:
+**Add to bag, if user adds a product a toast message is displayed:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/04f14667-829a-43ad-a34d-c377feedc388)
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ab158523-b873-4c3a-b0de-28c2d97f683d)
 
 **Shopping bag**
@@ -237,75 +274,72 @@ The shopping bag icon is updated with the order amount so the user always know h
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b846a9f4-7c40-4e28-acd5-c9401c21c52a)
 
 
-User gets an overview of their bag and can update the number of items for a product or remove it from the bag.They can continue shopping or go th checkout.
+**User gets an overview of their bag and can update the number of items for a product or remove it from the bag.They can continue shopping or go th checkout.**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/d3d75add-cdd6-4210-9fc5-3f0ee36a8f56)
 
 **Secure checkout**
 User gets an order summary and if they have saved their info/are logged in the user details form will be pre-populated.
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/49b15217-1dfb-47eb-94de-d647b2f8ecb9)
 
-To complete the order the user need to fill out the card number and click complete, this will generate an order sent to the database, display a toast message with order details to the user and take them to a order summary page:
+**To complete the order the user need to fill out the card number and click complete, this will generate an order sent to the database, display a toast message with order details to the user and take them to a order summary page:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3a751fce-314a-45e2-9091-0a7d046e7dd6)
 
-For testing Stripe payment, different scenarios:
+_For testing Stripe payment, different scenarios:_
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/f7880272-09a8-41e7-b554-8243200d610b)
 
-Declined:
+**Declined:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ac35a11b-46af-44f6-b56e-184364f007c6)
 
-3DS Authentication:
+**3DS Authentication:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/04134728-3a08-4a81-8547-f24ed1eba2f6)
 
 Success, which will take the user to a checkout success page with success message:
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/8ad4589d-4f75-415e-9761-d95adb55be4a)
 
-**Access general information**
+### Access general information
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b301dcb8-0509-4751-9d7b-7c8ac1ec87ec)
 
+#### Sign up for newsletter
 
-  **Sign up for newsletter**
-
-If user already has subscribed:
+**If user already has subscribed:**
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/758c3b07-a095-40b8-8724-1af000b9595c)
 
-If user is not logged in and not a subscriber:
+**If user is not logged in and not a subscriber:**
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3cd5348d-3493-4e41-a8fc-58a26ee873ac)
 
-   
-### Extra features for logged in users
+### Store owners (superusers)
+#### Add products, SKU field is auto generated and will propulate on save, so field is not visible:
 
-**Rate & Review products**
-- Edit own reviews
-- Delete own reviews
-
-**User profile**
-- Store user information
-- Order history
-- Track your own reviews
-
-**Store owners (superusers)**
-Add products:
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/3268402a-9762-4a62-ba5e-35c327e598a2)
-SKU field is auto generated and will propulate on save.
 
-Edit/Delete products:
+
+**Edit/Delete products:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/6811c34e-758b-4bc0-8fd4-51b900e1b0a2)
 
-Delete product:
-Toast success message:
+#### Delete product:
+**Toast success message:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/8957d884-3b7d-4fbb-bbe8-23efb8369825)
 
 
-Edit products:
-Toast info message:
+#### Edit products:
+**Toast info message:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/ba04c46c-a06a-4cc4-80d4-4ad5ff07bc40)
 
-Edit form:
+**Edit form:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/b06a11ae-b3fd-4fee-86c0-4adbe614aa98)
-Toast success message:
+
+**Toast success message:**
+
 ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/fbf69d4c-ddab-4725-89ef-df550752f01e)
-
-
 
 
 # Testing phase
@@ -368,7 +402,7 @@ Toast success message:
 |Policy links|Takes user to the designated page, if user clicks the email on those pages opens up a mail client to send an email| Pass|
 |Subscribe to newsletter|When user clicks submit, validates if user already have a subscription or not, displays different toast message depending on situation | Pass|
 | **Manage shop (for store owners)**| 
-|Manage shop |Takes the user to a page with the product form where they can fill in all product details, it is only visible for superusers | Pass| 
+|Add products |Takes the user to a page with the product form where they can fill in all product details, it is only visible for superusers | Pass| 
 |Choose file |Opens the File Explorer on the device| Pass| 
 |Add product |Saves the form and adds the product to the store, displays a toast success message, takes the user to the products overview, if no image has been added a no-image is displayed| Pass| 
 |Cancel|Cancels the form and takes the user the products overview| Pass| 
@@ -377,15 +411,29 @@ Toast success message:
 |Delete link under image (on products overview page)|Deletes the product from the store, displays a toast success message| Pass| 
 
 
-
 # Validation
 - CSS (https://jigsaw.w3.org/css-validator/validator)
   
   ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/1b615185-c64f-4a45-ae15-552d84c84e4b)
 
 
-# Deployment
-- Heroku instructions
+# Deployment to Heroku
+##Setting up the App:
+- Connected my Heroku app to my GitHub repository through the Heroku dashboard under the Deploy tab.
+## Config Vars:
+- Set up config vars with all secret keys and relevant keys for interactivity:
+-- ElephantSQL database
+-- Stripe payment
+-- Cloudinary image storage
+## Dependencies:
+- Installed necessary dependencies for Heroku in my Django project:
+-- gunicorn
+- Created a Procfile to specify the commands needed to run the app
+## Settings and Requirements:
+- Updated settings.py with secret keys stored in env.py
+- Froze requirements in requirements.txt using pip freeze > requirements.txt
+## Deployment:
+- Manually deployed my application via the Deploy tab on Heroku by selecting the branch to deploy and clicking on the Deploy button.
 
 # Credit & Accknowledgement
  ## Credits
@@ -397,10 +445,5 @@ Toast success message:
   
  ## Acknowledgments
 I want to extend a huge to Luke Buchanan, my mentor at Code Institute. His structured approach to our discussions, extensive coding knowledge, and ability to help me focus on the right aspects have been invaluable. His guidance in troubleshooting and thinking critically to overcome obstacles, coupled with his positive attitude, has always left me confident that I will reach my goals.
-  
-    
 
-
-
-
-
+[EOL]
