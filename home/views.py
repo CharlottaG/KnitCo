@@ -34,7 +34,7 @@ def subscribe(request):
                     messages.info(
                         request,
                             ('This email is already subscribed. '
-                            Please provide a different email address.')
+                            'Please provide a different email address.')
                         )
             else:
                 # No existing subscription found, create a new one
