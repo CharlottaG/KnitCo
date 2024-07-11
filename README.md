@@ -9,7 +9,17 @@ Welcome to Knit & Co, a B2C e-commerce store specializing in yarn, needles, and 
 ### [Link to Knit & Co](https://knitco-7d640c861cc6.herokuapp.com/)
 
 
-# Overview
+# Overview  Issues to fix for next release:
+  - Eliminate render-blocking resources Potential savings of 3,410 ms
+  - Largest Contentful Paint element 6,750 ms
+  - Reduce initial server response time Root document took 3,100 ms
+  - Properly size images Potential savings of 317 KiB
+  - Reduce unused JavaScript Potential savings of 178 KiB
+  - Reduce the impact of third-party code Third-party code blocked the main thread for 250 ms
+  - Minify JavaScript Potential savings of 42 KiB
+  - Serve images in next-gen formats Potential savings of 61 KiB
+  - Enable text compression Potential savings of 22 KiB
+  - Reduce unused CSS Potential savings of 44 KiB
 
 Knit & Co is an online yarn store dedicated to promoting and preserving Nordic knitting traditions by offering high-quality yarn from Nordic producers. Our mission is to ensure that the art of Nordic knitting and the knowledge of producing yarn from Nordic fibers are kept alive for future generations. We carefully select our suppliers based on fair trade principles and sustainability, providing only natural fiber yarns. This means our customers can focus on finding the perfect yarn for their projects without worrying about unsustainable or low-quality synthetic fibers. Knit & Co offers a secure shopping experience with Stripe payment methods and....
 
@@ -412,13 +422,19 @@ Success, which will take the user to a checkout success page with success messag
 
 
 # Validation
-- CSS (https://jigsaw.w3.org/css-validator/validator)
+#### CSS (https://jigsaw.w3.org/css-validator/validator)
   
   ![image](https://github.com/CharlottaG/KnitCo/assets/138576943/1b615185-c64f-4a45-ae15-552d84c84e4b)
 
-- HTML (https://validator.w3.org/)
+#### HTML (https://validator.w3.org/)
+![Showing-results-for-https-knitco-7d640c861cc6-herokuapp-com-Nu-Html-Checker](https://github.com/CharlottaG/KnitCo/assets/138576943/e6941eb0-6eea-4723-9011-e46d7580eefc)
 
-- Page performance (Lighthouse)
+  **Issues to fix for next release:**
+  - Dropdown menus to not sit within an li element
+  - Find and fix the stray </div>
+  - Go through aria labels
+  
+#### Page performance (Lighthouse)
 
   Mobile:
   
@@ -439,9 +455,7 @@ Success, which will take the user to a checkout success page with success messag
   - Serve images in next-gen formats Potential savings of 61 KiB
   - Enable text compression Potential savings of 22 KiB
   - Reduce unused CSS Potential savings of 44 KiB
-
-
-  
+     
 
 # Deployment to Heroku
 ## Setting up the App:
